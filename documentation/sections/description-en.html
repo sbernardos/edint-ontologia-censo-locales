@@ -1,0 +1,86 @@
+<h2 id="desc" class="list">edint-ontologia-censo-locales: Description <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+
+<span class="markdown">This is a placeholder text for the description of your ontology. The description should include an explanation and a diagram explaining how the classes are related, examples of usage, etc.
+
+</span>
+<img src="images/diagrama.png" style="width:95%; display:block; margin:0 auto;">
+<pre><textarea style="resize:none" readonly id="code_8332" name="code" rows="25" cols="100">
+@prefix comp: &lt;http://semweb.mmlab.be/ns/rml-compression#&gt; .
+@prefix d2rq: &lt;http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#&gt; .
+@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
+@prefix edintcom: &lt;http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#&gt; .
+@prefix edintinf: &lt;http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#&gt; .
+@prefix edintkoacctype: &lt;http://vocab.linkeddata.es/datosabiertos/kos/edint/AccesType/&gt; .
+@prefix edintkoscomespsit: &lt;http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialSpaceStatus/&gt; .
+@prefix edintkosinf: &lt;http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureType/&gt; .
+@prefix edintterper: &lt;http://vocab.linkeddata.es/datosabiertos/kos/edint/TerracePeriod/&gt; .
+@prefix esdir: &lt;http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/direccion-postal#&gt; .
+@prefix ex: &lt;https://example.org/id/&gt; .
+@prefix fnml: &lt;http://semweb.mmlab.be/ns/fnml#&gt; .
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix formats: &lt;http://www.w3.org/ns/formats/&gt; .
+@prefix geosparql: &lt;http://www.opengis.net/ont/geosparql#&gt; .
+@prefix grel: &lt;http://users.ugent.be/~bjdmeest/function/grel.ttl#&gt; .
+@prefix ql: &lt;http://semweb.mmlab.be/ns/ql#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix rml: &lt;http://semweb.mmlab.be/ns/rml#&gt; .
+@prefix rr: &lt;http://www.w3.org/ns/r2rml#&gt; .
+@prefix schema: &lt;http://schema.org/&gt; .
+@prefix void: &lt;http://rdfs.org/ns/void#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+&lt;http://vocab.linkeddata.es/datosabiertos/recurso/agrupacionComercial/AGR-0001&gt; a
+    edintcom:CommercialAggregation;
+  dcterms:identifier "AGR-0001";
+  rdfs:comment "Entidad de dinamización comercial que agrupa locales de hostelería, retail y servicios del eje Sol-Mayor.";
+  rdfs:label "Asociación Comercial Centro Histórico" .
+
+&lt;http://vocab.linkeddata.es/datosabiertos/recurso/direccion-postal/28013&gt; a esdir:DireccionPostal;
+  schema:postalCode "28013";
+  rdfs:label "28013" .
+
+&lt;http://vocab.linkeddata.es/datosabiertos/recurso/entidad-comercial/ENT-0001&gt; a edintcom:CommercialEntity;
+  dcterms:identifier "ENT-0001";
+  schema:email "maria.lopez@labuenatapa.es";
+  schema:identifier "12345678Z";
+  schema:legalName "María López García";
+  schema:telephone "+34 600 123 123";
+  edintcom:hasCNAECode &lt;http://lod.ine.es/kos/cnae/CNAE-2025/6/561000&gt;;
+  edintcom:hasIAECode &lt;http://vocab.linkeddata.es/datosabiertos/kos/edint/iae/3/673.2&gt;;
+  edintcom:usesSpace &lt;http://vocab.linkeddata.es/datosabiertos/recurso/espacio-comercial/COM-0001&gt;;
+  rdfs:label "María López García" .
+
+&lt;http://vocab.linkeddata.es/datosabiertos/recurso/espacio-comercial/COM-0001&gt; a edintcom:CommercialSpace;
+  dcterms:identifier "COM-0001";
+  edintcom:belongsToCommercialAggregation &lt;http://vocab.linkeddata.es/datosabiertos/recurso/agrupacionComercial/AGR-0001&gt;;
+  edintcom:hasAccessType edintkoacctype:StreetDoor;
+  edintcom:hasCommercialSpaceStatus edintkoscomespsit:Active;
+  edintcom:hasTerrace &lt;http://vocab.linkeddata.es/datosabiertos/recurso/terraza/10047540&gt;;
+  rdfs:label "La Buena Tapa Centro" .
+
+&lt;http://vocab.linkeddata.es/datosabiertos/recurso/terraza/10047540&gt; a edintcom:Terrace;
+  dcterms:identifier "10047540";
+  schema:address &lt;http://vocab.linkeddata.es/datosabiertos/recurso/direccion-postal/28013&gt;;
+  schema:floorSize 23.8, "23.8";
+  schema:maximumAttendeeCapacity 32;
+  schema:openingHours "Mo-Th 13:00-23:30; Fr-Sa 13:00-00:30; Su 13:00-17:00";
+  edintcom:hasTerracePeriod edintterper:anual;
+  edintcom:hasTerraceType &lt;edintkosterrtype:Terrace&gt;;
+  edintinf:belongsTo &lt;http://vocab.linkeddata.es/datosabiertos/recurso/sector-publico/territorio/barrio/SOL&gt;;
+  edintinf:hasInfrastructureType edintkosinf:Terrace;
+  edintinf:hasRegisteredOwner &lt;http://vocab.linkeddata.es/datosabiertos/recurso/entidad-comercial/ENT-0001&gt;;
+  geosparql:hasGeometry &lt;http://vocab.linkeddata.es/datosabiertos/recurso/terraza/geometry/10047540&gt;;
+  rdfs:comment "Terraza exterior en banda de estacionamiento con 8 mesas, mamparas desmontables y calefactores de bajo consumo.";
+  rdfs:label "Terraza La Buena Tapa" .
+
+&lt;http://vocab.linkeddata.es/datosabiertos/recurso/terraza/geometry/10047540&gt; geosparql:asWKT
+    "POINT (-3.706021 40.416744)"^^geosparql:wktLiteral .
+
+</textarea></pre>
+<script>
+    var editor_8332 = CodeMirror.fromTextArea(document.getElementById("code_8332"), {
+        mode: "text/turtle",
+        matchBrackets: true
+    });
+</script>
