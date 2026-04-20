@@ -1,0 +1,94 @@
+prefixes:
+  ex: "https://example.org/id/"
+  edintcom: "http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#"
+  schema: "http://schema.org/"
+  dcterms: "http://purl.org/dc/terms/"
+  xsd: "http://www.w3.org/2001/XMLSchema#"
+  edintterper: "http://vocab.linkeddata.es/datosabiertos/kos/edint/TerracePeriod/"
+  edintkoacctype: "http://vocab.linkeddata.es/datosabiertos/kos/edint/AccesType/"
+  edintkoscomespsit: "http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialSpaceStatus/"
+  geosparql: "http://www.opengis.net/ont/geosparql#"
+  edintinf: "http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#"
+  edintkosinf: "http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureType/"
+  esdir: "http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/direccion-postal#"
+sources:
+  entidades: ['entidades_comerciales.csv~csv']
+
+mappings:
+
+  entidad_comercial:
+    sources:
+      - entidades
+    s: http://vocab.linkeddata.es/datosabiertos/recurso/entidad-comercial/$(entidad_id)
+    po:
+      - [a, edintcom:CommercialEntity]
+      - [dcterms:identifier, $(entidad_id)]
+      - [rdfs:label, $(nombre)]
+      - [schema:identifier, $(nif)]
+      - [schema:telephone, $(telefono)]
+      - [schema:email, $(email)]
+      - [schema:legalName, $(razon_social)]
+      - [schema:url, $(web)]
+      - [edintcom:usesSpace, "http://vocab.linkeddata.es/datosabiertos/recurso/espacio-comercial/$(espacio-comercial_id)~iri"]
+      - [edintcom:hasCNAECode,"http://lod.ine.es/kos/cnae/CNAE-2025/$(cnae_nivel)/$(cnae_codigo)~iri"] # example:http://lod.ine.es/kos/cnae/CNAE-2025/6/17520
+      - [edintcom:hasIAECode,"http://vocab.linkeddata.es/datosabiertos/kos/edint/iae/$(iae_nivel)/$(iae_codigo)~iri"]
+
+  espacio-comercial:
+    sources:
+      - entidades
+    s: http://vocab.linkeddata.es/datosabiertos/recurso/espacio-comercial/$(espacio-comercial_id)
+    po:
+      - [a, edintcom:CommercialSpace]
+      - [dcterms:identifier, $(espacio-comercial_id)]
+      - [rdfs:label, $(espacio_nombre)]
+      - [edintcom:hasTerrace, "http://vocab.linkeddata.es/datosabiertos/recurso/terraza/$(terraza_id)~iri"]
+      - [edintcom:belongsToCommercialAggregation, "http://vocab.linkeddata.es/datosabiertos/recurso/agrupacionComercial/$(agrupacion_id)~iri"]
+      - [edintcom:hasAccessType, edintkoacctype:$(tipo_acceso)] # StreetDoor, Indoor, Floor
+      - [edintcom:hasCommercialSpaceStatus, edintkoscomespsit:$(situacion_espacio_comercial)] # Active , Closed ,ShutDown ,Free ,UnderConstruction
+
+  terraza:
+    sources:
+      - entidades
+    s: http://vocab.linkeddata.es/datosabiertos/recurso/terraza/$(terraza_id)
+    po:
+      - [a, edintcom:Terrace]
+      - [dcterms:identifier, $(terraza_id)]
+      - [rdfs:label, $(terraza_nombre)]
+      - [rdfs:comment, $(terraza_descripcion)]
+      - [schema:openingHours, $(terraza_horario)]
+      - [schema:address, http://vocab.linkeddata.es/datosabiertos/recurso/direccion-postal/$(codigo_postal)~iri]
+      - [geosparql:hasGeometry, http://vocab.linkeddata.es/datosabiertos/recurso/terraza/geometry/$(terraza_id)~iri]
+      - [edintinf:belongsTo, http://vocab.linkeddata.es/datosabiertos/recurso/sector-publico/territorio/barrio/$(barrio_id)~iri]
+      - [edintinf:hasInfrastructureType, edintkosinf:Terrace~iri]
+      - [edintinf:hasRegisteredOwner, http://vocab.linkeddata.es/datosabiertos/recurso/entidad-comercial/$(entidad_id)~iri]
+      - [schema:maximumAttendeeCapacity, $(terraza_aforo), xsd:integer]
+      - [edintcom:hasTerraceType, edintkosterrtype:$(tipo_terraza)~iri] # TODO falta el skos
+      - [edintcom:hasTerracePeriod, "edintterper:$(periodo_funcionamiento)~iri"] # anual, estacional
+      - [schema:floorSize, $(terraza_superficie_m2)]
+      - [schema:maximumAttendeeCapacity, $(terraza_aforo), xsd:integer]
+
+  terraza-geometry:
+    sources:
+      - entidades
+    s: http://vocab.linkeddata.es/datosabiertos/recurso/terraza/geometry/$(terraza_id)
+    po:
+      - [geosparql:asWKT, $(terraza_wkt), geosparql:wktLiteral]
+  agrupacionComercial:
+    sources:
+      - entidades
+    s: http://vocab.linkeddata.es/datosabiertos/recurso/agrupacionComercial/$(agrupacion_id)
+    po:
+      - [a, edintcom:CommercialAggregation]
+      - [dcterms:identifier, $(agrupacion_id)]
+#      - [edintcom:hasCommercialAggregationType, $() ] # TODO falta el skos
+      - [rdfs:label, $(agrupacion_nombre)]
+      - [rdfs:comment, $(agrupacion_descripcion)]
+
+  postalAddress:
+    sources:
+      - entidades
+    s: http://vocab.linkeddata.es/datosabiertos/recurso/direccion-postal/$(codigo_postal)
+    po:
+      - [a, esdir:DireccionPostal] # Reutilizado de Callejero
+      - [rdfs:label, $(codigo_postal)]
+      - [schema:postalCode, $(codigo_postal)]

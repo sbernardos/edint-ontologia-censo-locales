@@ -1,0 +1,547 @@
+@prefix ex: <https://example.org/id/>.
+@prefix edintcom: <http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#>.
+@prefix schema: <http://schema.org/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix edintterper: <http://vocab.linkeddata.es/datosabiertos/kos/edint/TerracePeriod/>.
+@prefix edintkoacctype: <http://vocab.linkeddata.es/datosabiertos/kos/edint/AccesType/>.
+@prefix edintkoscomespsit: <http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialSpaceStatus/>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix edintinf: <http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#>.
+@prefix edintkosinf: <http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureType/>.
+@prefix esdir: <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/direccion-postal#>.
+@prefix rr: <http://www.w3.org/ns/r2rml#>.
+@prefix rml: <http://semweb.mmlab.be/ns/rml#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix ql: <http://semweb.mmlab.be/ns/ql#>.
+@prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix formats: <http://www.w3.org/ns/formats/>.
+@prefix comp: <http://semweb.mmlab.be/ns/rml-compression#>.
+@prefix void: <http://rdfs.org/ns/void#>.
+@prefix fnml: <http://semweb.mmlab.be/ns/fnml#>.
+@prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#>.
+@base <http://example.com/ns#>.
+@prefix map: <http://mapping.example.com/resource/> .
+
+map:person_000 a foaf:Person ;
+    rdfs:label "Jhon Toledo" ;
+    foaf:mbox <mailto:ja.toledo@upm.es> .
+
+map:rules_000 schema:contributor map:person_000 ;
+    rdf:type schema:Dataset ;
+    schema:version "1.0.0" ;
+    schema:title "Mappings RML para transformar datos del censo de locales a RDF (Ontología EDINT Censo de Locales)" ;
+    schema:dateCreated "20-04-2026" ;
+    schema:description "Este conjunto de mappings RML transforma datos del censo de locales comerciales a RDF, utilizando la ontología EDINT Censo de Locales. El objetivo es generar un grafo RDF interoperable para representar las entidades principales relacionadas con los establecimientos comerciales de un municipio y sus licencias, facilitando su reutilización e integración en sistemas semánticos." .
+
+<entidad_comercial_0> a rr:TriplesMap;
+
+	rml:logicalSource [
+		a rml:LogicalSource;
+		rml:source "entidades_comerciales.csv";
+		rml:referenceFormulation ql:CSV
+
+	];
+	rr:subjectMap [
+		a rr:SubjectMap;
+		rr:template "http://vocab.linkeddata.es/datosabiertos/recurso/entidad-comercial/{entidad_id}";
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant rdf:type;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rr:constant edintcom:CommercialEntity;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant dcterms:identifier;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rml:reference "entidad_id";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant rdfs:label;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rml:reference "nombre";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant schema:identifier;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rml:reference "nif";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant schema:telephone;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rml:reference "telefono";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant schema:email;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rml:reference "email";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant schema:legalName;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rml:reference "razon_social";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant schema:url;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rml:reference "web";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant edintcom:usesSpace;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rr:template "http://vocab.linkeddata.es/datosabiertos/recurso/espacio-comercial/{espacio-comercial_id}";
+			rr:termType rr:IRI
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant edintcom:hasCNAECode;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rr:template "http://lod.ine.es/kos/cnae/CNAE-2025/{cnae_nivel}/{cnae_codigo}";
+			rr:termType rr:IRI
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant edintcom:hasIAECode;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rr:template "http://vocab.linkeddata.es/datosabiertos/kos/edint/iae/{iae_nivel}/{iae_codigo}";
+			rr:termType rr:IRI
+		];
+	].
+
+
+<espacio-comercial_0> a rr:TriplesMap;
+
+	rml:logicalSource [
+		a rml:LogicalSource;
+		rml:source "entidades_comerciales.csv";
+		rml:referenceFormulation ql:CSV
+
+	];
+	rr:subjectMap [
+		a rr:SubjectMap;
+		rr:template "http://vocab.linkeddata.es/datosabiertos/recurso/espacio-comercial/{espacio-comercial_id}";
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant rdf:type;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rr:constant edintcom:CommercialSpace;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant dcterms:identifier;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rml:reference "espacio-comercial_id";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant rdfs:label;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rml:reference "espacio_nombre";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant edintcom:hasTerrace;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rr:template "http://vocab.linkeddata.es/datosabiertos/recurso/terraza/{terraza_id}";
+			rr:termType rr:IRI
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant edintcom:belongsToCommercialAggregation;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rr:template "http://vocab.linkeddata.es/datosabiertos/recurso/agrupacionComercial/{agrupacion_id}";
+			rr:termType rr:IRI
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant edintcom:hasAccessType;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rr:template "http://vocab.linkeddata.es/datosabiertos/kos/edint/AccesType/{tipo_acceso}";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant edintcom:hasCommercialSpaceStatus;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rr:template "http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialSpaceStatus/{situacion_espacio_comercial}";
+		];
+	].
+
+
+<terraza_0> a rr:TriplesMap;
+
+	rml:logicalSource [
+		a rml:LogicalSource;
+		rml:source "entidades_comerciales.csv";
+		rml:referenceFormulation ql:CSV
+
+	];
+	rr:subjectMap [
+		a rr:SubjectMap;
+		rr:template "http://vocab.linkeddata.es/datosabiertos/recurso/terraza/{terraza_id}";
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant rdf:type;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rr:constant edintcom:Terrace;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant dcterms:identifier;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rml:reference "terraza_id";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant rdfs:label;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rml:reference "terraza_nombre";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant rdfs:comment;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rml:reference "terraza_descripcion";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant schema:openingHours;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rml:reference "terraza_horario";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant schema:address;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rr:template "http://vocab.linkeddata.es/datosabiertos/recurso/direccion-postal/{codigo_postal}";
+			rr:termType rr:IRI
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant geosparql:hasGeometry;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rr:template "http://vocab.linkeddata.es/datosabiertos/recurso/terraza/geometry/{terraza_id}";
+			rr:termType rr:IRI
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant edintinf:belongsTo;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rr:template "http://vocab.linkeddata.es/datosabiertos/recurso/sector-publico/territorio/barrio/{barrio_id}";
+			rr:termType rr:IRI
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant edintinf:hasInfrastructureType;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rr:constant edintkosinf:Terrace;
+			rr:termType rr:IRI
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant edintinf:hasRegisteredOwner;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rr:template "http://vocab.linkeddata.es/datosabiertos/recurso/entidad-comercial/{entidad_id}";
+			rr:termType rr:IRI
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant schema:maximumAttendeeCapacity;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rml:reference "terraza_aforo";
+			rr:datatype xsd:integer
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant edintcom:hasTerraceType;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rr:template "edintkosterrtype:{tipo_terraza}";
+			rr:termType rr:IRI
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant edintcom:hasTerracePeriod;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rr:template "http://vocab.linkeddata.es/datosabiertos/kos/edint/TerracePeriod/{periodo_funcionamiento}";
+			rr:termType rr:IRI
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant schema:floorSize;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rml:reference "terraza_superficie_m2";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant schema:maximumAttendeeCapacity;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rml:reference "terraza_aforo";
+			rr:datatype xsd:integer
+		];
+	].
+
+
+<terraza-geometry_0> a rr:TriplesMap;
+
+	rml:logicalSource [
+		a rml:LogicalSource;
+		rml:source "entidades_comerciales.csv";
+		rml:referenceFormulation ql:CSV
+
+	];
+	rr:subjectMap [
+		a rr:SubjectMap;
+		rr:template "http://vocab.linkeddata.es/datosabiertos/recurso/terraza/geometry/{terraza_id}";
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant geosparql:asWKT;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rml:reference "terraza_wkt";
+			rr:datatype geosparql:wktLiteral
+		];
+	].
+
+
+<agrupacionComercial_0> a rr:TriplesMap;
+
+	rml:logicalSource [
+		a rml:LogicalSource;
+		rml:source "entidades_comerciales.csv";
+		rml:referenceFormulation ql:CSV
+
+	];
+	rr:subjectMap [
+		a rr:SubjectMap;
+		rr:template "http://vocab.linkeddata.es/datosabiertos/recurso/agrupacionComercial/{agrupacion_id}";
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant rdf:type;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rr:constant edintcom:CommercialAggregation;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant dcterms:identifier;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rml:reference "agrupacion_id";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant rdfs:label;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rml:reference "agrupacion_nombre";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant rdfs:comment;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rml:reference "agrupacion_descripcion";
+		];
+	].
+
+
+<postalAddress_0> a rr:TriplesMap;
+
+	rml:logicalSource [
+		a rml:LogicalSource;
+		rml:source "entidades_comerciales.csv";
+		rml:referenceFormulation ql:CSV
+
+	];
+	rr:subjectMap [
+		a rr:SubjectMap;
+		rr:template "http://vocab.linkeddata.es/datosabiertos/recurso/direccion-postal/{codigo_postal}";
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant rdf:type;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rr:constant esdir:DireccionPostal;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant rdfs:label;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rml:reference "codigo_postal";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant schema:postalCode;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rml:reference "codigo_postal";
+		];
+	].
+
+
