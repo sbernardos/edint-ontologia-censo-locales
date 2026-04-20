@@ -27,7 +27,8 @@ edintkos:CommercialSpaceStatus a skos:ConceptScheme ;
     skos:hasTopConcept edintkoscomespsit:Active ;
     skos:hasTopConcept edintkoscomespsit:Closed ;
     skos:hasTopConcept edintkoscomespsit:ShutDown ;
-    skos:hasTopConcept edintkoscomespsit:UnderConstruction .
+    skos:hasTopConcept edintkoscomespsit:Free ;
+	skos:hasTopConcept edintkoscomespsit:UnderConstruction .
 
 #################################################################
 #
@@ -50,7 +51,12 @@ edintkoscomespsit:Closed a skos:Concept ;
   skos:prefLabel "Clausurado"@es ;
   skos:prefLabel "Shut down"@en .
 
-  edintkoscomespsit:UnderConstruction a skos:Concept ;
+  edintkoscomespsit:Free a skos:Concept ;
+  skos:inScheme edintkos:CommercialSpaceStatus ;
+  skos:prefLabel "Libre"@es ;
+  skos:prefLabel "Free"@en .
+
+edintkoscomespsit:UnderConstruction a skos:Concept ;
   skos:inScheme edintkos:CommercialSpaceStatus ;
   skos:prefLabel "En obras"@es ;
   skos:prefLabel "Under construction"@en .
