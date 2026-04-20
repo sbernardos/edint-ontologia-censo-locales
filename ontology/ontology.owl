@@ -1,0 +1,1994 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales"
+     versionIRI="http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales/0.1.0">
+    <Prefix name="" IRI="http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#"/>
+    <Prefix name="gsp" IRI="http://www.opengis.net/ont/geosparql#"/>
+    <Prefix name="mod" IRI="https://w3id.org/mod#"/>
+    <Prefix name="org" IRI="http://www.w3.org/ns/org#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="sosa" IRI="http://www.w3.org/ns/sosa/"/>
+    <Prefix name="time" IRI="http://www.w3.org/2006/time#"/>
+    <Prefix name="vann" IRI="http://purl.org/vocab/vann/"/>
+    <Prefix name="esadm" IRI="http://vocab.linkeddata.es/datosabiertos/def/sector-publico/territorio#"/>
+    <Prefix name="escjr" IRI="http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#"/>
+    <Prefix name="esdir" IRI="http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/direccion-postal#"/>
+    <Prefix name="esbici" IRI="http://vocab.linkeddata.es/datosabiertos/def/transporte/bicicleta-publica#"/>
+    <Prefix name="s4bldg" IRI="http://w3id.org/def/saref4bldg#"/>
+    <Prefix name="schema" IRI="http://schema.org/"/>
+    <Prefix name="dcterms" IRI="http://purl.org/dc/terms/"/>
+    <Prefix name="esequip" IRI="http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/equipamiento#"/>
+    <Prefix name="edintcom" IRI="http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#"/>
+    <Prefix name="edintinf" IRI="http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#"/>
+    <Prefix name="edintveh" IRI="http://vocab.linkeddata.es/datosabiertos/def/transporte/censovehiculos#"/>
+    <Prefix name="edintzone" IRI="http://vocab.linkeddata.es/datosabiertos/def/common/zone#"/>
+    <Prefix name="esequip-kos" IRI="http://vocab.linkeddata.es/datosabiertos/kos/urbanismo-infraestructuras/equipamiento/tipo-equipamiento/"/>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dcterms:created"/>
+        <Literal>2026-04-15</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dcterms:creator"/>
+        <Literal>Daniel Doña</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dcterms:creator"/>
+        <Literal>Edna Ruckhaus</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dcterms:creator"/>
+        <Literal>Lucía Sánchez</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dcterms:creator"/>
+        <Literal>Oscar Corcho</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dcterms:creator"/>
+        <Literal>Socorro Bernardos</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dcterms:description"/>
+        <Literal xml:lang="es">El propósito de esta ontología es proporcionar un vocabulario común para la representación de las entidades y los datos principales relacionados con los establecimientos comerciales de un municipio y sus licencias.</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dcterms:description"/>
+        <Literal xml:lang="en">The purpose of this ontology is to provide a common vocabulary for representing the main entities and data related to a municipality&apos;s commecial spaces and their permits.</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dcterms:license"/>
+        <IRI>https://creativecommons.org/licenses/by/4.0/</IRI>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dcterms:title"/>
+        <Literal xml:lang="es">Ontología de Establecimiento Comercial</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dcterms:title"/>
+        <Literal xml:lang="en">The Commercial Establishment Ontology</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="vann:preferredNamespacePrefix"/>
+        <Literal>edintcom</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="vann:preferredNamespaceUri"/>
+        <IRI>#</IRI>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="owl:versionInfo"/>
+        <Literal>0.1.0</Literal>
+    </Annotation>
+    <Declaration>
+        <Class abbreviatedIRI="schema:Person"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://vocab.ciudadesabiertas.es/def/transporte/bicicleta-publica#EstacionBicicleta"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://vocab.ciudadesabiertas.es/def/transporte/trafico#Tramo"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CommercialAggregation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CommercialEntity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CommercialSpace"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Facility"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#InfrastructureElement"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Permit"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Terrace"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#UrbanElement"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="edintzone:CommercialZone"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="edintzone:EconomicInterestZone"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="edintzone:IndustrialZone"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="edintzone:LeisureZone"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="edintzone:RegulatedZone"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="edintzone:StreetVendingZone"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="esadm:Autonomia"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="esadm:Barrio"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="esadm:Ciudad"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="esadm:Distrito"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="esadm:Municipio"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="esadm:Provincia"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/aparcamiento#Parking"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="escjr:Portal"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="escjr:Via"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="esdir:DireccionPostal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.geonames.org/ontology#Feature"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="gsp:Feature"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="gsp:Geometry"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.opengis.net/ont/sf#Point"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.w3.org/2004/02/skos/core#Concept"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="https://schema.org/Organization"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="schema:address"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://vocab.ciudadesabiertas.es/def/transporte/trafico#finTramo"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://vocab.ciudadesabiertas.es/def/transporte/trafico#inicioTramo"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#appliedTo"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#belongsToCommercialAggregation"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasCNAECode"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasCommercialPermitStatus"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasCommercialPermitType"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasCommercialSpaceStatus"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasIAECode"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasTerrace"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasTerracePeriod"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#issuedTo"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#locatedInZone"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#usesSpace"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="esadm:municipio"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="escjr:contienePortal"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="escjr:contieneVia"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="edintinf:hasInfrastructureElementType"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://www.geonames.org/ontology#featureClass"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://www.geonames.org/ontology#featureCode"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="gsp:hasGeometry"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="gsp:sfContains"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://www.w3.org/2004/02/skos/core#inScheme"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="time:hasBeginning"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="time:hasEnd"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="time:hasTime"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="dcterms:identifier"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="schema:endDate"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="schema:name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="schema:openingHours"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="schema:startDate"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#fileCode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#installationDate"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#maintenanceDate"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#public"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="time:inXSDgYearMonth"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="https://datos.ign.es/def/geo_core#xETRS89"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="https://datos.ign.es/def/geo_core#yETRS89"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://lod.ine.es/clasificaciones/cnae/CNAE-2025"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://vocab.linkeddata.es/datosabiertos/kos/edint/AccessType"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialPermitStatus"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialPermitType"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialSpaceStatus"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://vocab.linkeddata.es/datosabiertos/kos/edint/IAE"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureElementType"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureType"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://vocab.linkeddata.es/datosabiertos/kos/edint/TerracePeriod"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.geonames.org/ontology#R"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.geonames.org/ontology#R.ST"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="http://purl.org/dc/elements/1.1/source"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="dcterms:contributor"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="dcterms:created"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="dcterms:creator"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="dcterms:description"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="dcterms:issued"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="dcterms:license"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="dcterms:title"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="vann:preferredNamespacePrefix"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="vann:preferredNamespaceUri"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="schema:domainIncludes"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="schema:rangeIncludes"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="owl:versionIRI"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="owl:versionInfo"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="http://www.w3.org/2004/02/skos/core#definition"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="http://www.w3.org/2004/02/skos/core#example"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="http://www.w3.org/2004/02/skos/core#note"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="mod:createdWith"/>
+    </Declaration>
+    <Declaration>
+        <Datatype abbreviatedIRI="xsd:gYearMonth"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#CommercialEntity"/>
+        <ObjectUnionOf>
+            <Class abbreviatedIRI="schema:Person"/>
+            <Class IRI="https://schema.org/Organization"/>
+        </ObjectUnionOf>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="http://vocab.ciudadesabiertas.es/def/transporte/bicicleta-publica#EstacionBicicleta"/>
+        <Class IRI="#Facility"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://vocab.ciudadesabiertas.es/def/transporte/trafico#Tramo"/>
+        <Class abbreviatedIRI="gsp:Feature"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CommercialAggregation"/>
+        <Class IRI="#Facility"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CommercialSpace"/>
+        <Class IRI="#Facility"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Facility"/>
+        <Class IRI="#InfrastructureElement"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#InfrastructureElement"/>
+        <Class abbreviatedIRI="gsp:Feature"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Terrace"/>
+        <Class IRI="#Facility"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#UrbanElement"/>
+        <Class IRI="#InfrastructureElement"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="edintzone:CommercialZone"/>
+        <Class abbreviatedIRI="edintzone:EconomicInterestZone"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="edintzone:EconomicInterestZone"/>
+        <Class abbreviatedIRI="edintzone:RegulatedZone"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="edintzone:IndustrialZone"/>
+        <Class abbreviatedIRI="edintzone:EconomicInterestZone"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="edintzone:LeisureZone"/>
+        <Class abbreviatedIRI="edintzone:RegulatedZone"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="edintzone:StreetVendingZone"/>
+        <Class abbreviatedIRI="edintzone:EconomicInterestZone"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="esadm:Autonomia"/>
+        <Class abbreviatedIRI="gsp:Feature"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="esadm:Barrio"/>
+        <Class abbreviatedIRI="gsp:Feature"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="esadm:Ciudad"/>
+        <Class abbreviatedIRI="esadm:Municipio"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="esadm:Distrito"/>
+        <Class abbreviatedIRI="gsp:Feature"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="esadm:Municipio"/>
+        <Class abbreviatedIRI="gsp:Feature"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="esadm:Provincia"/>
+        <Class abbreviatedIRI="gsp:Feature"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/aparcamiento#Parking"/>
+        <Class IRI="#Facility"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="escjr:Via"/>
+        <Class IRI="http://www.geonames.org/ontology#Feature"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="escjr:Via"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="http://www.geonames.org/ontology#featureClass"/>
+            <NamedIndividual IRI="http://www.geonames.org/ontology#R"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="escjr:Via"/>
+        <ObjectHasValue>
+            <ObjectProperty IRI="http://www.geonames.org/ontology#featureCode"/>
+            <NamedIndividual IRI="http://www.geonames.org/ontology#R.ST"/>
+        </ObjectHasValue>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class abbreviatedIRI="escjr:Portal"/>
+        <Class abbreviatedIRI="escjr:Via"/>
+    </DisjointClasses>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+        <NamedIndividual IRI="http://lod.ine.es/clasificaciones/cnae/CNAE-2025"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+        <NamedIndividual IRI="http://vocab.linkeddata.es/datosabiertos/kos/edint/AccessType"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+        <NamedIndividual IRI="http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialPermitStatus"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+        <NamedIndividual IRI="http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialPermitType"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+        <NamedIndividual IRI="http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialSpaceStatus"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+        <NamedIndividual IRI="http://vocab.linkeddata.es/datosabiertos/kos/edint/IAE"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+        <NamedIndividual IRI="http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureElementType"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+        <NamedIndividual IRI="http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureType"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+        <NamedIndividual IRI="http://vocab.linkeddata.es/datosabiertos/kos/edint/TerracePeriod"/>
+    </ClassAssertion>
+    <SubObjectPropertyOf>
+        <ObjectProperty abbreviatedIRI="escjr:contieneVia"/>
+        <ObjectProperty abbreviatedIRI="gsp:sfContains"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty abbreviatedIRI="time:hasBeginning"/>
+        <ObjectProperty abbreviatedIRI="time:hasTime"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty abbreviatedIRI="time:hasEnd"/>
+        <ObjectProperty abbreviatedIRI="time:hasTime"/>
+    </SubObjectPropertyOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="http://vocab.ciudadesabiertas.es/def/transporte/trafico#finTramo"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="http://vocab.ciudadesabiertas.es/def/transporte/trafico#inicioTramo"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://vocab.ciudadesabiertas.es/def/transporte/trafico#finTramo"/>
+        <Class IRI="http://vocab.ciudadesabiertas.es/def/transporte/trafico#Tramo"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://vocab.ciudadesabiertas.es/def/transporte/trafico#inicioTramo"/>
+        <Class IRI="http://vocab.ciudadesabiertas.es/def/transporte/trafico#Tramo"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty abbreviatedIRI="gsp:hasGeometry"/>
+        <Class abbreviatedIRI="gsp:Feature"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty abbreviatedIRI="schema:address"/>
+        <Class abbreviatedIRI="esdir:DireccionPostal"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://vocab.ciudadesabiertas.es/def/transporte/trafico#finTramo"/>
+        <Class IRI="http://www.opengis.net/ont/sf#Point"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://vocab.ciudadesabiertas.es/def/transporte/trafico#inicioTramo"/>
+        <Class IRI="http://www.opengis.net/ont/sf#Point"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#belongsToCommercialAggregation"/>
+        <Class IRI="#CommercialAggregation"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasCNAECode"/>
+        <ObjectIntersectionOf>
+            <Class IRI="http://www.w3.org/2004/02/skos/core#Concept"/>
+            <ObjectHasValue>
+                <ObjectProperty IRI="http://www.w3.org/2004/02/skos/core#inScheme"/>
+                <NamedIndividual IRI="http://lod.ine.es/clasificaciones/cnae/CNAE-2025"/>
+            </ObjectHasValue>
+        </ObjectIntersectionOf>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasCommercialPermitStatus"/>
+        <ObjectIntersectionOf>
+            <Class IRI="http://www.w3.org/2004/02/skos/core#Concept"/>
+            <ObjectHasValue>
+                <ObjectProperty IRI="http://www.w3.org/2004/02/skos/core#inScheme"/>
+                <NamedIndividual IRI="http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialPermitStatus"/>
+            </ObjectHasValue>
+        </ObjectIntersectionOf>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasCommercialPermitType"/>
+        <ObjectIntersectionOf>
+            <Class IRI="http://www.w3.org/2004/02/skos/core#Concept"/>
+            <ObjectHasValue>
+                <ObjectProperty IRI="http://www.w3.org/2004/02/skos/core#inScheme"/>
+                <NamedIndividual IRI="http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialPermitType"/>
+            </ObjectHasValue>
+        </ObjectIntersectionOf>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasCommercialSpaceStatus"/>
+        <ObjectIntersectionOf>
+            <Class IRI="http://www.w3.org/2004/02/skos/core#Concept"/>
+            <ObjectHasValue>
+                <ObjectProperty IRI="http://www.w3.org/2004/02/skos/core#inScheme"/>
+                <NamedIndividual IRI="http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialSpaceStatus"/>
+            </ObjectHasValue>
+        </ObjectIntersectionOf>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasIAECode"/>
+        <ObjectIntersectionOf>
+            <Class IRI="http://www.w3.org/2004/02/skos/core#Concept"/>
+            <ObjectHasValue>
+                <ObjectProperty IRI="http://www.w3.org/2004/02/skos/core#inScheme"/>
+                <NamedIndividual IRI="http://vocab.linkeddata.es/datosabiertos/kos/edint/IAE"/>
+            </ObjectHasValue>
+        </ObjectIntersectionOf>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasTerrace"/>
+        <Class IRI="#Terrace"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasTerracePeriod"/>
+        <ObjectIntersectionOf>
+            <Class IRI="http://www.w3.org/2004/02/skos/core#Concept"/>
+            <ObjectHasValue>
+                <ObjectProperty IRI="http://www.w3.org/2004/02/skos/core#inScheme"/>
+                <NamedIndividual IRI="http://vocab.linkeddata.es/datosabiertos/kos/edint/TerracePeriod"/>
+            </ObjectHasValue>
+        </ObjectIntersectionOf>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty abbreviatedIRI="esadm:municipio"/>
+        <Class abbreviatedIRI="esadm:Municipio"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty abbreviatedIRI="escjr:contienePortal"/>
+        <Class abbreviatedIRI="escjr:Portal"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty abbreviatedIRI="escjr:contieneVia"/>
+        <Class abbreviatedIRI="escjr:Via"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty abbreviatedIRI="edintinf:hasInfrastructureElementType"/>
+        <ObjectIntersectionOf>
+            <Class IRI="http://www.w3.org/2004/02/skos/core#Concept"/>
+            <ObjectHasValue>
+                <ObjectProperty IRI="http://www.w3.org/2004/02/skos/core#inScheme"/>
+                <NamedIndividual IRI="http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureElementType"/>
+            </ObjectHasValue>
+        </ObjectIntersectionOf>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty abbreviatedIRI="gsp:hasGeometry"/>
+        <Class abbreviatedIRI="gsp:Geometry"/>
+    </ObjectPropertyRange>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="schema:openingHours"/>
+        <Class IRI="#Facility"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#installationDate"/>
+        <Class IRI="#UrbanElement"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#maintenanceDate"/>
+        <Class IRI="#UrbanElement"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="https://datos.ign.es/def/geo_core#xETRS89"/>
+        <Class IRI="http://www.opengis.net/ont/sf#Point"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="https://datos.ign.es/def/geo_core#yETRS89"/>
+        <Class IRI="http://www.opengis.net/ont/sf#Point"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="dcterms:identifier"/>
+        <Datatype abbreviatedIRI="rdfs:Literal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="schema:endDate"/>
+        <Datatype abbreviatedIRI="xsd:dateTime"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="schema:openingHours"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="schema:startDate"/>
+        <Datatype abbreviatedIRI="xsd:dateTime"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#installationDate"/>
+        <Datatype abbreviatedIRI="xsd:dateTime"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#maintenanceDate"/>
+        <Datatype abbreviatedIRI="xsd:dateTime"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#public"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty abbreviatedIRI="time:inXSDgYearMonth"/>
+        <Datatype abbreviatedIRI="xsd:gYearMonth"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="https://datos.ign.es/def/geo_core#xETRS89"/>
+        <Datatype abbreviatedIRI="xsd:float"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="https://datos.ign.es/def/geo_core#yETRS89"/>
+        <Datatype abbreviatedIRI="xsd:float"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://lod.ine.es/clasificaciones/cnae/CNAE-2025</IRI>
+        <Literal xml:lang="es">CNAE</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>dcterms:identifier</AbbreviatedIRI>
+        <Literal xml:lang="en">An unambiguous reference to the resource within a given context.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>dcterms:identifier</AbbreviatedIRI>
+        <Literal xml:lang="es">Una referencia no ambigüa al recurso dentro de un contexto determinado.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <AbbreviatedIRI>dcterms:identifier</AbbreviatedIRI>
+        <AbbreviatedIRI>dcterms:</AbbreviatedIRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>dcterms:identifier</AbbreviatedIRI>
+        <Literal xml:lang="es">identificador</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>dcterms:identifier</AbbreviatedIRI>
+        <Literal xml:lang="en">identifier</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <AbbreviatedIRI>schema:Person</AbbreviatedIRI>
+        <AbbreviatedIRI>schema:</AbbreviatedIRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>schema:Person</AbbreviatedIRI>
+        <Literal xml:lang="en">Person</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>schema:Person</AbbreviatedIRI>
+        <Literal xml:lang="es">Persona</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>schema:endDate</AbbreviatedIRI>
+        <Literal xml:lang="es">La fecha y hora de finalización del elemento (en formato de fecha ISO 8601).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>schema:endDate</AbbreviatedIRI>
+        <Literal xml:lang="en">The end date and time of the item (in ISO 8601 date format).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>schema:endDate</AbbreviatedIRI>
+        <Literal xml:lang="en">end date</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <AbbreviatedIRI>schema:endDate</AbbreviatedIRI>
+        <IRI>http://schema.org</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>schema:endDate</AbbreviatedIRI>
+        <Literal xml:lang="es">fecha de finalización</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <AbbreviatedIRI>schema:name</AbbreviatedIRI>
+        <AbbreviatedIRI>schema:</AbbreviatedIRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>schema:openingHours</AbbreviatedIRI>
+        <Literal xml:lang="es">Horario general de apertura de un negocio. El horario se puede especificar como un rango semanal, comenzando por días y luego por horas al día. Se pueden indicar varios días separados por comas (&quot;,&quot;). Los rangos de días u horas se especifican con un guion (-).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>schema:openingHours</AbbreviatedIRI>
+        <Literal xml:lang="en">The general opening hours for a business. Opening hours can be specified as a weekly time range, starting with days, then times per day. Multiple days can be listed with commas &apos;,&apos; separating each day. Day or time ranges are specified using a hyphen &apos;-&apos;.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <AbbreviatedIRI>schema:openingHours</AbbreviatedIRI>
+        <IRI>http://schema.org</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>schema:openingHours</AbbreviatedIRI>
+        <Literal xml:lang="es">horario de apertura</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>schema:openingHours</AbbreviatedIRI>
+        <Literal xml:lang="en">opening hours</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>schema:startDate</AbbreviatedIRI>
+        <Literal xml:lang="es">La fecha y hora de inicio del elemento (en formato de fecha ISO 8601).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>schema:startDate</AbbreviatedIRI>
+        <Literal xml:lang="en">The start date and time of the item (in ISO 8601 date format).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <AbbreviatedIRI>schema:startDate</AbbreviatedIRI>
+        <IRI>http://schema.org</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>schema:startDate</AbbreviatedIRI>
+        <Literal xml:lang="es">fecha de inicio</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>schema:startDate</AbbreviatedIRI>
+        <Literal xml:lang="en">start date</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://vocab.ciudadesabiertas.es/def/transporte/bicicleta-publica#EstacionBicicleta</IRI>
+        <Literal xml:lang="es">Lugar donde se puede tanto dejar como recoger las bicicletas. Está compuesto de anclajes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>http://vocab.ciudadesabiertas.es/def/transporte/bicicleta-publica#EstacionBicicleta</IRI>
+        <IRI>http://vocab.ciudadesabiertas.es/def/transporte/bicicleta-publica</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://vocab.ciudadesabiertas.es/def/transporte/bicicleta-publica#EstacionBicicleta</IRI>
+        <Literal xml:lang="es">Estación de bicicletas</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://vocab.ciudadesabiertas.es/def/transporte/trafico#Tramo</IRI>
+        <Literal xml:lang="en">Section/s of a Track defined by a starting and an ending Point.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://vocab.ciudadesabiertas.es/def/transporte/trafico#Tramo</IRI>
+        <Literal xml:lang="es">Tramo definido por un punto de inicio y fin que puede pertenecer a una o más vías</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>http://vocab.ciudadesabiertas.es/def/transporte/trafico#Tramo</IRI>
+        <IRI>http://vocab.ciudadesabiertas.es/def/transporte/trafico</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://vocab.ciudadesabiertas.es/def/transporte/trafico#Tramo</IRI>
+        <Literal xml:lang="en">Section of Track</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://vocab.ciudadesabiertas.es/def/transporte/trafico#Tramo</IRI>
+        <Literal xml:lang="es">Tramo</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://vocab.ciudadesabiertas.es/def/transporte/trafico#finTramo</IRI>
+        <Literal xml:lang="es">Relación del tramo con el lugar donde finaliza el tramo.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://vocab.ciudadesabiertas.es/def/transporte/trafico#finTramo</IRI>
+        <Literal xml:lang="en">Relationship of the section with the point where it ends.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>http://vocab.ciudadesabiertas.es/def/transporte/trafico#finTramo</IRI>
+        <IRI>http://vocab.ciudadesabiertas.es/def/transporte/trafico</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://vocab.ciudadesabiertas.es/def/transporte/trafico#finTramo</IRI>
+        <Literal xml:lang="es">Fin del Tramo</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://vocab.ciudadesabiertas.es/def/transporte/trafico#finTramo</IRI>
+        <Literal xml:lang="en">Section end</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://vocab.ciudadesabiertas.es/def/transporte/trafico#inicioTramo</IRI>
+        <Literal xml:lang="es">Relación del tramo con el lugar donde se inicia el tramo.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://vocab.ciudadesabiertas.es/def/transporte/trafico#inicioTramo</IRI>
+        <Literal xml:lang="en">Relationship of the section with the point where it starts.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>http://vocab.ciudadesabiertas.es/def/transporte/trafico#inicioTramo</IRI>
+        <IRI>http://vocab.ciudadesabiertas.es/def/transporte/trafico</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://vocab.ciudadesabiertas.es/def/transporte/trafico#inicioTramo</IRI>
+        <Literal xml:lang="es">Inicio del Tramo</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://vocab.ciudadesabiertas.es/def/transporte/trafico#inicioTramo</IRI>
+        <Literal xml:lang="en">Section start</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#CommercialAggregation</IRI>
+        <Literal xml:lang="es">La integración de varios establecimientos o puntos de venta en un mismo espacio físico, como centros comerciales o mercados.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#CommercialAggregation</IRI>
+        <Literal xml:lang="en">The integration of several establishments or points of sale in the same physical space, such as shopping centers or markets.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#CommercialAggregation</IRI>
+        <Literal xml:lang="es">Agrupación comercial</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#CommercialAggregation</IRI>
+        <Literal xml:lang="en">Commercial Aggregation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#CommercialEntity</IRI>
+        <Literal xml:lang="en">Person and/or organization that plays an economic activity and that is assigned the permit of a commercial space.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#CommercialEntity</IRI>
+        <Literal xml:lang="es">Ppersona u organización que realiza una actividad económica y a quien se asigna la licencia de un espacio comercial</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#CommercialEntity</IRI>
+        <Literal xml:lang="en">Commercial entity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#CommercialEntity</IRI>
+        <Literal xml:lang="es">Entidad comercial</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#CommercialSpace</IRI>
+        <Literal xml:lang="es">Lugar físico preparado para la venta de productos, prestación de servicios o atención al cliente, tales como tiendas, locales u oficinas.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#CommercialSpace</IRI>
+        <Literal>Physical place prepared for the sale of products, provision of services or customer service, such as stores or  offices.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#CommercialSpace</IRI>
+        <Literal xml:lang="en">Commercial space</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#CommercialSpace</IRI>
+        <Literal xml:lang="es">Espacio comercial</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Facility</IRI>
+        <Literal xml:lang="es">Hace referencia a edificios de servicios (públicos o privados), zonas de ocio, zonas comerciales o cualquier otro elemento  que afecte directamente a la movilidad, actuando como un foco de atracción de personas o vehículos.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Facility</IRI>
+        <Literal xml:lang="en">It refers to service buildings (public or private), leisure areas, commercial areas or any other element that directly affects mobility, acting as a focus of attraction for persons or vehicles.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Facility</IRI>
+        <Literal xml:lang="es">Equipamiento</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Facility</IRI>
+        <Literal xml:lang="en">Facility</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#InfrastructureElement</IRI>
+        <Literal xml:lang="es">Representa el conjunto de todos los elementos de la infraestructura que generan movilidad y elementos urbanos tales como semáforos, señales viales, pilonas, etc.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#InfrastructureElement</IRI>
+        <Literal xml:lang="en">Represents the set of all infrastructure elements that generate mobility and urban elements such as traffic lights, road signs, bollards, etc.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#InfrastructureElement</IRI>
+        <Literal xml:lang="es">Elemento de la infraestructura</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#InfrastructureElement</IRI>
+        <Literal xml:lang="en">Infrastructure element</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Permit</IRI>
+        <Literal xml:lang="en">It stands for the license of a commercial space</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Permit</IRI>
+        <Literal xml:lang="es">Representa la autorización de un espacio comercial</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Permit</IRI>
+        <Literal xml:lang="es">Licencia</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Permit</IRI>
+        <Literal xml:lang="en">Permit</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Terrace</IRI>
+        <Literal xml:lang="en">An open area connected to a bar, restaurant, etc., and serving as an outdoor sitting area for clients</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Terrace</IRI>
+        <Literal xml:lang="es">Terreno situado delante de un café, bar, restaurante, etcétera, acotado para que los clientes puedan sentarse al aire libre.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Terrace</IRI>
+        <Literal xml:lang="en">Terrace</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Terrace</IRI>
+        <Literal xml:lang="es">Terraza</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#UrbanElement</IRI>
+        <Literal xml:lang="es">Comprende el inventario de elementos urbanos tales como señales viales, semáforos, pilonas, etc.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#UrbanElement</IRI>
+        <Literal xml:lang="en">It includes the inventory of urban elements such as road signs, traffic lights, bollards, etc.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#UrbanElement</IRI>
+        <Literal xml:lang="es">Elemento urbano</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#UrbanElement</IRI>
+        <Literal xml:lang="en">Urban element</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#appliedTo</IRI>
+        <Literal xml:lang="en">It relates an entity, especially a commercial permit, to the entity, especially a commercial space, to which it is applied.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#appliedTo</IRI>
+        <Literal xml:lang="es">Relaciona una entidad, principalmente una licencia comercial, con la entidad, principalmente un espacio comercial, a la que se aplica.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#appliedTo</IRI>
+        <Literal xml:lang="es">aplicada a</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#appliedTo</IRI>
+        <Literal xml:lang="en">applied to</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#belongsToCommercialAggregation</IRI>
+        <Literal xml:lang="en">It relates an entity, especially a commercial space, to the commercial aggregation, to which it belongs.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#belongsToCommercialAggregation</IRI>
+        <Literal xml:lang="es">Relaciona una entidad, principalmente un espacio comercial, con la agrupación comercial a la que pertenece.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#belongsToCommercialAggregation</IRI>
+        <Literal xml:lang="en">belongs to commercial aggregation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#belongsToCommercialAggregation</IRI>
+        <Literal xml:lang="es">pertenece a agrupación comercial</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#fileCode</IRI>
+        <Literal xml:lang="es">Indica el código del expediente de una entidad, especialmente una licencia.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#fileCode</IRI>
+        <Literal xml:lang="en">It captures the file code of  an entity, especilly a permit.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#fileCode</IRI>
+        <Literal xml:lang="es">código del expediente</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#fileCode</IRI>
+        <Literal xml:lang="en">file code</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasCNAECode</IRI>
+        <Literal xml:lang="en">It relates an entity, especially a commercial entity or permit, to a skos concept that is in the CNAE taxonomy.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasCNAECode</IRI>
+        <Literal xml:lang="es">Relaciona una entidad, principalmente una entidad o licencia comercial, con un concepto skos que está en la taxonomía de códigos CNAE.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasCNAECode</IRI>
+        <Literal xml:lang="en">has CNAE code</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasCNAECode</IRI>
+        <Literal xml:lang="es">tiene código CNAE</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasCommercialPermitStatus</IRI>
+        <Literal xml:lang="en">It relates an entity, especially a commercial permit, to a skos concept that is in the commercial permit status taxonomy.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasCommercialPermitStatus</IRI>
+        <Literal xml:lang="es">Relaciona una entidad, principalmente una licencia comercial, con un concepto skos que está en la taxonomía de estado de la licencia comercial.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasCommercialPermitStatus</IRI>
+        <Literal xml:lang="en">has commercial permit status</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasCommercialPermitStatus</IRI>
+        <Literal xml:lang="es">tiene estado de la licencia comercial</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasCommercialPermitType</IRI>
+        <Literal xml:lang="en">It relates an entity, especially a commercial permit, to a skos concept that is in the commercial permit type taxonomy.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasCommercialPermitType</IRI>
+        <Literal xml:lang="es">Relaciona una entidad, principalmente una licencia comercial, con un concepto skos que está en la taxonomía de tipo de licencia comercial.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasCommercialPermitType</IRI>
+        <Literal xml:lang="en">has commercial permit type</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasCommercialPermitType</IRI>
+        <Literal xml:lang="es">tiene tipo de licencia comercial</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasCommercialSpaceStatus</IRI>
+        <Literal xml:lang="en">It relates an entity, especially a commercial space, to a skos concept that is in the commercial space status taxonomy.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasCommercialSpaceStatus</IRI>
+        <Literal xml:lang="es">Relaciona una entidad, principalmente un espacio comercial, con un concepto skos que está en la taxonomía de situación del espacio comercial.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasCommercialSpaceStatus</IRI>
+        <Literal xml:lang="en">has commercial space status</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasCommercialSpaceStatus</IRI>
+        <Literal xml:lang="es">tiene situación del espacio comercial</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasIAECode</IRI>
+        <Literal>It relates an entity, especially a commercial entity or permit, to a skos concept that is in the IAE taxonomy.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasIAECode</IRI>
+        <Literal xml:lang="es">Relaciona una entidad, principalmente una entidad o licencia comercial, con un concepto skos que está en la taxonomía de códigos IAE.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasIAECode</IRI>
+        <Literal xml:lang="en">has IAE code</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasIAECode</IRI>
+        <Literal xml:lang="es">tiene código IAE</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasTerrace</IRI>
+        <Literal xml:lang="en">It relates an entity, especially a commercial space, to a terrace it has.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasTerrace</IRI>
+        <Literal xml:lang="es">Relaciona una entidad, principalmente un espacio comercial, con una terraza que tiene.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasTerrace</IRI>
+        <Literal xml:lang="en">has terrace</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasTerrace</IRI>
+        <Literal xml:lang="es">tiene terraza</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasTerracePeriod</IRI>
+        <Literal xml:lang="en">It relates an entity, especially a terrace, to a skos concept that is in the terrace period taxonomy.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasTerracePeriod</IRI>
+        <Literal xml:lang="es">Relaciona una entidad, principalmente una terrazal, con un concepto skos que está en la taxonomía de periodo de funcionamiento de la terraza.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasTerracePeriod</IRI>
+        <Literal xml:lang="en">has terrace period</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasTerracePeriod</IRI>
+        <Literal xml:lang="es">tiene periodo de funcionamiento de la terraza</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#installationDate</IRI>
+        <Literal xml:lang="en">Date when an entity, especially a device, was installed.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#installationDate</IRI>
+        <Literal xml:lang="es">Fecha en la que se instaló una entidad, especialmente un dispositivo</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#installationDate</IRI>
+        <Literal xml:lang="es">fecha de instalación</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#installationDate</IRI>
+        <Literal xml:lang="en">installation date</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#issuedTo</IRI>
+        <Literal xml:lang="en">It relates an entity, especially a commercial permit, to the entity, especially a commercial entity, to which (or whom) it is issued.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#issuedTo</IRI>
+        <Literal xml:lang="es">Relaciona una entidad, principalmente una licencia comercial, con la entidad, principalmente una entidad comercial, para la que se emite.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#issuedTo</IRI>
+        <Literal xml:lang="es">emitida para</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#issuedTo</IRI>
+        <Literal xml:lang="en">issued to</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#locatedInZone</IRI>
+        <Literal xml:lang="en">It relates en entity, especially a commercial space, event or campaign, to the zone where it is.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#locatedInZone</IRI>
+        <Literal xml:lang="es">Relaciona una entidad, princiaplmente un espacio, campaña o evento comercial, con la zona en la que está.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#locatedInZone</IRI>
+        <Literal xml:lang="en">located in zone</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#locatedInZone</IRI>
+        <Literal xml:lang="es">situado en zona</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#maintenanceDate</IRI>
+        <Literal xml:lang="en">Date when an entity was last maintained, especially an urban element.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#maintenanceDate</IRI>
+        <Literal xml:lang="es">Fecha en la que se hizo mantenimiento de una entidad por última vez, especialmente un elemento urbano.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#maintenanceDate</IRI>
+        <Literal xml:lang="es">fecha de mantenimiento</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#maintenanceDate</IRI>
+        <Literal xml:lang="en">maintenance date</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#public</IRI>
+        <Literal xml:lang="es">Indica si una entidad del censo de locales comerciales es pública o no.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#public</IRI>
+        <Literal xml:lang="en">It points out whether an entity in the commerce census is public or not</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#public</IRI>
+        <Literal xml:lang="en">public</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#public</IRI>
+        <Literal xml:lang="es">público</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#usesSpace</IRI>
+        <Literal xml:lang="en">It relates an entity, especially a commercial entity, to a commercial space it uses.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#usesSpace</IRI>
+        <Literal xml:lang="es">Relaciona una entidad, principalmente una entidad comercial, con un espacio comercial que emplea.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#usesSpace</IRI>
+        <Literal xml:lang="es">usa espacio</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#usesSpace</IRI>
+        <Literal xml:lang="en">uses space</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <AbbreviatedIRI>edintzone:EconomicInterestZone</AbbreviatedIRI>
+        <AbbreviatedIRI>edintzone:</AbbreviatedIRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <AbbreviatedIRI>edintzone:IndustrialZone</AbbreviatedIRI>
+        <AbbreviatedIRI>edintzone:</AbbreviatedIRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <AbbreviatedIRI>edintzone:LeisureZone</AbbreviatedIRI>
+        <AbbreviatedIRI>edintzone:</AbbreviatedIRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <AbbreviatedIRI>edintzone:RegulatedZone</AbbreviatedIRI>
+        <AbbreviatedIRI>edintzone:</AbbreviatedIRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <AbbreviatedIRI>edintzone:StreetVendingZone</AbbreviatedIRI>
+        <AbbreviatedIRI>edintzone:</AbbreviatedIRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>esadm:Autonomia</AbbreviatedIRI>
+        <Literal xml:lang="es">Comunidad Autónoma o Ciudad Autónoma</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <AbbreviatedIRI>esadm:Autonomia</AbbreviatedIRI>
+        <IRI>http://vocab.linkeddata.es/datosabiertos/def/sector-publico/territorio</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>esadm:Autonomia</AbbreviatedIRI>
+        <Literal xml:lang="es">Autonomía</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>esadm:Barrio</AbbreviatedIRI>
+        <Literal xml:lang="es">Un barrio es cada una de las partes en que se dividen los pueblos grandes o sus distritos [fuente: Diccionario de la Real Academia (DRAE) 2011]</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <AbbreviatedIRI>esadm:Barrio</AbbreviatedIRI>
+        <IRI>http://vocab.linkeddata.es/datosabiertos/def/sector-publico/territorio</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>esadm:Barrio</AbbreviatedIRI>
+        <Literal xml:lang="es">Barrio</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>esadm:Ciudad</AbbreviatedIRI>
+        <Literal xml:lang="es">Una ciudad es un área urbana en la que predominan fundamentalmente la industria y los servicios [fuente: Wikipedia]</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <AbbreviatedIRI>esadm:Ciudad</AbbreviatedIRI>
+        <IRI>http://vocab.linkeddata.es/datosabiertos/def/sector-publico/territorio</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>esadm:Ciudad</AbbreviatedIRI>
+        <Literal>Ciudad</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>esadm:Distrito</AbbreviatedIRI>
+        <Literal xml:lang="es">Un distrito es cada una de las demarcaciones en que se subdivide un territorio o una población para distribuir y ordenar el ejercicio de los derechos civiles y políticos, o de las funciones públicas, o de los servicios administrativos [fuente: Diccionario de la Real Academia (DRAE) 2011]</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <AbbreviatedIRI>esadm:Distrito</AbbreviatedIRI>
+        <IRI>http://vocab.linkeddata.es/datosabiertos/def/sector-publico/territorio</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>esadm:Distrito</AbbreviatedIRI>
+        <Literal xml:lang="es">Distrito</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>esadm:Municipio</AbbreviatedIRI>
+        <Literal xml:lang="es">Un Municipio es el ente local definido en el artículo 140 de la Constitución española y la entidad básica de la organización territorial del Estado según el artículo 1 de la Ley 7/1985, de 2 de abril, Reguladora de las Bases del Régimen Local. Tiene personalidad jurídica y plena capacidad para el cumplimiento de sus fines. La delimitación territorial de Municipio está recogida del REgistro Central de Cartografía del IGN.
+Su nombre, que se especifica con la propiedad dct:title, es el proporcionado por el Registro de Entidades Locales del Ministerio de Política Territorial, en http://www.ine.es/nomen2/index.do</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <AbbreviatedIRI>esadm:Municipio</AbbreviatedIRI>
+        <IRI>http://vocab.linkeddata.es/datosabiertos/def/sector-publico/territorio</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>esadm:Municipio</AbbreviatedIRI>
+        <Literal xml:lang="es">Municipio</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>esadm:Provincia</AbbreviatedIRI>
+        <Literal xml:lang="es">Entidad local con personalidad jurídica propia, determinada por la agrupación de Municipios y división territorial para el cumplimiento de las actividades del Estado. La delimitación territorial de Provincia está recogida en el Registro Central de Cartografía del IGN [fuente: Modelo de Direcciones de la Administración General del Estado v.2]
+Su identificador, que se especifica con la propiedad dct:identifier, es el proporcionado por el INE en http://www.ine.es/daco/daco42/codmun/codmun09/09codmun.xls
+Su nombre, que se especifica con la propiedad dct:title, es el proporcionado por el Registro de Entidades Locales del Ministerio de Política Territorial, en http://www.ine.es/nomen2/index.do</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <AbbreviatedIRI>esadm:Provincia</AbbreviatedIRI>
+        <IRI>http://vocab.linkeddata.es/datosabiertos/def/sector-publico/territorio</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>esadm:Provincia</AbbreviatedIRI>
+        <Literal>Provincia</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>esadm:municipio</AbbreviatedIRI>
+        <Literal xml:lang="es">Municipio al que pertenece un fenómeno geográfico o una entidad administrativa</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <AbbreviatedIRI>esadm:municipio</AbbreviatedIRI>
+        <IRI>http://vocab.linkeddata.es/datosabiertos/def/sector-publico/territorio</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>esadm:municipio</AbbreviatedIRI>
+        <Literal xml:lang="es">pertenece a municipio</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/aparcamiento#Parking</IRI>
+        <Literal xml:lang="es">Aparcamiento para diferentes tipos de vehículo que incluye instalaciones o superficies de aparcamiento fuera de la vía pública o zonas de aparcamiento en la vía pública para residentes, no residentes o libres.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/aparcamiento#Parking</IRI>
+        <Literal xml:lang="en">Parking for different types of vehicles, including off-street parking facilities or on-street parking zones for residents, non-residents, or free parking.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/aparcamiento#Parking</IRI>
+        <Literal xml:lang="es">Aparcamiento</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/aparcamiento#Parking</IRI>
+        <Literal xml:lang="en">Parking</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>escjr:Portal</AbbreviatedIRI>
+        <Literal xml:lang="es">Subacceso independiente exterior (al aire libre) a una misma construcción. Para una misma construcción, con un mismo número de vía, pueden existir varias entradas que pueden estar numeradas con números o letras. [fuente: Modelo de Direcciones de la Administración General del Estado v.2]</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <AbbreviatedIRI>escjr:Portal</AbbreviatedIRI>
+        <IRI>http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>escjr:Portal</AbbreviatedIRI>
+        <Literal>Portal</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="dcterms:issued"/>
+        <AbbreviatedIRI>escjr:Via</AbbreviatedIRI>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#dateTime">2013-03-28</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>escjr:Via</AbbreviatedIRI>
+        <Literal xml:lang="es">Vía de comunicación construida para la circulación. 
+En su definición según el modelo de direcciones de la Administración General del Estado, Incluye calles, carreteras de todo tipo, caminos, vías de agua, pantalanes, etc. Asimismo, incluye la pseudovía., es decir todo aquello que complementa o sustituye a la vía.
+En nuestro caso, este término se utiliza para hacer referencia a las vías urbanas.
+
+Por esta razón, se utiliza geonames:R.ST como valor principal de la propiedad geonames:featureCode, dejando de lado otras opciones como R.PRMN (promenade), R.TRL (trail). Quizás en el futuro haya que relajar un poco esta opción, sobre todo, por ejemplo, para ciudades con costa y paseo marítimo.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <AbbreviatedIRI>escjr:Via</AbbreviatedIRI>
+        <IRI>http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>escjr:Via</AbbreviatedIRI>
+        <Literal xml:lang="es">Vía</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>escjr:contienePortal</AbbreviatedIRI>
+        <Literal xml:lang="es">Portal que un fenómeno geográfico contiene (por ejemplo, una vía o un tramo de vía, aunque también puede ser un barrio, distrito, ciudad, etc.)</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <AbbreviatedIRI>escjr:contienePortal</AbbreviatedIRI>
+        <IRI>http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>escjr:contienePortal</AbbreviatedIRI>
+        <Literal xml:lang="es">contiene portal</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="dcterms:issued"/>
+        <AbbreviatedIRI>escjr:contieneVia</AbbreviatedIRI>
+        <Literal>2014-03-28</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>escjr:contieneVia</AbbreviatedIRI>
+        <Literal xml:lang="es">Vía que un fenómeno geográfico contiene (por ejemplo, un barrio, distrito, ciudad, etc.)</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <AbbreviatedIRI>escjr:contieneVia</AbbreviatedIRI>
+        <IRI>http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>escjr:contieneVia</AbbreviatedIRI>
+        <Literal xml:lang="es">contiene vía</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>esdir:DireccionPostal</AbbreviatedIRI>
+        <Literal xml:lang="es">Una dirección postal en España. Se define como una especialización de las clases vcard:Address, schema:PostalAddress y locn:Address
+Además de las propiedades asociadas a estas clases, y definidas en su correspondiente vocabulario, también se pueden utilizar las definidas en los vocabularios de división administrativa española y en el callejero</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <AbbreviatedIRI>esdir:DireccionPostal</AbbreviatedIRI>
+        <IRI>http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/direccion-postal</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>esdir:DireccionPostal</AbbreviatedIRI>
+        <Literal xml:lang="es">Dirección postal</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <AbbreviatedIRI>edintinf:hasInfrastructureElementType</AbbreviatedIRI>
+        <IRI>http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/infraestructura#</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://vocab.linkeddata.es/datosabiertos/kos/edint/AccessType</IRI>
+        <Literal xml:lang="en">Access type</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://vocab.linkeddata.es/datosabiertos/kos/edint/AccessType</IRI>
+        <Literal xml:lang="es">Tipo de acceso</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialPermitStatus</IRI>
+        <Literal xml:lang="en">Commercial permit status</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialPermitStatus</IRI>
+        <Literal xml:lang="es">Estado de la licencia comercial</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialPermitType</IRI>
+        <Literal xml:lang="en">Commercial permit type</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialPermitType</IRI>
+        <Literal xml:lang="es">Tipo de licencia comercial</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialSpaceStatus</IRI>
+        <Literal xml:lang="en">Commercial space status</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialSpaceStatus</IRI>
+        <Literal xml:lang="es">Situación del espacio comercial</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://vocab.linkeddata.es/datosabiertos/kos/edint/IAE</IRI>
+        <Literal xml:lang="es">IAE</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureType</IRI>
+        <Literal xml:lang="en">Infrastructure type</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureType</IRI>
+        <Literal xml:lang="es">Tipo de infraestructura</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://vocab.linkeddata.es/datosabiertos/kos/edint/TerracePeriod</IRI>
+        <Literal xml:lang="es">Periodo de funcionamiento de la terraza</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>http://vocab.linkeddata.es/datosabiertos/kos/edint/TerracePeriod</IRI>
+        <Literal xml:lang="en">Terrace period</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>gsp:Feature</AbbreviatedIRI>
+        <Literal xml:lang="es">Esta clase representa el tipo &quot;feature&quot; de nivel superior. Es equivalente a GFI_Feature, definida en la norma ISO 19156:2011, y es la superclase de todos los tipos de &quot;feature&quot;.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <AbbreviatedIRI>gsp:Feature</AbbreviatedIRI>
+        <IRI>http://www.opengis.net/spec/geosparql/1.0</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>gsp:Feature</AbbreviatedIRI>
+        <Literal xml:lang="en">Feature</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>gsp:Geometry</AbbreviatedIRI>
+        <Literal xml:lang="es">La clase representa el tipo de geometría de nivel superior. Esta clase es equivalente a la clase UML GM_Object definida en la norma ISO 19107 y es la superclase de todos los tipos de geometría.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <AbbreviatedIRI>gsp:Geometry</AbbreviatedIRI>
+        <IRI>http://www.opengis.net/spec/geosparql/1.0</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <AbbreviatedIRI>gsp:Geometry</AbbreviatedIRI>
+        <Literal xml:lang="es">Geometría</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>gsp:Geometry</AbbreviatedIRI>
+        <Literal xml:lang="en">Geometry</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>gsp:hasGeometry</AbbreviatedIRI>
+        <Literal xml:lang="es">Una representación espacial de un &quot;feature&quot; determinado.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <AbbreviatedIRI>gsp:hasGeometry</AbbreviatedIRI>
+        <IRI>http://www.opengis.net/spec/geosparql/1.0</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>gsp:hasGeometry</AbbreviatedIRI>
+        <Literal xml:lang="en">has geometry</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>gsp:hasGeometry</AbbreviatedIRI>
+        <Literal xml:lang="es">tiene geometría</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>http://www.opengis.net/ont/sf#Point</IRI>
+        <IRI>http://www.opengis.net/ont/sf#</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>http://www.w3.org/2004/02/skos/core#Concept</IRI>
+        <IRI>http://www.w3.org/2004/02/skos/core#</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>http://www.w3.org/2004/02/skos/core#ConceptScheme</IRI>
+        <IRI>http://www.w3.org/2004/02/skos/core#</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>http://www.w3.org/2004/02/skos/core#inScheme</IRI>
+        <IRI>http://www.w3.org/2004/02/skos/core#</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>time:hasBeginning</AbbreviatedIRI>
+        <Literal xml:lang="en">Beginning of a temporal entity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>time:hasBeginning</AbbreviatedIRI>
+        <Literal xml:lang="es">Comienzo de una entidad temporal.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>time:hasBeginning</AbbreviatedIRI>
+        <Literal xml:lang="en">has beginning</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>time:hasBeginning</AbbreviatedIRI>
+        <Literal xml:lang="es">tiene principio</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.w3.org/2004/02/skos/core#definition"/>
+        <AbbreviatedIRI>time:hasBeginning</AbbreviatedIRI>
+        <Literal xml:lang="en">Beginning of a temporal entity.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.w3.org/2004/02/skos/core#definition"/>
+        <AbbreviatedIRI>time:hasBeginning</AbbreviatedIRI>
+        <Literal xml:lang="es">Comienzo de una entidad temporal.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>time:hasEnd</AbbreviatedIRI>
+        <Literal xml:lang="en">End of a temporal entity.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>time:hasEnd</AbbreviatedIRI>
+        <Literal xml:lang="es">Final de una entidad temporal.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>time:hasEnd</AbbreviatedIRI>
+        <Literal xml:lang="en">has end</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>time:hasEnd</AbbreviatedIRI>
+        <Literal xml:lang="es">tiene fin</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.w3.org/2004/02/skos/core#definition"/>
+        <AbbreviatedIRI>time:hasEnd</AbbreviatedIRI>
+        <Literal xml:lang="en">End of a temporal entity.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.w3.org/2004/02/skos/core#definition"/>
+        <AbbreviatedIRI>time:hasEnd</AbbreviatedIRI>
+        <Literal xml:lang="es">Final de una entidad temporal.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>time:inXSDgYearMonth</AbbreviatedIRI>
+        <Literal xml:lang="es">Posición de un instante, expresado utilizando xsd:gYearMonth.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>time:inXSDgYearMonth</AbbreviatedIRI>
+        <Literal xml:lang="en">Position of an instant, expressed using xsd:gYearMonth</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <AbbreviatedIRI>time:inXSDgYearMonth</AbbreviatedIRI>
+        <AbbreviatedIRI>time:</AbbreviatedIRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>time:inXSDgYearMonth</AbbreviatedIRI>
+        <Literal xml:lang="es">en año-mes gregoriano XSD</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>time:inXSDgYearMonth</AbbreviatedIRI>
+        <Literal xml:lang="en">in XSD g-YearMonth</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.w3.org/2004/02/skos/core#definition"/>
+        <AbbreviatedIRI>time:inXSDgYearMonth</AbbreviatedIRI>
+        <Literal xml:lang="es">Posición de un instante, expresado utilizando xsd:gYearMonth.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://www.w3.org/2004/02/skos/core#definition"/>
+        <AbbreviatedIRI>time:inXSDgYearMonth</AbbreviatedIRI>
+        <Literal xml:lang="en">Position of an instant, expressed using xsd:gYearMonth</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://purl.org/dc/elements/1.1/source"/>
+        <IRI>https://datos.ign.es/def/geo_core#xETRS89</IRI>
+        <Literal xml:lang="es">Catálogo de Objetos Geográficos BTN100.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>https://datos.ign.es/def/geo_core#xETRS89</IRI>
+        <Literal xml:lang="es">Coordenada X en metros (ETRS89)</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>https://datos.ign.es/def/geo_core#xETRS89</IRI>
+        <Literal xml:lang="en">X-Coordinate in meters (ETRS89)</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>https://datos.ign.es/def/geo_core#xETRS89</IRI>
+        <IRI>https://datos.ign.es/def/geo_core#</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>https://datos.ign.es/def/geo_core#xETRS89</IRI>
+        <Literal>xETRS89</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty IRI="http://purl.org/dc/elements/1.1/source"/>
+        <IRI>https://datos.ign.es/def/geo_core#yETRS89</IRI>
+        <Literal xml:lang="es">Catálogo de Objetos Geográficos BTN100.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>https://datos.ign.es/def/geo_core#yETRS89</IRI>
+        <Literal xml:lang="es">Coordenada Y en metros (ETRS89)</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>https://datos.ign.es/def/geo_core#yETRS89</IRI>
+        <Literal xml:lang="en">Y-Coordinate in meters (ETRS89)</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <IRI>https://datos.ign.es/def/geo_core#yETRS89</IRI>
+        <IRI>https://datos.ign.es/def/geo_core#</IRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>https://datos.ign.es/def/geo_core#yETRS89</IRI>
+        <Literal>yETRS89</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>https://schema.org/Organization</IRI>
+        <Literal xml:lang="en">An organization such as a school, NGO, corporation, club, etc.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>https://schema.org/Organization</IRI>
+        <Literal xml:lang="es">Una organización como una escuela, una ONG, una corporación, un club, etc.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>https://schema.org/Organization</IRI>
+        <Literal xml:lang="es">Organización</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>https://schema.org/Organization</IRI>
+        <Literal xml:lang="en">Organization</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+
