@@ -1,0 +1,71 @@
+@prefix comp: <http://semweb.mmlab.be/ns/rml-compression#> .
+@prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix edintcom: <http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#> .
+@prefix edintinf: <http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#> .
+@prefix edintkoacctype: <http://vocab.linkeddata.es/datosabiertos/kos/edint/AccesType/> .
+@prefix edintkoscomespsit: <http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialSpaceStatus/> .
+@prefix edintkosinf: <http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureType/> .
+@prefix edintterper: <http://vocab.linkeddata.es/datosabiertos/kos/edint/TerracePeriod/> .
+@prefix esdir: <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/direccion-postal#> .
+@prefix ex: <https://example.org/id/> .
+@prefix fnml: <http://semweb.mmlab.be/ns/fnml#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix formats: <http://www.w3.org/ns/formats/> .
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#> .
+@prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix schema: <http://schema.org/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://vocab.linkeddata.es/datosabiertos/recurso/agrupacionComercial/AGR-0001> a
+    edintcom:CommercialAggregation;
+  dcterms:identifier "AGR-0001";
+  rdfs:comment "Entidad de dinamización comercial que agrupa locales de hostelería, retail y servicios del eje Sol-Mayor.";
+  rdfs:label "Asociación Comercial Centro Histórico" .
+
+<http://vocab.linkeddata.es/datosabiertos/recurso/direccion-postal/28013> a esdir:DireccionPostal;
+  schema:postalCode "28013";
+  rdfs:label "28013" .
+
+<http://vocab.linkeddata.es/datosabiertos/recurso/entidad-comercial/ENT-0001> a edintcom:CommercialEntity;
+  dcterms:identifier "ENT-0001";
+  schema:email "maria.lopez@labuenatapa.es";
+  schema:identifier "12345678Z";
+  schema:legalName "María López García";
+  schema:telephone "+34 600 123 123";
+  edintcom:hasCNAECode <http://lod.ine.es/kos/cnae/CNAE-2025/6/561000>;
+  edintcom:hasIAECode <http://vocab.linkeddata.es/datosabiertos/kos/edint/iae/3/673.2>;
+  edintcom:usesSpace <http://vocab.linkeddata.es/datosabiertos/recurso/espacio-comercial/COM-0001>;
+  rdfs:label "María López García" .
+
+<http://vocab.linkeddata.es/datosabiertos/recurso/espacio-comercial/COM-0001> a edintcom:CommercialSpace;
+  dcterms:identifier "COM-0001";
+  edintcom:belongsToCommercialAggregation <http://vocab.linkeddata.es/datosabiertos/recurso/agrupacionComercial/AGR-0001>;
+  edintcom:hasAccessType edintkoacctype:StreetDoor;
+  edintcom:hasCommercialSpaceStatus edintkoscomespsit:Active;
+  edintcom:hasTerrace <http://vocab.linkeddata.es/datosabiertos/recurso/terraza/10047540>;
+  rdfs:label "La Buena Tapa Centro" .
+
+<http://vocab.linkeddata.es/datosabiertos/recurso/terraza/10047540> a edintcom:Terrace;
+  dcterms:identifier "10047540";
+  schema:address <http://vocab.linkeddata.es/datosabiertos/recurso/direccion-postal/28013>;
+  schema:floorSize 23.8, "23.8";
+  schema:maximumAttendeeCapacity 32;
+  schema:openingHours "Mo-Th 13:00-23:30; Fr-Sa 13:00-00:30; Su 13:00-17:00";
+  edintcom:hasTerracePeriod edintterper:anual;
+  edintcom:hasTerraceType <edintkosterrtype:Terrace>;
+  edintinf:belongsTo <http://vocab.linkeddata.es/datosabiertos/recurso/sector-publico/territorio/barrio/SOL>;
+  edintinf:hasInfrastructureType edintkosinf:Terrace;
+  edintinf:hasRegisteredOwner <http://vocab.linkeddata.es/datosabiertos/recurso/entidad-comercial/ENT-0001>;
+  geosparql:hasGeometry <http://vocab.linkeddata.es/datosabiertos/recurso/terraza/geometry/10047540>;
+  rdfs:comment "Terraza exterior en banda de estacionamiento con 8 mesas, mamparas desmontables y calefactores de bajo consumo.";
+  rdfs:label "Terraza La Buena Tapa" .
+
+<http://vocab.linkeddata.es/datosabiertos/recurso/terraza/geometry/10047540> geosparql:asWKT
+    "POINT (-3.706021 40.416744)"^^geosparql:wktLiteral .
