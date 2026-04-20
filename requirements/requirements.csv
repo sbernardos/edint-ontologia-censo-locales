@@ -1,0 +1,22 @@
+Identifier,Responsible partner,"Version (optional)
+","Competency Question /
+ Natural language sentence (fact)",Answer (For Competency Questions),"Status (Proposed, Accepted, Rejected, Deprecated)","Use case
+(UC03-001, UC03-002, UC03-006, UC03-007)",Comments (optional),Extracted from (provenance),"Priority 
+(High, Medium, Low) (optional)",Relation with other requirements (optional),Associated ontology elements,Relation to ontology elements in other domains
+COM01,UPM,v0.1.0,¿Qué establecimientos comerciales existen en una zona administrativa?,,Proposed,,¿También zona comercial?,,,,,
+COM02,UPM,v0.1.0,¿Cuál es la distribución geográfica de los establecimientos por categoría de actividad CNAE o IAE?,,Proposed,,,,,,,
+COM03,UPM,v0.1.0,¿En qué estado están los comercios de una división administrativa en un momento dado?,,Proposed,,,,,,,
+COM04,UPM,v0.1.0,¿Qué comercios se localizan dentro de una agrupación comercial específica?,,Proposed,,,,,,,
+COM05,UPM,v0.1.0,¿Cuántos comercios han abierto o cerrado en un periodo concreto en una zona determinada?,,Proposed,,,,,,,
+COM06,UPM,v0.1.0,¿Qué zonas presentan mayor tasa de altas y bajas comerciales?,,Proposed,,,,,,,
+COM07,UPM,v0.1.0,¿Qué licencias de actividad están asociadas a cada comercio?,,Proposed,,,,,,,
+COM08,UPM,v0.1.0,"¿Qué tipo de expedientes (APCAL, DRAACT, CAMTI, etc.) predominan en una zona?",,Proposed,,,,,,,
+COM09,UPM,v0.1.0,"¿Qué licencias están en tramitación, concedidas o denegadas en un periodo determinado?",,Proposed,,,,,,,
+COM10,UPM,v0.1.0,¿Qué establecimientos disponen de autorización de ocupación de vía pública?,,Proposed,,,,,,,
+COM11,UPM,v0.1.0,¿Cuál es la densidad de ocupación del espacio público en las zonas de una división administrativa?,,Proposed,,,,,,,
+COM12,UPM,v0.1.0,¿Qué mercados existen en un municipio?,,Proposed,,¿Generalizar para otros tipos de agrupaciones comerciales?,,,,,
+COM13,UPM,v0.1.0,¿Cuál es el número de puestos por mercado y su grado de ocupación?,,Proposed,,puesto no ocupado si no hay licencia asociada a él o si situación es libre o en reforma,,,,,
+COM14,UPM,v0.1.0,¿Qué diversidad sectorial existe en una zona comercial determinada?,,Proposed,,¿Códigos de actividad en zona?,,,,,
+COM15,UPM,v0.1.0,¿Cómo ha evolucionado el número de establecimientos activos por categoría en los últimos años?,,Proposed,,,,,,,
+COM16,UPM,v0.1.0,"¿Qué áreas muestran señales de concentración comercial o, por el contrario, de vaciamiento?",,Proposed,,¿umbrales? ¿Ordenar por número por m2?,,,,,
+COM17,UPM,v0.1.0,¿Dónde se concentran las licencias de ocupación de vía pública?,,Proposed,,¿umbrales?,,,,,
