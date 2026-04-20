@@ -1,0 +1,51 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+@prefix edintkos: <http://vocab.linkeddata.es/datosabiertos/kos/edint/> .
+@prefix edintacctype: <http://vocab.linkeddata.es/datosabiertos/kos/edint/AccesType> .
+
+#################################################################
+#
+#    Concept Scheme
+#
+#################################################################
+
+edintkos:AccessType a skos:ConceptScheme ; 
+    dct:issued "2026-04-20"^^xsd:date ;
+    dct:modified "2026-04-20"^^xsd:date ;
+    cc:license <https://creativecommons.org/licenses/by/4.0/> ;
+    rdfs:comment "This concept scheme belongs to the set of controlled SKOS-based thesauri used by the ontologies from the EDINT data space."@en ;
+    rdfs:comment "Este esquema de conceptos pertenece al conjunto de tesauros SKOS usados por las ontologías del espacio de datos EDINT."@es ;
+    rdfs:label "Type of access to facilities"@en ;
+    rdfs:label "Tipo de acceso a equipamientos"@es ;
+    dct:title "Concept scheme grouping types of access to facilities"@en ;
+    dct:title "Esquema de conceptos que agrupa tipos de acceso a los equipamientos"@es ;
+    skos:hasTopConcept edintkoacctype:StreetDoor ;
+    skos:hasTopConcept edintkoacctype:Indoor ;
+    skos:hasTopConcept edintkoacctype:Floor .
+
+
+#################################################################
+#
+#    Concepts
+#
+#################################################################
+
+edintkoacctype:StreetDoor a skos:Concept ;
+	skos:inScheme edintkos:AccessType ;
+  	skos:prefLabel "Puerta de calle"@es ;
+	skos:prefLabel "Street door"@en .
+
+edintkoacctype:Indoor a skos:Concept ;
+	skos:inScheme edintkos:AccessType ;
+  	skos:prefLabel "Interior"@es ;
+	skos:prefLabel "Indoor"@en .
+
+  edintkoacctype:Floor a skos:Concept ;
+  skos:inScheme edintkos:AccessType ;
+  skos:prefLabel "Piso"@es ;
+  skos:prefLabel "Floor"@en  .
