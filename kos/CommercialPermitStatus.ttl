@@ -24,10 +24,10 @@ edintkos:CommercialPermitStatus a skos:ConceptScheme ;
     rdfs:label "Estado de tramitación de la licencia de comercio"@es ;
     dct:title "Concept scheme grouping status of commercial permits"@en ;
     dct:title "Esquema de conceptos que agrupa los estados de tramitación de la licencia de comercio"@es ;
-    edintkos:CommercialPermitStatus a skos:ConceptScheme;
     skos:hasTopConcept edintkoscompersta:Granted ;
     skos:hasTopConcept edintkoscompersta:Denied ;
-    skos:hasTopConcept edintkoscompersta:InProcess .
+    skos:hasTopConcept edintkoscompersta:InProcess ;
+	skos:hasTopConcept edintkoscompersta:Expired .
 	
 
 #################################################################
@@ -46,7 +46,12 @@ edintkoscompersta:Denied a skos:Concept ;
    skos:prefLabel "Denegada"@es ;
    skos:prefLabel "Denied"@en .
 
-  edintkoscompersta:InProcess a skos:Concept ;
+edintkoscompersta:InProcess a skos:Concept ;
   skos:inScheme edintkos:CommercialPermitStatus ;
   skos:prefLabel "En trámite"@es ;
   skos:prefLabel "In process"@en .
+
+edintkoscompersta:Expired a skos:Concept ;
+  skos:inScheme edintkos:CommercialPermitStatus ;
+  skos:prefLabel "Caducada"@es ;
+  skos:prefLabel "Expired"@en .
