@@ -1,15 +1,15 @@
-# Ontología EDINT XXX (EDINT XXX Ontology)
+# Ontología EDINT de Establecimiento Comercial (EDINT Commercial Establishment Ontology)
 
 La ontología XXX representa el dominio ABC.
+La ontología de Establecimiento Comercial representa los datos de los espacios comerciales, sus agrupaciones y sus licencias.
 
 # Propósito y alcance de la ontología (Purpose and scope of the ontology)
 
-El propósito de la ontología XXX es YYYY. 
-El alcance de la ontología XXX está limitado a ZZZZ.
+El propósito de esta ontología es proporcionar un vocabulario común para la representación de las entidades y los datos principales relacionados con los establecimientos comerciales de un municipio y sus licencias. También incluye las agrupaciones comerciales, como mercados y centros comerciales, y las terrazas asociadas a los establecimientos.
 
 # Prefijo y espacio de nombres (Prefix and namespace)
 
-El prefijo de la ontología es: `XXX` y se encuentra publicada en el espacio de nombres: [http://vocab.linkeddata.es/datosabiertos/def/xxx/](http://vocab.linkeddata.es/datosabiertos/def/xxx/)
+El prefijo de la ontología es: edintcom y se encuentra publicada en el espacio de nombres: [http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#](http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#)
 
 # Modelo conceptual (Ontology conceptualization)
 
