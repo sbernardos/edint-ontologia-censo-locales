@@ -13,13 +13,6 @@ El prefijo de la ontología es: edintcom y se encuentra publicada en el espacio 
 
 # Modelo conceptual (Ontology conceptualization)
 
-Cada repositorio de desarrollo de ontologías debe incluir, en este README principal, una representación visual de la conceptualización de la ontología.
-Esta imagen ayuda a los usuarios y colaboradores a comprender rápidamente la estructura de la ontología, sus conceptos clave y las relaciones entre ellos.
-
-- La imagen debe estar ubicada en la carpeta de conceptualización.
-- Formatos aceptados: .svg, .png o .drawio.
-- Debe referenciarse en este README usando la sintaxis de Markdown, por ejemplo:
-
 ![Diagrama del modelo conceptual](diagrams/diagrama.png)
 
 # Estructura del repositorio (Repository structure)
