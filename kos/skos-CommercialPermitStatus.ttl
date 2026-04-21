@@ -6,7 +6,7 @@
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 
 @prefix edintkos: <http://vocab.linkeddata.es/datosabiertos/kos/edint/> .
-@prefix edintcompersta: <http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialPermitStatus> .
+@prefix edintkoscompersta: <http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialPermitStatus/> .
 
 #################################################################
 #

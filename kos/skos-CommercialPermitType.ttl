@@ -6,7 +6,7 @@
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 
 @prefix edintkos: <http://vocab.linkeddata.es/datosabiertos/kos/edint/> .
-@prefix edintcompemtype: <http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialPermitType> .
+@prefix edintkoscompemtype: <http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialPermitType/> .
 
 #################################################################
 #
@@ -24,12 +24,12 @@ edintkos:CommercialPermitType a skos:ConceptScheme ;
     rdfs:label "Tipos de licencias comerciales"@es;
     dct:title "Concept scheme grouping the types of commercial permits"@en ;
     dct:title "Esquema de conceptos que agrupa los tipos de licencias comerciales"@es ;
-    skos:hasTopConcept edintcompertype:APAL ;
-    skos:hasTopConcept edintcompertype:DRAACT ;
-    skos:hasTopConcept edintcompertype:DRAESP ;
-	skos:hasTopConcept edintcompertype:CAMTI ;
-	skos:hasTopConcept edintcompertype:CAMTC ;
-	skos:hasTopConcept edintcompertype:DRVUT .
+    skos:hasTopConcept edintkoscompemtype:APAL ;
+    skos:hasTopConcept edintkoscompemtype:DRAACT ;
+    skos:hasTopConcept edintkoscompemtype:DRAESP ;
+	skos:hasTopConcept edintkoscompemtype:CAMTI ;
+	skos:hasTopConcept edintkoscompemtype:CAMTC ;
+	skos:hasTopConcept edintkoscompemtype:DRVUT .
 
 #################################################################
 #
@@ -37,32 +37,32 @@ edintkos:CommercialPermitType a skos:ConceptScheme ;
 #
 #################################################################
 
-edintcompertype:APAL a skos:Concept ;
+edintkoscompemtype:APAL a skos:Concept ;
 	skos:inScheme edintkos:CommercialPermitType ;
 #	skos:prefLabel " "@en ;
 	skos:prefLabel "APAL"@es .
 
-edintcompertype:DRAACT a skos:Concept ;
+edintkoscompemtype:DRAACT a skos:Concept ;
 	skos:inScheme edintkos:CommercialPermitType ;
 #	skos:prefLabel " "@en ;
 	skos:prefLabel "DRAACT"@es .
 
-edintcompertype:DRAESP a skos:Concept ;
+edintkoscompemtype:DRAESP a skos:Concept ;
   skos:inScheme edintkos:CommercialPermitType ;
 #	skos:prefLabel " "@en ;
   skos:prefLabel "DRAESP"@es .
 
-edintcompertype:CAMTI a skos:Concept ;
+edintkoscompemtype:CAMTI a skos:Concept ;
   skos:inScheme edintkos:CommercialPermitType ;
 #	skos:prefLabel " "@en ;
   skos:prefLabel "CAMTI"@es .
 
-edintcompertype:CAMTC a skos:Concept ;
+edintkoscompemtype:CAMTC a skos:Concept ;
   skos:inScheme edintkos:CommercialPermitType ;
 #	skos:prefLabel " "@en ;
   skos:prefLabel "CAMTC"@es .
 
-edintcompertype:DRVUT a skos:Concept ;
+edintkoscompemtype:DRVUT a skos:Concept ;
   skos:inScheme edintkos:CommercialPermitType ;
 #	skos:prefLabel " "@en ;
   skos:prefLabel "DRVUT"@es .

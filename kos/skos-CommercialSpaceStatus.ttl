@@ -6,7 +6,7 @@
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 
 @prefix edintkos: <http://vocab.linkeddata.es/datosabiertos/kos/edint/> .
-@prefix edintcomespsit: <http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialSpaceStatus> .
+@prefix edintkoscomespsit: <http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialSpaceStatus/> .
 
 #################################################################
 #
@@ -46,12 +46,12 @@ edintkoscomespsit:Closed a skos:Concept ;
 	skos:prefLabel "Cerrado"@es ;
 	skos:prefLabel "Closed"@en .
 
-  edintkoscomespsit:ShutDown a skos:Concept ;
+edintkoscomespsit:ShutDown a skos:Concept ;
   skos:inScheme edintkos:CommercialSpaceStatus ;
   skos:prefLabel "Clausurado"@es ;
   skos:prefLabel "Shut down"@en .
 
-  edintkoscomespsit:Free a skos:Concept ;
+edintkoscomespsit:Free a skos:Concept ;
   skos:inScheme edintkos:CommercialSpaceStatus ;
   skos:prefLabel "Libre"@es ;
   skos:prefLabel "Free"@en .
