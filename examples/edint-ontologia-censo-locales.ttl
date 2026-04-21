@@ -20,52 +20,51 @@
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix schema: <http://schema.org/> .
+@prefix tejcom: <http://vocab.ciudadesabiertas.es/def/comercio/tejido-comercial#> .
 @prefix void: <http://rdfs.org/ns/void#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://vocab.linkeddata.es/datosabiertos/recurso/agrupacionComercial/AGR-0001> a
     edintcom:CommercialAggregation;
   dcterms:identifier "AGR-0001";
-  rdfs:comment "Entidad de dinamización comercial que agrupa locales de hostelería, retail y servicios del eje Sol-Mayor.";
-  rdfs:label "Asociación Comercial Centro Histórico" .
+  rdfs:comment "Mercado tradicional de Madrid, con origen en 1876 y reinaugurado en 1943 tras una reforma. Tiene accesos por Alonso Cano, García de Paredes y Viriato, y combina puestos de alimentación, restauración y comercio especializado.";
+  rdfs:label "Mercado de Chamberí" .
 
-<http://vocab.linkeddata.es/datosabiertos/recurso/direccion-postal/28013> a esdir:DireccionPostal;
-  schema:postalCode "28013";
-  rdfs:label "28013" .
+<http://vocab.linkeddata.es/datosabiertos/recurso/direccion-postal/28010> a esdir:DireccionPostal;
+  schema:postalCode "28010";
+  rdfs:label "28010" .
 
 <http://vocab.linkeddata.es/datosabiertos/recurso/entidad-comercial/ENT-0001> a edintcom:CommercialEntity;
   dcterms:identifier "ENT-0001";
-  schema:email "maria.lopez@labuenatapa.es";
-  schema:identifier "12345678Z";
-  schema:legalName "María López García";
-  schema:telephone "+34 600 123 123";
-  edintcom:hasCNAECode <http://lod.ine.es/kos/cnae/CNAE-2025/6/561000>;
-  edintcom:hasIAECode <http://vocab.linkeddata.es/datosabiertos/kos/edint/iae/3/673.2>;
+  schema:legalName "Cafetería Chamberí S.L.";
+  schema:url "https://mercadodechamberi.es";
+  edintcom:hasCNAECode <http://lod.ine.es/kos/cnae/CNAE-2025/6/563000>;
+  edintcom:hasIAECode <http://vocab.linkeddata.es/datosabiertos/kos/edint/iae/3/673.1>;
   edintcom:usesSpace <http://vocab.linkeddata.es/datosabiertos/recurso/espacio-comercial/COM-0001>;
-  rdfs:label "María López García" .
+  rdfs:label "Cafetería Chamberí S.L." .
 
 <http://vocab.linkeddata.es/datosabiertos/recurso/espacio-comercial/COM-0001> a edintcom:CommercialSpace;
   dcterms:identifier "COM-0001";
   edintcom:belongsToCommercialAggregation <http://vocab.linkeddata.es/datosabiertos/recurso/agrupacionComercial/AGR-0001>;
-  edintcom:hasAccessType edintkoacctype:StreetDoor;
+  edintcom:hasAccessType edintkoacctype:Indoor;
   edintcom:hasCommercialSpaceStatus edintkoscomespsit:Active;
-  edintcom:hasTerrace <http://vocab.linkeddata.es/datosabiertos/recurso/terraza/10047540>;
-  rdfs:label "La Buena Tapa Centro" .
+  edintcom:hasTerrace <http://vocab.linkeddata.es/datosabiertos/recurso/terraza/TER-0001>;
+  rdfs:label "Cafetería Chamberí" .
 
-<http://vocab.linkeddata.es/datosabiertos/recurso/terraza/10047540> a edintcom:Terrace;
-  dcterms:identifier "10047540";
-  schema:address <http://vocab.linkeddata.es/datosabiertos/recurso/direccion-postal/28013>;
-  schema:floorSize 23.8, "23.8";
-  schema:maximumAttendeeCapacity 32;
-  schema:openingHours "Mo-Th 13:00-23:30; Fr-Sa 13:00-00:30; Su 13:00-17:00";
+<http://vocab.linkeddata.es/datosabiertos/recurso/terraza/TER-0001> a edintcom:Terrace;
+  dcterms:identifier "TER-0001";
+  schema:address <http://vocab.linkeddata.es/datosabiertos/recurso/direccion-postal/28010>;
+  schema:floorSize "14.5";
+  schema:maximumAttendeeCapacity 18;
+  schema:openingHours "Tu-Sa 12:30-16:30; Tu-Sa 19:00-00:00; Su 12:30-16:30";
   edintcom:hasTerracePeriod edintterper:anual;
-  edintcom:hasTerraceType <edintkosterrtype:Terrace>;
-  edintinf:belongsTo <http://vocab.linkeddata.es/datosabiertos/recurso/sector-publico/territorio/barrio/SOL>;
+  edintcom:numeroMesasAutorizadas 6;
+  edintcom:numeroSillasAutorizadas 18;
+  edintinf:belongsTo <http://vocab.linkeddata.es/datosabiertos/recurso/sector-publico/territorio/barrio/TRAFALGAR>;
   edintinf:hasInfrastructureType edintkosinf:Terrace;
-  edintinf:hasRegisteredOwner <http://vocab.linkeddata.es/datosabiertos/recurso/entidad-comercial/ENT-0001>;
-  geosparql:hasGeometry <http://vocab.linkeddata.es/datosabiertos/recurso/terraza/geometry/10047540>;
-  rdfs:comment "Terraza exterior en banda de estacionamiento con 8 mesas, mamparas desmontables y calefactores de bajo consumo.";
-  rdfs:label "Terraza La Buena Tapa" .
+  geosparql:hasGeometry <http://vocab.linkeddata.es/datosabiertos/recurso/terraza/geometry/TER-0001>;
+  rdfs:comment "Zona de degustación vinculada a cafetería-pastelería dentro del Mercado de Chamberí, orientada a consumo en horario diurno y de restauración.";
+  rdfs:label "Terraza Cafetería Chamberí" .
 
-<http://vocab.linkeddata.es/datosabiertos/recurso/terraza/geometry/10047540> geosparql:asWKT
-    "POINT (-3.706021 40.416744)"^^geosparql:wktLiteral .
+<http://vocab.linkeddata.es/datosabiertos/recurso/terraza/geometry/TER-0001> geosparql:asWKT
+    "POINT (-3.700200 40.434300)"^^geosparql:wktLiteral .
