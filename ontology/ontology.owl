@@ -278,7 +278,10 @@
         <DataProperty abbreviatedIRI="schema:endDate"/>
     </Declaration>
     <Declaration>
-        <DataProperty abbreviatedIRI="schema:name"/>
+        <DataProperty abbreviatedIRI="schema:floorSize"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="schema:maximumAttendeeCapacity"/>
     </Declaration>
     <Declaration>
         <DataProperty abbreviatedIRI="schema:openingHours"/>
@@ -294,6 +297,12 @@
     </Declaration>
     <Declaration>
         <DataProperty IRI="#maintenanceDate"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#numberOfPermitedChairs"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#numberOfPermitedTables"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#public"/>
@@ -810,7 +819,12 @@
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
-        <AbbreviatedIRI>schema:name</AbbreviatedIRI>
+        <AbbreviatedIRI>schema:floorSize</AbbreviatedIRI>
+        <AbbreviatedIRI>schema:</AbbreviatedIRI>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <AbbreviatedIRI>schema:maximumAttendeeCapacity</AbbreviatedIRI>
         <AbbreviatedIRI>schema:</AbbreviatedIRI>
     </AnnotationAssertion>
     <AnnotationAssertion>
@@ -1392,6 +1406,46 @@
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
         <IRI>#maintenanceDate</IRI>
         <Literal xml:lang="en">maintenance date</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#numberOfPermitedChairs</IRI>
+        <Literal xml:lang="es">Indica el número máximo de sillas que puede tener una entidad, principalmente una terraza.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#numberOfPermitedChairs</IRI>
+        <Literal xml:lang="en">It captures the maximum number of chairs an entity, especially a terrace, can have.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#numberOfPermitedChairs</IRI>
+        <Literal xml:lang="en">number of permited chairs</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#numberOfPermitedChairs</IRI>
+        <Literal xml:lang="es">número de sillas autorizadas</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#numberOfPermitedTables</IRI>
+        <Literal xml:lang="es">Indica el número máximo de mesas que puede tener una entidad, principalmente una terraza.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#numberOfPermitedTables</IRI>
+        <Literal xml:lang="en">It captures the maximun number of tables an entity, especially a terrace, can have.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#numberOfPermitedTables</IRI>
+        <Literal xml:lang="en">number of permited tables</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#numberOfPermitedTables</IRI>
+        <Literal xml:lang="es">número de mesas autorizadas</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
