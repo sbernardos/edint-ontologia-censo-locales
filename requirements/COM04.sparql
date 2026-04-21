@@ -1,0 +1,19 @@
+
+# COM04: ¿Qué comercios contiene una agrupación comercial específica?
+
+PREFIX edintcom: <http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#>
+PREFIX rdfs:     <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT
+       ?commercialSpace
+       ?commercialSpaceLabel
+WHERE {
+  ?commercialSpace a edintcom:CommercialSpace ;
+                   edintcom:belongsToCommercialAggregation
+                     <URI-AGRUPACIÓN-COMERCIAL> . #Por ejemplo, <http://datos.ejemplo.es/recurso/agrupacion-comercial/MercadoCentral>
+
+  OPTIONAL {
+    ?commercialSpace rdfs:label ?commercialSpaceLabel .
+  }
+}
+ORDER BY ?commercialSpaceLabel

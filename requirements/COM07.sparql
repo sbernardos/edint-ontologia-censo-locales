@@ -1,0 +1,54 @@
+
+# COM07: ¿Qué licencias de actividad están asociadas a cada comercio?
+
+PREFIX edintcom: <http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#>
+PREFIX schema:   <http://schema.org/>
+PREFIX dcterms:  <http://purl.org/dc/terms/>
+PREFIX rdfs:     <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT DISTINCT
+       ?commercialSpace
+       ?commercialSpaceLabel
+       ?permit
+       ?fileCode
+       ?permitType
+       ?permitTypeLabel
+       ?permitStatus
+       ?permitStatusLabel
+	   ?cnae
+       ?cnaeLabel
+       ?iae
+       ?iaeLabel
+       ?startDate
+       ?endDate
+WHERE {
+  # Comercio
+  ?commercialSpace a edintcom:CommercialSpace .
+
+  # Licencia aplicada al comercio
+  ?permit a edintcom:Permit ;
+          edintcom:appliedTo ?commercialSpace .
+
+  OPTIONAL { ?permit edintcom:fileCode ?fileCode }
+  OPTIONAL { ?permit edintcom:hasCommercialPermitType ?permitType }
+  OPTIONAL { ?permit edintcom:hasCommercialPermitStatus ?permitStatus }
+  OPTIONAL { ?permit schema:startDate ?startDate }
+  OPTIONAL { ?permit schema:endDate ?endDate }
+  OPTIONAL { ?permit edintcom:hasCNAECode ?cnae )
+  OPTIONAL { ?permit edintcom:hasIAECode ?iae )
+
+  OPTIONAL { ?commercialSpace rdfs:label ?commercialSpaceLabel }
+  OPTIONAL { ?permitType skos:prefLabel ?permitTypeLabel }
+  OPTIONAL { ?permitStatus skos:prefLabel ?permitStatusLabel }
+  OPTIONAL { ?cnae skos:prefLabel ?cnaeLabel }
+  OPTIONAL { ?iae skos:prefLabel ?iaeLabel }
+
+# Solo las licencias activas 
+  FILTER (
+    ?startDate <= NOW() &&
+    ( !BOUND(?endDate) || ?endDate >= NOW() )
+  )
+}
+ORDER BY ?commercialSpaceLabel ?startDate
+

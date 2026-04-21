@@ -1,0 +1,77 @@
+
+# COM10: ¿Qué establecimientos comerciales disponen de autorización de ocupación de vía pública?
+# Hay que tener en cuenta se puede tratar de establecimientos que sean quioscos (y tengan licencia sin caducar) o de establecimientos que tengan terraza con licencia sin caducar
+
+PREFIX edintcom: <http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#>
+PREFIX schema:   <http://schema.org/>
+PREFIX skos:     <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs:     <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
+
+SELECT DISTINCT
+       ?commercialSpace
+       ?commercialSpaceLabel
+	   ?infTypeLabel
+       ?permit
+       ?permitTypeLabel
+       ?startDate
+       ?endDate
+WHERE {
+
+  {
+    ########################################################
+    # CASO 1: QUIOSCOS con licencia vigente
+    ########################################################
+    ?permit a edintcom:Permit ;
+            edintcom:appliedTo ?commercialSpace ;
+            edintcom:hasCommercialPermitType ?permitType ;
+            schema:startDate ?startDate .
+
+    OPTIONAL { ?permit schema:endDate ?endDate }
+
+    ?commercialSpace a edintcom:CommercialSpace ;
+	                 edintinf:hasInfrastructureType ?inftype .
+
+    ?infType skos:prefLabel ?infTypeLabel .
+
+    FILTER (
+      CONTAINS(LCASE(STR(?infTypeLabel)), "quiosco")
+    )
+
+    FILTER (
+      ?startDate <= NOW() &&
+      ( !BOUND(?endDate) || ?endDate >= NOW() )
+    )
+  }
+
+  UNION
+
+  {
+    ########################################################
+    # CASO 2: ESTABLECIMIENTOS CON TERRAZA y licencia vigente
+    ########################################################
+    ?commercialSpace a edintcom:CommercialSpace ;
+                     edintcom:hasTerrace ?terrace .
+
+    ?terrace a edintcom:Terrace .
+
+    ?permit a edintcom:Permit ;
+            edintcom:appliedTo ?terrace ;
+            edintcom:hasCommercialPermitType ?permitType ;
+            schema:startDate ?startDate .
+
+    OPTIONAL { ?permit schema:endDate ?endDate }
+
+    ?permitType skos:prefLabel ?permitTypeLabel .
+
+    FILTER (
+      ?startDate <= NOW() &&
+      ( !BOUND(?endDate) || ?endDate >= NOW() )
+    )
+  }
+
+  OPTIONAL {
+    ?commercialSpace rdfs:label ?commercialSpaceLabel .
+  }
+}
+ORDER BY ?commercialSpaceLabel

@@ -1,0 +1,46 @@
+
+# COM03: ¿En qué estado están los comercios de una división administrativa concreta en un momento dado?
+# El estado del comercio en una fecha concreta se considera válido si existe una licencia aplicada al espacio comercial vigente en esa fecha.
+
+PREFIX edintcom: <http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#>
+PREFIX edintinf: <http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#>
+PREFIX schema:   <http://schema.org/>
+PREFIX rdfs:     <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
+
+SELECT DISTINCT
+       ?commercialSpace
+       ?commercialSpaceLabel
+       ?spaceStatus
+       ?spaceStatusLabel
+WHERE {
+  # Espacios comerciales de la división administrativa concreta
+  ?commercialSpace a edintcom:CommercialSpace ;
+                   a edintinf:InfrastructureElement ;
+                   edintinf:belongsTo <URI-DIVISIÓN-ADM> ;
+                   edintcom:hasCommercialSpaceStatus ?spaceStatus .
+
+  # Licencia aplicada al espacio
+  ?permit a edintcom:Permit ;
+          edintcom:appliedTo ?commercialSpace ;
+          schema:startDate ?startDate .
+
+  OPTIONAL { ?permit schema:endDate ?endDate }
+
+  # Momento temporal de interés
+  FILTER (
+    "FECHA-INICIO"^^xsd:dateTime >= ?startDate &&
+    ( !BOUND(?endDate) ||
+      "FECHA-FINAL"^^xsd:dateTime <= ?endDate )
+  )
+
+  OPTIONAL { ?commercialSpace rdfs:label ?commercialSpaceLabel }
+  OPTIONAL { ?spaceStatus rdfs:label ?spaceStatusLabel }
+}
+ORDER BY ?spaceStatusLabel ?commercialSpaceLabel
+
+# Para totales por estado
+# SELECT ?spaceStatus ?spaceStatusLabel
+#       (COUNT(DISTINCT ?commercialSpace) AS ?numComercios)
+# WHERE { ... }
+# GROUP BY ?spaceStatus ?spaceStatusLabel

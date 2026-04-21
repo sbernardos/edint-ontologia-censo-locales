@@ -1,0 +1,33 @@
+
+# COM12: ¿Cuál es el número de puestos por mercado y su grado de ocupación?
+
+PREFIX edintcom: <http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#>
+PREFIX skos:     <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs:     <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
+
+SELECT
+  ?market
+  ?marketLabel
+  (COUNT(DISTINCT ?commercialSpace) AS ?totalPuestos)
+  (SUM(?occupied) AS ?puestosOcupados)
+# Si se quiere el porcentaje:
+# (ROUND( (SUM(?occupied) * 100.0) / COUNT(DISTINCT ?commercialSpace) ) AS ?gradoOcupacion)
+WHERE {
+  # Mercado
+  ?market a edintcom:CommercialAggregation .
+
+  OPTIONAL { ?market rdfs:label ?marketLabel }
+
+  # Puestos del mercado
+  ?commercialSpace a edintcom:CommercialSpace ;
+                   edintcom:belongsToCommercialAggregation ?market ;
+                   edintcom:hasCommercialSpaceStatus ?status .
+  
+  # Puestos que están ocupados
+  FILTER (
+    ?status = <http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialSpaceStatus/Taken>
+  )
+}
+GROUP BY ?market ?marketLabel
+# ORDER BY DESC(?gradoOcupacion)

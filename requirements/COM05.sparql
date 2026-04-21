@@ -1,0 +1,41 @@
+
+# COM05: ¿Cuántos comercios han abierto o cerrado en un periodo concreto en un distrito determinado?
+
+PREFIX edintcom: <http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#>
+PREFIX edintinf: <http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#>
+PREFIX esadm:    <http://vocab.linkeddata.es/datosabiertos/def/sector-publico/territorio#>
+PREFIX schema:   <http://schema.org/>
+PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
+
+SELECT
+  (SUM(?opened) AS ?numOpened)
+  (SUM(?closed) AS ?numClosed)
+WHERE {
+  ?permit a edintcom:Permit ;
+          edintcom:appliedTo ?commercialSpace ;
+          schema:startDate ?startDate .
+
+  OPTIONAL { ?permit schema:endDate ?endDate }
+
+  ?commercialSpace a edintcom:CommercialSpace ;
+                   a edintinf:InfrastructureElement ;
+                   edintinf:belongsTo
+                     <URI-DISTRITO> . #Valdría también cualquier URI de una división administrativa
+
+  BIND(
+    IF (
+      ?startDate >= "FECHA-INICIO-PERIODO"^^xsd:dateTime &&
+      ?startDate <= "FECHA-INICIO-PERIODO"^^xsd:dateTime,
+      1, 0
+    ) AS ?opened
+  )
+
+  BIND(
+    IF (
+      BOUND(?endDate) &&
+      ?endDate >= "FECHA-FIN-PERIODO"^^xsd:dateTime &&
+      ?endDate <= "FECHA-FIN-PERIODO"^^xsd:dateTime,
+      1, 0
+    ) AS ?closed
+  )
+}

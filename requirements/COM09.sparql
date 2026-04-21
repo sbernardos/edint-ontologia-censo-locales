@@ -1,0 +1,38 @@
+
+# COM09: ¿Qué licencias están en tramitación, concedidas o denegadas en un periodo determinado?
+
+PREFIX edintcom: <http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#>
+PREFIX schema:   <http://schema.org/>
+PREFIX skos:     <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs:     <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
+
+SELECT DISTINCT
+       ?permit
+       ?permitStatus
+       ?permitStatusLabel
+       ?commercialSpace
+       ?commercialSpaceLabel
+       ?startDate
+       ?endDate
+WHERE {
+  ?permit a edintcom:Permit ;
+          edintcom:hasCommercialPermitStatus ?permitStatus ;
+          edintcom:appliedTo ?commercialSpace ;
+          schema:startDate ?startDate .
+
+  OPTIONAL { ?permit schema:endDate ?endDate }
+
+  # Estados de interés
+  ?permitStatus skos:prefLabel ?permitStatusLabel .
+  FILTER (?permitStatusLabel IN ("En tramitación", "Concedida", "Denegada"))
+
+  # Periodo temporal de interés
+  FILTER (
+    ?startDate <= "FECHA-INICIO-PERIODO"^^xsd:dateTime &&
+    ( !BOUND(?endDate) || ?endDate >= "FECHA-FIN-PERIODO"^^xsd:dateTime )
+  )
+
+  OPTIONAL { ?commercialSpace rdfs:label ?commercialSpaceLabel }
+}
+ORDER BY ?permitStatusLabel ?startDate

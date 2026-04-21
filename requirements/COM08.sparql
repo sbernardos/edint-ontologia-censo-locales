@@ -1,0 +1,40 @@
+
+
+# COM08: ¿Qué tipo de licencias (APCAL, DRAACT, CAMTI, etc.) predominan en una zona?
+
+PREFIX edintcom: <http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#>
+PREFIX edintinf: <http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#>
+PREFIX schema:   <http://schema.org/>
+PREFIX rdfs:     <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
+
+SELECT
+  ?permitType
+  ?permitTypeLabel
+  (COUNT(DISTINCT ?permit) AS ?numLicenciasVigentes)
+WHERE {
+  # Licencias con tipo
+  ?permit a edintcom:Permit ;
+          edintcom:hasCommercialPermitType ?permitType ;
+          edintcom:appliedTo ?commercialSpace ;
+          schema:startDate ?startDate .
+
+  # Fecha de fin opcional
+  OPTIONAL { ?permit schema:endDate ?endDate }
+
+  # Comercios pertenecientes a la zona
+  ?commercialSpace a edintcom:CommercialSpace ;
+                   edintinf:belongsTo <URI-DIVISIÓN> . #Por ejemplo, <http://datos.ejemplo.es/recurso/distrito/Centro>
+
+  # Filtro de licencias no caducadas
+  FILTER (
+    ?startDate <= NOW() &&
+    ( !BOUND(?endDate) || ?endDate >= NOW() )
+  )
+
+  OPTIONAL {
+    ?permitType rdfs:label ?permitTypeLabel .
+  }
+}
+GROUP BY ?permitType ?permitTypeLabel
+ORDER BY DESC(?numLicenciasVigentes)

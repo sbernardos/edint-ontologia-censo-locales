@@ -1,0 +1,40 @@
+
+# COM02: ¿Cuál es la distribución geográfica de los establecimientos por categoría de actividad CNAE o IAE?
+
+PREFIX edintcom: <http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#>
+PREFIX edintinf: <http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#>
+PREFIX esadm:    <http://vocab.linkeddata.es/datosabiertos/def/sector-publico/territorio#>
+PREFIX skos:     <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs:     <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT
+  ?adminDivision
+  ?adminDivisionLabel
+  ?activityCode
+  ?activityLabel
+  (COUNT(DISTINCT ?commercialSpace) AS ?numEstablishments)
+WHERE {
+  ?permit a edintcom:Permit ;
+          edintcom:appliedTo ?commercialSpace ;
+          ?activityProperty ?activityCode .
+
+  FILTER (?activityProperty IN (
+    edintcom:hasCNAECode,
+    edintcom:hasIAECode
+  ))
+
+  ?commercialSpace a edintcom:CommercialSpace ;
+                   a edintinf:InfrastructureElement ;
+                   edintinf:belongsTo ?adminDivision .
+
+  FILTER (?adminDivision IN (
+    esadm:Municipio,
+    esadm:Distrito,
+	esadm:Barrio
+  ))
+
+  OPTIONAL { ?adminDivision rdfs:label ?adminDivisionLabel }
+  OPTIONAL { ?activityCode skos:prefLabel ?activityLabel }
+}
+GROUP BY ?adminDivision ?adminDivisionLabel ?activityCode ?activityLabel
+ORDER BY ?adminDivisionLabel ?activityLabel

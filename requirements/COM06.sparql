@@ -1,0 +1,58 @@
+
+# COM06: ¿Qué zonas presentan mayor tasa de altas y bajas comerciales?
+# Considerando zona como distrito adeministrativo
+
+PREFIX edintcom: <http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#>
+PREFIX edintinf: <http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#>
+PREFIX esadm:    <http://vocab.linkeddata.es/datosabiertos/def/sector-publico/territorio#>
+PREFIX schema:   <http://schema.org/>
+PREFIX rdfs:     <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
+
+SELECT
+  ?zone
+  ?zoneLabel
+  (SUM(?opened) AS ?numOpened)
+  (SUM(?closed) AS ?numClosed)
+  (SUM(?opened + ?closed) AS ?turnover) # Tasa calculada como total de aperturas y cierres, por ejemplo
+WHERE {
+  ?permit a edintcom:Permit ;
+          edintcom:appliedTo ?commercialSpace ;
+          schema:startDate ?startDate .
+
+  OPTIONAL { ?permit schema:endDate ?endDate }
+
+  ?commercialSpace a edintcom:CommercialSpace ;
+                   a edintinf:InfrastructureElement ;
+                   edintinf:belongsTo ?zone .
+
+  FILTER (?zone IN (
+    esadm:Municipio,
+    esadm:Distrito,
+	esadm:Barrio
+  ))
+.
+
+  OPTIONAL { ?zone rdfs:label ?zoneLabel }
+
+  # Altas en el periodo
+  BIND(
+    IF (
+      ?startDate >= "FECHA-INICIO-PERIODO"^^xsd:dateTime &&
+      ?startDate <= "FECHA-INICIO-PERIODO"^^xsd:dateTime,
+      1, 0
+    ) AS ?opened
+  )
+
+  # Bajas en el periodo
+  BIND(
+    IF (
+      BOUND(?endDate) &&
+      ?endDate >= "FECHA-FIN-PERIODO"^^xsd:dateTime &&
+      ?endDate <= "FECHA-FIN-PERIODO"^^xsd:dateTime,
+      1, 0
+    ) AS ?closed
+  )
+}
+GROUP BY ?zone ?zoneLabel
+ORDER BY DESC(?turnover)

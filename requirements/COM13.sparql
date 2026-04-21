@@ -1,0 +1,49 @@
+
+# COM13: ¿Qué actividades comerciales existen en una zona determinada?
+# Sin tener en cuenta posibles correspondencias entre códigos CNAE e IAE
+
+PREFIX edintcom: <http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#>
+PREFIX edintinf: <http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#>
+PREFIX schema:   <http://schema.org/>
+PREFIX skos:     <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdfs:     <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd:      <http://www.w3.org/2001/XMLSchema#>
+
+SELECT
+  ?activityType          # "CNAE" o "IAE"
+  ?activityCode
+  ?activityLabel
+  (COUNT(DISTINCT ?permit) AS ?numLicenciasVigentes)
+WHERE {
+  # Licencias aplicadas a espacios comerciales de la zona
+  ?permit a edintcom:Permit ;
+          edintcom:appliedTo ?commercialSpace ;
+          schema:startDate ?startDate .
+
+  OPTIONAL { ?permit schema:endDate ?endDate }
+
+  ?commercialSpace a edintcom:CommercialSpace ;
+                   edintinf:belongsTo <URI-DIVISIÓN> . #Por ejemplo, <http://datos.ejemplo.es/recurso/distrito/Centro>
+
+  # Licencias vigentes
+  FILTER (
+    ?startDate <= NOW() &&
+    ( !BOUND(?endDate) || ?endDate >= NOW() )
+  )
+
+  # CNAE
+  {
+    ?permit edintcom:hasCNAECode ?activityCode .
+    BIND("CNAE" AS ?activityType)
+    OPTIONAL { ?activityCode skos:prefLabel ?activityLabel }
+  }
+  UNION
+  # IAE
+  {
+    ?permit edintcom:hasIAECode ?activityCode .
+    BIND("IAE" AS ?activityType)
+    OPTIONAL { ?activityCode skos:prefLabel ?activityLabel }
+  }
+}
+GROUP BY ?activityType ?activityCode ?activityLabel
+ORDER BY ?activityType DESC(?numLicenciasVigentes) ?activityLabel

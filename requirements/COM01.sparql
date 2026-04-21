@@ -1,0 +1,56 @@
+
+# COM01: ¿Qué establecimientos comerciales existen en una división administrativa?
+
+PREFIX edintcom: <http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#>
+PREFIX edintinf: <http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#>
+PREFIX esadm:    <http://vocab.linkeddata.es/datosabiertos/def/sector-publico/territorio#>
+PREFIX rdfs:     <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT
+       ?commercialSpace
+       ?commercialSpaceLabel
+       ?adminDivision
+       ?adminDivisionLabel
+WHERE {
+  # Establecimientos comerciales como elementos de infraestructura
+  ?commercialSpace a edintcom:CommercialSpace ;
+                   a edintinf:InfrastructureElement ;
+                   edintinf:belongsTo ?adminDivision .
+
+  FILTER (?adminDivision IN (
+    esadm:Municipio,
+    esadm:Distrito,
+	esadm:Barrio
+  ))
+  
+  OPTIONAL {
+    ?commercialSpace rdfs:label ?commercialSpaceLabel .
+  }
+  OPTIONAL {
+    ?adminDivision rdfs:label ?adminDivisionLabel .
+  }
+}
+ORDER BY ?commercialSpaceLabel
+
+
+# Para una división administrativa concreta
+PREFIX edintcom: <http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#>
+PREFIX edintinf: <http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#>
+PREFIX esadm:    <http://vocab.linkeddata.es/datosabiertos/def/sector-publico/territorio#>
+PREFIX rdfs:     <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT DISTINCT
+       ?commercialSpace
+       ?commercialSpaceLabel
+WHERE {
+  # Establecimientos comerciales como elementos de infraestructura
+  ?commercialSpace a edintcom:CommercialSpace ;
+                   a edintinf:InfrastructureElement ;
+                   edintinf:belongsTo 
+                     <URI-DIVISIÓN> . #Por ejemplo, <http://datos.ejemplo.es/recurso/distrito/Centro>
+
+  OPTIONAL {
+    ?commercialSpace rdfs:label ?commercialSpaceLabel .
+  }
+}
+ORDER BY ?commercialSpaceLabel
