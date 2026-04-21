@@ -6,7 +6,7 @@
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 
 @prefix edintkos: <http://vocab.linkeddata.es/datosabiertos/kos/edint/> .
-@prefix edintterper: <http://vocab.linkeddata.es/datosabiertos/kos/edint/TerracePeriod> .
+@prefix edintkosterper: <http://vocab.linkeddata.es/datosabiertos/kos/edint/TerracePeriod/> .
 
 #################################################################
 #

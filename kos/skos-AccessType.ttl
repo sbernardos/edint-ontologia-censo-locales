@@ -6,7 +6,7 @@
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 
 @prefix edintkos: <http://vocab.linkeddata.es/datosabiertos/kos/edint/> .
-@prefix edintacctype: <http://vocab.linkeddata.es/datosabiertos/kos/edint/AccesType> .
+@prefix edintkosacctype: <http://vocab.linkeddata.es/datosabiertos/kos/edint/AccesType/> .
 
 #################################################################
 #
@@ -35,17 +35,17 @@ edintkos:AccessType a skos:ConceptScheme ;
 #
 #################################################################
 
-edintkoacctype:StreetDoor a skos:Concept ;
+edintkosacctype:StreetDoor a skos:Concept ;
 	skos:inScheme edintkos:AccessType ;
   	skos:prefLabel "Puerta de calle"@es ;
 	skos:prefLabel "Street door"@en .
 
-edintkoacctype:Indoor a skos:Concept ;
+edintkosacctype:Indoor a skos:Concept ;
 	skos:inScheme edintkos:AccessType ;
   	skos:prefLabel "Interior"@es ;
 	skos:prefLabel "Indoor"@en .
 
-  edintkoacctype:Floor a skos:Concept ;
+edintkosacctype:Floor a skos:Concept ;
   skos:inScheme edintkos:AccessType ;
   skos:prefLabel "Piso"@es ;
   skos:prefLabel "Floor"@en  .
