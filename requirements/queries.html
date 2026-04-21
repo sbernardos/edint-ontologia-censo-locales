@@ -1,0 +1,767 @@
+
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Documentación SPARQL - Censo Vehículos</title>
+        <style>
+            /* Reset y Estructura Base */
+            body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; display: flex; height: 100vh; background-color: #fcfcfc; color: #333; }
+
+            /* Sidebar Izquierda Fija */
+            .sidebar { 
+                width: 280px; 
+                background-color: #004a99; 
+                color: white; 
+                height: 100vh; 
+                position: fixed; 
+                overflow-y: auto; 
+                box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+                z-index: 1000;
+            }
+            .sidebar-header { padding: 25px 20px; border-bottom: 1px solid #0056b3; text-align: center; }
+            .sidebar-header h2 { margin: 0; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; color: #e0f0ff; }
+
+            .sidebar ul { list-style: none; padding: 0; margin: 0; }
+            .sidebar li { border-bottom: 1px solid #0056b3; }
+            .sidebar a { 
+                display: block; 
+                padding: 15px 20px; 
+                color: #add8e6; 
+                text-decoration: none; 
+                transition: all 0.2s;
+                font-size: 0.9rem;
+            }
+            .sidebar a:hover { background-color: #003366; color: white; padding-left: 25px; }
+
+            /* Contenido Principal Derecho */
+            .main-content { 
+                margin-left: 280px; 
+                flex-grow: 1; 
+                padding: 40px; 
+                overflow-y: auto; 
+            }
+
+            .file-card { 
+                background: white; 
+                border: 1px solid #d1d9e0; 
+                border-radius: 8px; 
+                margin-bottom: 60px; 
+                box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+                overflow: hidden;
+            }
+            .file-header { 
+                background-color: #f0f7ff; 
+                padding: 15px 25px; 
+                border-bottom: 2px solid #004a99; 
+                color: #004a99; 
+                font-weight: bold; 
+                font-size: 1.2rem; 
+            }
+
+            /* Metadatos (Pregunta y Respuesta) */
+            .metadata-block {
+                background-color: #e8f4f8;
+                padding: 20px 25px;
+                border-left: 4px solid #004a99;
+                margin: 0;
+                font-size: 0.95rem;
+                border-bottom: 1px solid #d1d9e0;
+            }
+            .metadata-block p { margin: 8px 0; line-height: 1.5; }
+            .metadata-block strong { color: #003366; }
+
+            .query-block { padding: 25px; border-bottom: 1px solid #eee; }
+            .query-block:last-child { border-bottom: none; }
+
+            .query-title { 
+                color: #004a99; 
+                font-weight: bold; 
+                margin-bottom: 12px; 
+                font-size: 1.05rem; 
+                display: block;
+                border-left: 3px solid #004a99;
+                padding-left: 10px;
+                line-height: 1.4;
+            }
+
+            /* Formato de Código Estilo SQL */
+            pre { 
+                background-color: #f8f9fa !important; 
+                border: 1px solid #e1e4e8; 
+                padding: 20px; 
+                border-radius: 5px; 
+                overflow-x: auto; 
+                font-family: 'Consolas', 'Monaco', monospace; 
+                font-size: 13px; 
+                line-height: 1.6;
+                margin: 0;
+            }
+
+            /* Inserción de estilos de Pygments + el Fix custom */
+            pre { line-height: 125%; }
+td.linenos .normal { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.sparql-code .hll { background-color: #ffffcc }
+.sparql-code { background: #f0f0f0; }
+.sparql-code .c { color: #60A0B0; font-style: italic } /* Comment */
+.sparql-code .err { border: 1px solid #F00 } /* Error */
+.sparql-code .k { color: #007020; font-weight: bold } /* Keyword */
+.sparql-code .o { color: #666 } /* Operator */
+.sparql-code .ch { color: #60A0B0; font-style: italic } /* Comment.Hashbang */
+.sparql-code .cm { color: #60A0B0; font-style: italic } /* Comment.Multiline */
+.sparql-code .cp { color: #007020 } /* Comment.Preproc */
+.sparql-code .cpf { color: #60A0B0; font-style: italic } /* Comment.PreprocFile */
+.sparql-code .c1 { color: #60A0B0; font-style: italic } /* Comment.Single */
+.sparql-code .cs { color: #60A0B0; background-color: #FFF0F0 } /* Comment.Special */
+.sparql-code .gd { color: #A00000 } /* Generic.Deleted */
+.sparql-code .ge { font-style: italic } /* Generic.Emph */
+.sparql-code .ges { font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.sparql-code .gr { color: #F00 } /* Generic.Error */
+.sparql-code .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.sparql-code .gi { color: #00A000 } /* Generic.Inserted */
+.sparql-code .go { color: #888 } /* Generic.Output */
+.sparql-code .gp { color: #C65D09; font-weight: bold } /* Generic.Prompt */
+.sparql-code .gs { font-weight: bold } /* Generic.Strong */
+.sparql-code .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.sparql-code .gt { color: #04D } /* Generic.Traceback */
+.sparql-code .kc { color: #007020; font-weight: bold } /* Keyword.Constant */
+.sparql-code .kd { color: #007020; font-weight: bold } /* Keyword.Declaration */
+.sparql-code .kn { color: #007020; font-weight: bold } /* Keyword.Namespace */
+.sparql-code .kp { color: #007020 } /* Keyword.Pseudo */
+.sparql-code .kr { color: #007020; font-weight: bold } /* Keyword.Reserved */
+.sparql-code .kt { color: #902000 } /* Keyword.Type */
+.sparql-code .m { color: #40A070 } /* Literal.Number */
+.sparql-code .s { color: #4070A0 } /* Literal.String */
+.sparql-code .na { color: #4070A0 } /* Name.Attribute */
+.sparql-code .nb { color: #007020 } /* Name.Builtin */
+.sparql-code .nc { color: #0E84B5; font-weight: bold } /* Name.Class */
+.sparql-code .no { color: #60ADD5 } /* Name.Constant */
+.sparql-code .nd { color: #555; font-weight: bold } /* Name.Decorator */
+.sparql-code .ni { color: #D55537; font-weight: bold } /* Name.Entity */
+.sparql-code .ne { color: #007020 } /* Name.Exception */
+.sparql-code .nf { color: #06287E } /* Name.Function */
+.sparql-code .nl { color: #002070; font-weight: bold } /* Name.Label */
+.sparql-code .nn { color: #0E84B5; font-weight: bold } /* Name.Namespace */
+.sparql-code .nt { color: #062873; font-weight: bold } /* Name.Tag */
+.sparql-code .nv { color: #BB60D5 } /* Name.Variable */
+.sparql-code .ow { color: #007020; font-weight: bold } /* Operator.Word */
+.sparql-code .w { color: #BBB } /* Text.Whitespace */
+.sparql-code .mb { color: #40A070 } /* Literal.Number.Bin */
+.sparql-code .mf { color: #40A070 } /* Literal.Number.Float */
+.sparql-code .mh { color: #40A070 } /* Literal.Number.Hex */
+.sparql-code .mi { color: #40A070 } /* Literal.Number.Integer */
+.sparql-code .mo { color: #40A070 } /* Literal.Number.Oct */
+.sparql-code .sa { color: #4070A0 } /* Literal.String.Affix */
+.sparql-code .sb { color: #4070A0 } /* Literal.String.Backtick */
+.sparql-code .sc { color: #4070A0 } /* Literal.String.Char */
+.sparql-code .dl { color: #4070A0 } /* Literal.String.Delimiter */
+.sparql-code .sd { color: #4070A0; font-style: italic } /* Literal.String.Doc */
+.sparql-code .s2 { color: #4070A0 } /* Literal.String.Double */
+.sparql-code .se { color: #4070A0; font-weight: bold } /* Literal.String.Escape */
+.sparql-code .sh { color: #4070A0 } /* Literal.String.Heredoc */
+.sparql-code .si { color: #70A0D0; font-style: italic } /* Literal.String.Interpol */
+.sparql-code .sx { color: #C65D09 } /* Literal.String.Other */
+.sparql-code .sr { color: #235388 } /* Literal.String.Regex */
+.sparql-code .s1 { color: #4070A0 } /* Literal.String.Single */
+.sparql-code .ss { color: #517918 } /* Literal.String.Symbol */
+.sparql-code .bp { color: #007020 } /* Name.Builtin.Pseudo */
+.sparql-code .fm { color: #06287E } /* Name.Function.Magic */
+.sparql-code .vc { color: #BB60D5 } /* Name.Variable.Class */
+.sparql-code .vg { color: #BB60D5 } /* Name.Variable.Global */
+.sparql-code .vi { color: #BB60D5 } /* Name.Variable.Instance */
+.sparql-code .vm { color: #BB60D5 } /* Name.Variable.Magic */
+.sparql-code .il { color: #40A070 } /* Literal.Number.Integer.Long */
+            
+            /* Fix para quitar los recuadros rojos de error sintáctico */
+            .sparql-code .err { border: none !important; color: inherit; }
+            
+
+            /* Scrollbar personalizada para la sidebar */
+            .sidebar::-webkit-scrollbar { width: 6px; }
+            .sidebar::-webkit-scrollbar-thumb { background: #003366; }
+        </style>
+    </head>
+    <body>
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Censo Vehículos</h2>
+            </div>
+            <ul>
+    <li><a href="#COM01_sparql">COM01.sparql</a></li><li><a href="#COM02_sparql">COM02.sparql</a></li><li><a href="#COM03_sparql">COM03.sparql</a></li><li><a href="#COM04_sparql">COM04.sparql</a></li><li><a href="#COM05_sparql">COM05.sparql</a></li><li><a href="#COM06_sparql">COM06.sparql</a></li><li><a href="#COM07_sparql">COM07.sparql</a></li><li><a href="#COM08_sparql">COM08.sparql</a></li><li><a href="#COM09_sparql">COM09.sparql</a></li><li><a href="#COM10_sparql">COM10.sparql</a></li><li><a href="#COM11_sparql">COM11.sparql</a></li><li><a href="#COM12_sparql">COM12.sparql</a></li><li><a href="#COM13_sparql">COM13.sparql</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+    <section class="file-card" id="COM01_sparql"><div class="file-header">COM01.sparql</div><div class="query-block"><span class="query-title">COM01: ¿Qué establecimientos comerciales existen en una división administrativa?</span><div class="sparql-code"><pre><span></span><span class="k">PREFIX</span> <span class="nn">edintcom</span><span class="p">:</span> <span class="nl">&lt;http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">edintinf</span><span class="p">:</span> <span class="nl">&lt;http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">esadm</span><span class="p">:</span>    <span class="nl">&lt;http://vocab.linkeddata.es/datosabiertos/def/sector-publico/territorio#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">rdfs</span><span class="p">:</span>     <span class="nl">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span>
+
+<span class="k">SELECT</span> <span class="k">DISTINCT</span>
+       <span class="nv">?commercialSpace</span>
+       <span class="nv">?commercialSpaceLabel</span>
+       <span class="nv">?adminDivision</span>
+       <span class="nv">?adminDivisionLabel</span>
+<span class="k">WHERE</span> <span class="p">{</span>
+  <span class="c"># Establecimientos comerciales como elementos de infraestructura</span>
+  <span class="nv">?commercialSpace</span> <span class="k">a</span> <span class="nn">edintcom</span><span class="p">:</span><span class="nt">CommercialSpace</span> <span class="p">;</span>
+                   <span class="k">a</span> <span class="nn">edintinf</span><span class="p">:</span><span class="nt">InfrastructureElement</span> <span class="p">;</span>
+                   <span class="nn">edintinf</span><span class="p">:</span><span class="nt">belongsTo</span> <span class="nv">?adminDivision</span> <span class="p">.</span>
+
+  <span class="k">FILTER</span> <span class="p">(</span><span class="nv">?adminDivision</span> <span class="k">IN</span> <span class="p">(</span>
+    <span class="nn">esadm</span><span class="p">:</span><span class="nt">Municipio</span><span class="p">,</span>
+    <span class="nn">esadm</span><span class="p">:</span><span class="nt">Distrito</span><span class="p">,</span>
+	<span class="nn">esadm</span><span class="p">:</span><span class="nt">Barrio</span>
+  <span class="p">))</span>
+  
+  <span class="k">OPTIONAL</span> <span class="p">{</span>
+    <span class="nv">?commercialSpace</span> <span class="nn">rdfs</span><span class="p">:</span><span class="nt">label</span> <span class="nv">?commercialSpaceLabel</span> <span class="p">.</span>
+  <span class="p">}</span>
+  <span class="k">OPTIONAL</span> <span class="p">{</span>
+    <span class="nv">?adminDivision</span> <span class="nn">rdfs</span><span class="p">:</span><span class="nt">label</span> <span class="nv">?adminDivisionLabel</span> <span class="p">.</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">ORDER BY</span> <span class="nv">?commercialSpaceLabel</span>
+
+
+<span class="c"># Para una división administrativa concreta</span>
+<span class="k">PREFIX</span> <span class="nn">edintcom</span><span class="p">:</span> <span class="nl">&lt;http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">edintinf</span><span class="p">:</span> <span class="nl">&lt;http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">esadm</span><span class="p">:</span>    <span class="nl">&lt;http://vocab.linkeddata.es/datosabiertos/def/sector-publico/territorio#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">rdfs</span><span class="p">:</span>     <span class="nl">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span>
+
+<span class="k">SELECT</span> <span class="k">DISTINCT</span>
+       <span class="nv">?commercialSpace</span>
+       <span class="nv">?commercialSpaceLabel</span>
+<span class="k">WHERE</span> <span class="p">{</span>
+  <span class="c"># Establecimientos comerciales como elementos de infraestructura</span>
+  <span class="nv">?commercialSpace</span> <span class="k">a</span> <span class="nn">edintcom</span><span class="p">:</span><span class="nt">CommercialSpace</span> <span class="p">;</span>
+                   <span class="k">a</span> <span class="nn">edintinf</span><span class="p">:</span><span class="nt">InfrastructureElement</span> <span class="p">;</span>
+                   <span class="nn">edintinf</span><span class="p">:</span><span class="nt">belongsTo</span> 
+                     <span class="nl">&lt;URI-DIVISIÓN&gt;</span> <span class="p">.</span> <span class="c">#Por ejemplo, &lt;http://datos.ejemplo.es/recurso/distrito/Centro&gt;</span>
+
+  <span class="k">OPTIONAL</span> <span class="p">{</span>
+    <span class="nv">?commercialSpace</span> <span class="nn">rdfs</span><span class="p">:</span><span class="nt">label</span> <span class="nv">?commercialSpaceLabel</span> <span class="p">.</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">ORDER BY</span> <span class="nv">?commercialSpaceLabel</span>
+</pre></div>
+</div></section><section class="file-card" id="COM02_sparql"><div class="file-header">COM02.sparql</div><div class="query-block"><span class="query-title">COM02: ¿Cuál es la distribución geográfica de los establecimientos por categoría de actividad CNAE o IAE?</span><div class="sparql-code"><pre><span></span><span class="k">PREFIX</span> <span class="nn">edintcom</span><span class="p">:</span> <span class="nl">&lt;http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">edintinf</span><span class="p">:</span> <span class="nl">&lt;http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">esadm</span><span class="p">:</span>    <span class="nl">&lt;http://vocab.linkeddata.es/datosabiertos/def/sector-publico/territorio#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">skos</span><span class="p">:</span>     <span class="nl">&lt;http://www.w3.org/2004/02/skos/core#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">rdfs</span><span class="p">:</span>     <span class="nl">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span>
+
+<span class="k">SELECT</span>
+  <span class="nv">?adminDivision</span>
+  <span class="nv">?adminDivisionLabel</span>
+  <span class="nv">?activityCode</span>
+  <span class="nv">?activityLabel</span>
+  <span class="p">(</span><span class="nf">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span> <span class="nv">?commercialSpace</span><span class="p">)</span> <span class="k">AS</span> <span class="nv">?numEstablishments</span><span class="p">)</span>
+<span class="k">WHERE</span> <span class="p">{</span>
+  <span class="nv">?permit</span> <span class="k">a</span> <span class="nn">edintcom</span><span class="p">:</span><span class="nt">Permit</span> <span class="p">;</span>
+          <span class="nn">edintcom</span><span class="p">:</span><span class="nt">appliedTo</span> <span class="nv">?commercialSpace</span> <span class="p">;</span>
+          <span class="nv">?activityProperty</span> <span class="nv">?activityCode</span> <span class="p">.</span>
+
+  <span class="k">FILTER</span> <span class="p">(</span><span class="nv">?activityProperty</span> <span class="k">IN</span> <span class="p">(</span>
+    <span class="nn">edintcom</span><span class="p">:</span><span class="nt">hasCNAECode</span><span class="p">,</span>
+    <span class="nn">edintcom</span><span class="p">:</span><span class="nt">hasIAECode</span>
+  <span class="p">))</span>
+
+  <span class="nv">?commercialSpace</span> <span class="k">a</span> <span class="nn">edintcom</span><span class="p">:</span><span class="nt">CommercialSpace</span> <span class="p">;</span>
+                   <span class="k">a</span> <span class="nn">edintinf</span><span class="p">:</span><span class="nt">InfrastructureElement</span> <span class="p">;</span>
+                   <span class="nn">edintinf</span><span class="p">:</span><span class="nt">belongsTo</span> <span class="nv">?adminDivision</span> <span class="p">.</span>
+
+  <span class="k">FILTER</span> <span class="p">(</span><span class="nv">?adminDivision</span> <span class="k">IN</span> <span class="p">(</span>
+    <span class="nn">esadm</span><span class="p">:</span><span class="nt">Municipio</span><span class="p">,</span>
+    <span class="nn">esadm</span><span class="p">:</span><span class="nt">Distrito</span><span class="p">,</span>
+	<span class="nn">esadm</span><span class="p">:</span><span class="nt">Barrio</span>
+  <span class="p">))</span>
+
+  <span class="k">OPTIONAL</span> <span class="p">{</span> <span class="nv">?adminDivision</span> <span class="nn">rdfs</span><span class="p">:</span><span class="nt">label</span> <span class="nv">?adminDivisionLabel</span> <span class="p">}</span>
+  <span class="k">OPTIONAL</span> <span class="p">{</span> <span class="nv">?activityCode</span> <span class="nn">skos</span><span class="p">:</span><span class="nt">prefLabel</span> <span class="nv">?activityLabel</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">GROUP BY</span> <span class="nv">?adminDivision</span> <span class="nv">?adminDivisionLabel</span> <span class="nv">?activityCode</span> <span class="nv">?activityLabel</span>
+<span class="k">ORDER BY</span> <span class="nv">?adminDivisionLabel</span> <span class="nv">?activityLabel</span>
+</pre></div>
+</div></section><section class="file-card" id="COM03_sparql"><div class="file-header">COM03.sparql</div><div class="query-block"><span class="query-title">COM03: ¿En qué estado están los comercios de una división administrativa concreta en un momento dado?<br>El estado del comercio en una fecha concreta se considera válido si existe una licencia aplicada al espacio comercial vigente en esa fecha.</span><div class="sparql-code"><pre><span></span><span class="k">PREFIX</span> <span class="nn">edintcom</span><span class="p">:</span> <span class="nl">&lt;http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">edintinf</span><span class="p">:</span> <span class="nl">&lt;http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">schema</span><span class="p">:</span>   <span class="nl">&lt;http://schema.org/&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">rdfs</span><span class="p">:</span>     <span class="nl">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">xsd</span><span class="p">:</span>      <span class="nl">&lt;http://www.w3.org/2001/XMLSchema#&gt;</span>
+
+<span class="k">SELECT</span> <span class="k">DISTINCT</span>
+       <span class="nv">?commercialSpace</span>
+       <span class="nv">?commercialSpaceLabel</span>
+       <span class="nv">?spaceStatus</span>
+       <span class="nv">?spaceStatusLabel</span>
+<span class="k">WHERE</span> <span class="p">{</span>
+  <span class="c"># Espacios comerciales de la división administrativa concreta</span>
+  <span class="nv">?commercialSpace</span> <span class="k">a</span> <span class="nn">edintcom</span><span class="p">:</span><span class="nt">CommercialSpace</span> <span class="p">;</span>
+                   <span class="k">a</span> <span class="nn">edintinf</span><span class="p">:</span><span class="nt">InfrastructureElement</span> <span class="p">;</span>
+                   <span class="nn">edintinf</span><span class="p">:</span><span class="nt">belongsTo</span> <span class="nl">&lt;URI-DIVISIÓN-ADM&gt;</span> <span class="p">;</span>
+                   <span class="nn">edintcom</span><span class="p">:</span><span class="nt">hasCommercialSpaceStatus</span> <span class="nv">?spaceStatus</span> <span class="p">.</span>
+
+  <span class="c"># Licencia aplicada al espacio</span>
+  <span class="nv">?permit</span> <span class="k">a</span> <span class="nn">edintcom</span><span class="p">:</span><span class="nt">Permit</span> <span class="p">;</span>
+          <span class="nn">edintcom</span><span class="p">:</span><span class="nt">appliedTo</span> <span class="nv">?commercialSpace</span> <span class="p">;</span>
+          <span class="nn">schema</span><span class="p">:</span><span class="nt">startDate</span> <span class="nv">?startDate</span> <span class="p">.</span>
+
+  <span class="k">OPTIONAL</span> <span class="p">{</span> <span class="nv">?permit</span> <span class="nn">schema</span><span class="p">:</span><span class="nt">endDate</span> <span class="nv">?endDate</span> <span class="p">}</span>
+
+  <span class="c"># Momento temporal de interés</span>
+  <span class="k">FILTER</span> <span class="p">(</span>
+    <span class="s">&quot;FECHA-INICIO&quot;</span><span class="o">^^</span><span class="nn">xsd</span><span class="p">:</span><span class="nt">dateTime</span> <span class="o">&gt;=</span> <span class="nv">?startDate</span> <span class="o">&amp;&amp;</span>
+    <span class="p">(</span> <span class="o">!</span><span class="nf">BOUND</span><span class="p">(</span><span class="nv">?endDate</span><span class="p">)</span> <span class="o">||</span>
+      <span class="s">&quot;FECHA-FINAL&quot;</span><span class="o">^^</span><span class="nn">xsd</span><span class="p">:</span><span class="nt">dateTime</span> <span class="o">&lt;=</span> <span class="nv">?endDate</span> <span class="p">)</span>
+  <span class="p">)</span>
+
+  <span class="k">OPTIONAL</span> <span class="p">{</span> <span class="nv">?commercialSpace</span> <span class="nn">rdfs</span><span class="p">:</span><span class="nt">label</span> <span class="nv">?commercialSpaceLabel</span> <span class="p">}</span>
+  <span class="k">OPTIONAL</span> <span class="p">{</span> <span class="nv">?spaceStatus</span> <span class="nn">rdfs</span><span class="p">:</span><span class="nt">label</span> <span class="nv">?spaceStatusLabel</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">ORDER BY</span> <span class="nv">?spaceStatusLabel</span> <span class="nv">?commercialSpaceLabel</span>
+
+<span class="c"># Para totales por estado</span>
+<span class="c"># SELECT ?spaceStatus ?spaceStatusLabel</span>
+<span class="c">#       (COUNT(DISTINCT ?commercialSpace) AS ?numComercios)</span>
+<span class="c"># WHERE { ... }</span>
+<span class="c"># GROUP BY ?spaceStatus ?spaceStatusLabel</span>
+</pre></div>
+</div></section><section class="file-card" id="COM04_sparql"><div class="file-header">COM04.sparql</div><div class="query-block"><span class="query-title">COM04: ¿Qué comercios contiene una agrupación comercial específica?</span><div class="sparql-code"><pre><span></span><span class="k">PREFIX</span> <span class="nn">edintcom</span><span class="p">:</span> <span class="nl">&lt;http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">rdfs</span><span class="p">:</span>     <span class="nl">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span>
+
+<span class="k">SELECT</span> <span class="k">DISTINCT</span>
+       <span class="nv">?commercialSpace</span>
+       <span class="nv">?commercialSpaceLabel</span>
+<span class="k">WHERE</span> <span class="p">{</span>
+  <span class="nv">?commercialSpace</span> <span class="k">a</span> <span class="nn">edintcom</span><span class="p">:</span><span class="nt">CommercialSpace</span> <span class="p">;</span>
+                   <span class="nn">edintcom</span><span class="p">:</span><span class="nt">belongsToCommercialAggregation</span>
+                     <span class="nl">&lt;URI-AGRUPACIÓN-COMERCIAL&gt;</span> <span class="p">.</span> <span class="c">#Por ejemplo, &lt;http://datos.ejemplo.es/recurso/agrupacion-comercial/MercadoCentral&gt;</span>
+
+  <span class="k">OPTIONAL</span> <span class="p">{</span>
+    <span class="nv">?commercialSpace</span> <span class="nn">rdfs</span><span class="p">:</span><span class="nt">label</span> <span class="nv">?commercialSpaceLabel</span> <span class="p">.</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">ORDER BY</span> <span class="nv">?commercialSpaceLabel</span>
+</pre></div>
+</div></section><section class="file-card" id="COM05_sparql"><div class="file-header">COM05.sparql</div><div class="query-block"><span class="query-title">COM05: ¿Cuántos comercios han abierto o cerrado en un periodo concreto en un distrito determinado?</span><div class="sparql-code"><pre><span></span><span class="k">PREFIX</span> <span class="nn">edintcom</span><span class="p">:</span> <span class="nl">&lt;http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">edintinf</span><span class="p">:</span> <span class="nl">&lt;http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">esadm</span><span class="p">:</span>    <span class="nl">&lt;http://vocab.linkeddata.es/datosabiertos/def/sector-publico/territorio#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">schema</span><span class="p">:</span>   <span class="nl">&lt;http://schema.org/&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">xsd</span><span class="p">:</span>      <span class="nl">&lt;http://www.w3.org/2001/XMLSchema#&gt;</span>
+
+<span class="k">SELECT</span>
+  <span class="p">(</span><span class="nf">SUM</span><span class="p">(</span><span class="nv">?opened</span><span class="p">)</span> <span class="k">AS</span> <span class="nv">?numOpened</span><span class="p">)</span>
+  <span class="p">(</span><span class="nf">SUM</span><span class="p">(</span><span class="nv">?closed</span><span class="p">)</span> <span class="k">AS</span> <span class="nv">?numClosed</span><span class="p">)</span>
+<span class="k">WHERE</span> <span class="p">{</span>
+  <span class="nv">?permit</span> <span class="k">a</span> <span class="nn">edintcom</span><span class="p">:</span><span class="nt">Permit</span> <span class="p">;</span>
+          <span class="nn">edintcom</span><span class="p">:</span><span class="nt">appliedTo</span> <span class="nv">?commercialSpace</span> <span class="p">;</span>
+          <span class="nn">schema</span><span class="p">:</span><span class="nt">startDate</span> <span class="nv">?startDate</span> <span class="p">.</span>
+
+  <span class="k">OPTIONAL</span> <span class="p">{</span> <span class="nv">?permit</span> <span class="nn">schema</span><span class="p">:</span><span class="nt">endDate</span> <span class="nv">?endDate</span> <span class="p">}</span>
+
+  <span class="nv">?commercialSpace</span> <span class="k">a</span> <span class="nn">edintcom</span><span class="p">:</span><span class="nt">CommercialSpace</span> <span class="p">;</span>
+                   <span class="k">a</span> <span class="nn">edintinf</span><span class="p">:</span><span class="nt">InfrastructureElement</span> <span class="p">;</span>
+                   <span class="nn">edintinf</span><span class="p">:</span><span class="nt">belongsTo</span>
+                     <span class="nl">&lt;URI-DISTRITO&gt;</span> <span class="p">.</span> <span class="c">#Valdría también cualquier URI de una división administrativa</span>
+
+  <span class="k">BIND</span><span class="p">(</span>
+    <span class="nf">IF</span> <span class="p">(</span>
+      <span class="nv">?startDate</span> <span class="o">&gt;=</span> <span class="s">&quot;FECHA-INICIO-PERIODO&quot;</span><span class="o">^^</span><span class="nn">xsd</span><span class="p">:</span><span class="nt">dateTime</span> <span class="o">&amp;&amp;</span>
+      <span class="nv">?startDate</span> <span class="o">&lt;=</span> <span class="s">&quot;FECHA-INICIO-PERIODO&quot;</span><span class="o">^^</span><span class="nn">xsd</span><span class="p">:</span><span class="nt">dateTime</span><span class="p">,</span>
+      <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="p">)</span> <span class="k">AS</span> <span class="nv">?opened</span>
+  <span class="p">)</span>
+
+  <span class="k">BIND</span><span class="p">(</span>
+    <span class="nf">IF</span> <span class="p">(</span>
+      <span class="nf">BOUND</span><span class="p">(</span><span class="nv">?endDate</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+      <span class="nv">?endDate</span> <span class="o">&gt;=</span> <span class="s">&quot;FECHA-FIN-PERIODO&quot;</span><span class="o">^^</span><span class="nn">xsd</span><span class="p">:</span><span class="nt">dateTime</span> <span class="o">&amp;&amp;</span>
+      <span class="nv">?endDate</span> <span class="o">&lt;=</span> <span class="s">&quot;FECHA-FIN-PERIODO&quot;</span><span class="o">^^</span><span class="nn">xsd</span><span class="p">:</span><span class="nt">dateTime</span><span class="p">,</span>
+      <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="p">)</span> <span class="k">AS</span> <span class="nv">?closed</span>
+  <span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div></section><section class="file-card" id="COM06_sparql"><div class="file-header">COM06.sparql</div><div class="query-block"><span class="query-title">COM06: ¿Qué zonas presentan mayor tasa de altas y bajas comerciales?<br>Considerando zona como distrito adeministrativo</span><div class="sparql-code"><pre><span></span><span class="k">PREFIX</span> <span class="nn">edintcom</span><span class="p">:</span> <span class="nl">&lt;http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">edintinf</span><span class="p">:</span> <span class="nl">&lt;http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">esadm</span><span class="p">:</span>    <span class="nl">&lt;http://vocab.linkeddata.es/datosabiertos/def/sector-publico/territorio#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">schema</span><span class="p">:</span>   <span class="nl">&lt;http://schema.org/&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">rdfs</span><span class="p">:</span>     <span class="nl">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">xsd</span><span class="p">:</span>      <span class="nl">&lt;http://www.w3.org/2001/XMLSchema#&gt;</span>
+
+<span class="k">SELECT</span>
+  <span class="nv">?zone</span>
+  <span class="nv">?zoneLabel</span>
+  <span class="p">(</span><span class="nf">SUM</span><span class="p">(</span><span class="nv">?opened</span><span class="p">)</span> <span class="k">AS</span> <span class="nv">?numOpened</span><span class="p">)</span>
+  <span class="p">(</span><span class="nf">SUM</span><span class="p">(</span><span class="nv">?closed</span><span class="p">)</span> <span class="k">AS</span> <span class="nv">?numClosed</span><span class="p">)</span>
+  <span class="p">(</span><span class="nf">SUM</span><span class="p">(</span><span class="nv">?opened</span> <span class="o">+</span> <span class="nv">?closed</span><span class="p">)</span> <span class="k">AS</span> <span class="nv">?turnover</span><span class="p">)</span> <span class="c"># Tasa calculada como total de aperturas y cierres, por ejemplo</span>
+<span class="k">WHERE</span> <span class="p">{</span>
+  <span class="nv">?permit</span> <span class="k">a</span> <span class="nn">edintcom</span><span class="p">:</span><span class="nt">Permit</span> <span class="p">;</span>
+          <span class="nn">edintcom</span><span class="p">:</span><span class="nt">appliedTo</span> <span class="nv">?commercialSpace</span> <span class="p">;</span>
+          <span class="nn">schema</span><span class="p">:</span><span class="nt">startDate</span> <span class="nv">?startDate</span> <span class="p">.</span>
+
+  <span class="k">OPTIONAL</span> <span class="p">{</span> <span class="nv">?permit</span> <span class="nn">schema</span><span class="p">:</span><span class="nt">endDate</span> <span class="nv">?endDate</span> <span class="p">}</span>
+
+  <span class="nv">?commercialSpace</span> <span class="k">a</span> <span class="nn">edintcom</span><span class="p">:</span><span class="nt">CommercialSpace</span> <span class="p">;</span>
+                   <span class="k">a</span> <span class="nn">edintinf</span><span class="p">:</span><span class="nt">InfrastructureElement</span> <span class="p">;</span>
+                   <span class="nn">edintinf</span><span class="p">:</span><span class="nt">belongsTo</span> <span class="nv">?zone</span> <span class="p">.</span>
+
+  <span class="k">FILTER</span> <span class="p">(</span><span class="nv">?zone</span> <span class="k">IN</span> <span class="p">(</span>
+    <span class="nn">esadm</span><span class="p">:</span><span class="nt">Municipio</span><span class="p">,</span>
+    <span class="nn">esadm</span><span class="p">:</span><span class="nt">Distrito</span><span class="p">,</span>
+	<span class="nn">esadm</span><span class="p">:</span><span class="nt">Barrio</span>
+  <span class="p">))</span>
+<span class="p">.</span>
+
+  <span class="k">OPTIONAL</span> <span class="p">{</span> <span class="nv">?zone</span> <span class="nn">rdfs</span><span class="p">:</span><span class="nt">label</span> <span class="nv">?zoneLabel</span> <span class="p">}</span>
+
+  <span class="c"># Altas en el periodo</span>
+  <span class="k">BIND</span><span class="p">(</span>
+    <span class="nf">IF</span> <span class="p">(</span>
+      <span class="nv">?startDate</span> <span class="o">&gt;=</span> <span class="s">&quot;FECHA-INICIO-PERIODO&quot;</span><span class="o">^^</span><span class="nn">xsd</span><span class="p">:</span><span class="nt">dateTime</span> <span class="o">&amp;&amp;</span>
+      <span class="nv">?startDate</span> <span class="o">&lt;=</span> <span class="s">&quot;FECHA-INICIO-PERIODO&quot;</span><span class="o">^^</span><span class="nn">xsd</span><span class="p">:</span><span class="nt">dateTime</span><span class="p">,</span>
+      <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="p">)</span> <span class="k">AS</span> <span class="nv">?opened</span>
+  <span class="p">)</span>
+
+  <span class="c"># Bajas en el periodo</span>
+  <span class="k">BIND</span><span class="p">(</span>
+    <span class="nf">IF</span> <span class="p">(</span>
+      <span class="nf">BOUND</span><span class="p">(</span><span class="nv">?endDate</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+      <span class="nv">?endDate</span> <span class="o">&gt;=</span> <span class="s">&quot;FECHA-FIN-PERIODO&quot;</span><span class="o">^^</span><span class="nn">xsd</span><span class="p">:</span><span class="nt">dateTime</span> <span class="o">&amp;&amp;</span>
+      <span class="nv">?endDate</span> <span class="o">&lt;=</span> <span class="s">&quot;FECHA-FIN-PERIODO&quot;</span><span class="o">^^</span><span class="nn">xsd</span><span class="p">:</span><span class="nt">dateTime</span><span class="p">,</span>
+      <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="p">)</span> <span class="k">AS</span> <span class="nv">?closed</span>
+  <span class="p">)</span>
+<span class="p">}</span>
+<span class="k">GROUP BY</span> <span class="nv">?zone</span> <span class="nv">?zoneLabel</span>
+<span class="k">ORDER BY</span> <span class="k">DESC</span><span class="p">(</span><span class="nv">?turnover</span><span class="p">)</span>
+</pre></div>
+</div></section><section class="file-card" id="COM07_sparql"><div class="file-header">COM07.sparql</div><div class="query-block"><span class="query-title">COM07: ¿Qué licencias de actividad están asociadas a cada comercio?</span><div class="sparql-code"><pre><span></span><span class="k">PREFIX</span> <span class="nn">edintcom</span><span class="p">:</span> <span class="nl">&lt;http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">schema</span><span class="p">:</span>   <span class="nl">&lt;http://schema.org/&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">dcterms</span><span class="p">:</span>  <span class="nl">&lt;http://purl.org/dc/terms/&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">rdfs</span><span class="p">:</span>     <span class="nl">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">skos</span><span class="p">:</span> <span class="nl">&lt;http://www.w3.org/2004/02/skos/core#&gt;</span>
+
+<span class="k">SELECT</span> <span class="k">DISTINCT</span>
+       <span class="nv">?commercialSpace</span>
+       <span class="nv">?commercialSpaceLabel</span>
+       <span class="nv">?permit</span>
+       <span class="nv">?fileCode</span>
+       <span class="nv">?permitType</span>
+       <span class="nv">?permitTypeLabel</span>
+       <span class="nv">?permitStatus</span>
+       <span class="nv">?permitStatusLabel</span>
+	   <span class="nv">?cnae</span>
+       <span class="nv">?cnaeLabel</span>
+       <span class="nv">?iae</span>
+       <span class="nv">?iaeLabel</span>
+       <span class="nv">?startDate</span>
+       <span class="nv">?endDate</span>
+<span class="k">WHERE</span> <span class="p">{</span>
+  <span class="c"># Comercio</span>
+  <span class="nv">?commercialSpace</span> <span class="k">a</span> <span class="nn">edintcom</span><span class="p">:</span><span class="nt">CommercialSpace</span> <span class="p">.</span>
+
+  <span class="c"># Licencia aplicada al comercio</span>
+  <span class="nv">?permit</span> <span class="k">a</span> <span class="nn">edintcom</span><span class="p">:</span><span class="nt">Permit</span> <span class="p">;</span>
+          <span class="nn">edintcom</span><span class="p">:</span><span class="nt">appliedTo</span> <span class="nv">?commercialSpace</span> <span class="p">.</span>
+
+  <span class="k">OPTIONAL</span> <span class="p">{</span> <span class="nv">?permit</span> <span class="nn">edintcom</span><span class="p">:</span><span class="nt">fileCode</span> <span class="nv">?fileCode</span> <span class="p">}</span>
+  <span class="k">OPTIONAL</span> <span class="p">{</span> <span class="nv">?permit</span> <span class="nn">edintcom</span><span class="p">:</span><span class="nt">hasCommercialPermitType</span> <span class="nv">?permitType</span> <span class="p">}</span>
+  <span class="k">OPTIONAL</span> <span class="p">{</span> <span class="nv">?permit</span> <span class="nn">edintcom</span><span class="p">:</span><span class="nt">hasCommercialPermitStatus</span> <span class="nv">?permitStatus</span> <span class="p">}</span>
+  <span class="k">OPTIONAL</span> <span class="p">{</span> <span class="nv">?permit</span> <span class="nn">schema</span><span class="p">:</span><span class="nt">startDate</span> <span class="nv">?startDate</span> <span class="p">}</span>
+  <span class="k">OPTIONAL</span> <span class="p">{</span> <span class="nv">?permit</span> <span class="nn">schema</span><span class="p">:</span><span class="nt">endDate</span> <span class="nv">?endDate</span> <span class="p">}</span>
+  <span class="k">OPTIONAL</span> <span class="p">{</span> <span class="nv">?permit</span> <span class="nn">edintcom</span><span class="p">:</span><span class="nt">hasCNAECode</span> <span class="nv">?cnae</span> <span class="p">)</span>
+  <span class="k">OPTIONAL</span> <span class="p">{</span> <span class="nv">?permit</span> <span class="nn">edintcom</span><span class="p">:</span><span class="nt">hasIAECode</span> <span class="nv">?iae</span> <span class="p">)</span>
+
+  <span class="k">OPTIONAL</span> <span class="p">{</span> <span class="nv">?commercialSpace</span> <span class="nn">rdfs</span><span class="p">:</span><span class="nt">label</span> <span class="nv">?commercialSpaceLabel</span> <span class="p">}</span>
+  <span class="k">OPTIONAL</span> <span class="p">{</span> <span class="nv">?permitType</span> <span class="nn">skos</span><span class="p">:</span><span class="nt">prefLabel</span> <span class="nv">?permitTypeLabel</span> <span class="p">}</span>
+  <span class="k">OPTIONAL</span> <span class="p">{</span> <span class="nv">?permitStatus</span> <span class="nn">skos</span><span class="p">:</span><span class="nt">prefLabel</span> <span class="nv">?permitStatusLabel</span> <span class="p">}</span>
+  <span class="k">OPTIONAL</span> <span class="p">{</span> <span class="nv">?cnae</span> <span class="nn">skos</span><span class="p">:</span><span class="nt">prefLabel</span> <span class="nv">?cnaeLabel</span> <span class="p">}</span>
+  <span class="k">OPTIONAL</span> <span class="p">{</span> <span class="nv">?iae</span> <span class="nn">skos</span><span class="p">:</span><span class="nt">prefLabel</span> <span class="nv">?iaeLabel</span> <span class="p">}</span>
+
+<span class="c"># Solo las licencias activas </span>
+  <span class="k">FILTER</span> <span class="p">(</span>
+    <span class="nv">?startDate</span> <span class="o">&lt;=</span> <span class="nf">NOW</span><span class="p">()</span> <span class="o">&amp;&amp;</span>
+    <span class="p">(</span> <span class="o">!</span><span class="nf">BOUND</span><span class="p">(</span><span class="nv">?endDate</span><span class="p">)</span> <span class="o">||</span> <span class="nv">?endDate</span> <span class="o">&gt;=</span> <span class="nf">NOW</span><span class="p">()</span> <span class="p">)</span>
+  <span class="p">)</span>
+<span class="p">}</span>
+<span class="k">ORDER BY</span> <span class="nv">?commercialSpaceLabel</span> <span class="nv">?startDate</span>
+</pre></div>
+</div></section><section class="file-card" id="COM08_sparql"><div class="file-header">COM08.sparql</div><div class="query-block"><span class="query-title">COM08: ¿Qué tipo de licencias (APCAL, DRAACT, CAMTI, etc.) predominan en una zona?</span><div class="sparql-code"><pre><span></span><span class="k">PREFIX</span> <span class="nn">edintcom</span><span class="p">:</span> <span class="nl">&lt;http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">edintinf</span><span class="p">:</span> <span class="nl">&lt;http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">schema</span><span class="p">:</span>   <span class="nl">&lt;http://schema.org/&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">rdfs</span><span class="p">:</span>     <span class="nl">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">xsd</span><span class="p">:</span>      <span class="nl">&lt;http://www.w3.org/2001/XMLSchema#&gt;</span>
+
+<span class="k">SELECT</span>
+  <span class="nv">?permitType</span>
+  <span class="nv">?permitTypeLabel</span>
+  <span class="p">(</span><span class="nf">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span> <span class="nv">?permit</span><span class="p">)</span> <span class="k">AS</span> <span class="nv">?numLicenciasVigentes</span><span class="p">)</span>
+<span class="k">WHERE</span> <span class="p">{</span>
+  <span class="c"># Licencias con tipo</span>
+  <span class="nv">?permit</span> <span class="k">a</span> <span class="nn">edintcom</span><span class="p">:</span><span class="nt">Permit</span> <span class="p">;</span>
+          <span class="nn">edintcom</span><span class="p">:</span><span class="nt">hasCommercialPermitType</span> <span class="nv">?permitType</span> <span class="p">;</span>
+          <span class="nn">edintcom</span><span class="p">:</span><span class="nt">appliedTo</span> <span class="nv">?commercialSpace</span> <span class="p">;</span>
+          <span class="nn">schema</span><span class="p">:</span><span class="nt">startDate</span> <span class="nv">?startDate</span> <span class="p">.</span>
+
+  <span class="c"># Fecha de fin opcional</span>
+  <span class="k">OPTIONAL</span> <span class="p">{</span> <span class="nv">?permit</span> <span class="nn">schema</span><span class="p">:</span><span class="nt">endDate</span> <span class="nv">?endDate</span> <span class="p">}</span>
+
+  <span class="c"># Comercios pertenecientes a la zona</span>
+  <span class="nv">?commercialSpace</span> <span class="k">a</span> <span class="nn">edintcom</span><span class="p">:</span><span class="nt">CommercialSpace</span> <span class="p">;</span>
+                   <span class="nn">edintinf</span><span class="p">:</span><span class="nt">belongsTo</span> <span class="nl">&lt;URI-DIVISIÓN&gt;</span> <span class="p">.</span> <span class="c">#Por ejemplo, &lt;http://datos.ejemplo.es/recurso/distrito/Centro&gt;</span>
+
+  <span class="c"># Filtro de licencias no caducadas</span>
+  <span class="k">FILTER</span> <span class="p">(</span>
+    <span class="nv">?startDate</span> <span class="o">&lt;=</span> <span class="nf">NOW</span><span class="p">()</span> <span class="o">&amp;&amp;</span>
+    <span class="p">(</span> <span class="o">!</span><span class="nf">BOUND</span><span class="p">(</span><span class="nv">?endDate</span><span class="p">)</span> <span class="o">||</span> <span class="nv">?endDate</span> <span class="o">&gt;=</span> <span class="nf">NOW</span><span class="p">()</span> <span class="p">)</span>
+  <span class="p">)</span>
+
+  <span class="k">OPTIONAL</span> <span class="p">{</span>
+    <span class="nv">?permitType</span> <span class="nn">rdfs</span><span class="p">:</span><span class="nt">label</span> <span class="nv">?permitTypeLabel</span> <span class="p">.</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">GROUP BY</span> <span class="nv">?permitType</span> <span class="nv">?permitTypeLabel</span>
+<span class="k">ORDER BY</span> <span class="k">DESC</span><span class="p">(</span><span class="nv">?numLicenciasVigentes</span><span class="p">)</span>
+</pre></div>
+</div></section><section class="file-card" id="COM09_sparql"><div class="file-header">COM09.sparql</div><div class="query-block"><span class="query-title">COM09: ¿Qué licencias están en tramitación, concedidas o denegadas en un periodo determinado?</span><div class="sparql-code"><pre><span></span><span class="k">PREFIX</span> <span class="nn">edintcom</span><span class="p">:</span> <span class="nl">&lt;http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">schema</span><span class="p">:</span>   <span class="nl">&lt;http://schema.org/&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">skos</span><span class="p">:</span>     <span class="nl">&lt;http://www.w3.org/2004/02/skos/core#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">rdfs</span><span class="p">:</span>     <span class="nl">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">xsd</span><span class="p">:</span>      <span class="nl">&lt;http://www.w3.org/2001/XMLSchema#&gt;</span>
+
+<span class="k">SELECT</span> <span class="k">DISTINCT</span>
+       <span class="nv">?permit</span>
+       <span class="nv">?permitStatus</span>
+       <span class="nv">?permitStatusLabel</span>
+       <span class="nv">?commercialSpace</span>
+       <span class="nv">?commercialSpaceLabel</span>
+       <span class="nv">?startDate</span>
+       <span class="nv">?endDate</span>
+<span class="k">WHERE</span> <span class="p">{</span>
+  <span class="nv">?permit</span> <span class="k">a</span> <span class="nn">edintcom</span><span class="p">:</span><span class="nt">Permit</span> <span class="p">;</span>
+          <span class="nn">edintcom</span><span class="p">:</span><span class="nt">hasCommercialPermitStatus</span> <span class="nv">?permitStatus</span> <span class="p">;</span>
+          <span class="nn">edintcom</span><span class="p">:</span><span class="nt">appliedTo</span> <span class="nv">?commercialSpace</span> <span class="p">;</span>
+          <span class="nn">schema</span><span class="p">:</span><span class="nt">startDate</span> <span class="nv">?startDate</span> <span class="p">.</span>
+
+  <span class="k">OPTIONAL</span> <span class="p">{</span> <span class="nv">?permit</span> <span class="nn">schema</span><span class="p">:</span><span class="nt">endDate</span> <span class="nv">?endDate</span> <span class="p">}</span>
+
+  <span class="c"># Estados de interés</span>
+  <span class="nv">?permitStatus</span> <span class="nn">skos</span><span class="p">:</span><span class="nt">prefLabel</span> <span class="nv">?permitStatusLabel</span> <span class="p">.</span>
+  <span class="k">FILTER</span> <span class="p">(</span><span class="nv">?permitStatusLabel</span> <span class="k">IN</span> <span class="p">(</span><span class="s">&quot;En tramitación&quot;</span><span class="p">,</span> <span class="s">&quot;Concedida&quot;</span><span class="p">,</span> <span class="s">&quot;Denegada&quot;</span><span class="p">))</span>
+
+  <span class="c"># Periodo temporal de interés</span>
+  <span class="k">FILTER</span> <span class="p">(</span>
+    <span class="nv">?startDate</span> <span class="o">&lt;=</span> <span class="s">&quot;FECHA-INICIO-PERIODO&quot;</span><span class="o">^^</span><span class="nn">xsd</span><span class="p">:</span><span class="nt">dateTime</span> <span class="o">&amp;&amp;</span>
+    <span class="p">(</span> <span class="o">!</span><span class="nf">BOUND</span><span class="p">(</span><span class="nv">?endDate</span><span class="p">)</span> <span class="o">||</span> <span class="nv">?endDate</span> <span class="o">&gt;=</span> <span class="s">&quot;FECHA-FIN-PERIODO&quot;</span><span class="o">^^</span><span class="nn">xsd</span><span class="p">:</span><span class="nt">dateTime</span> <span class="p">)</span>
+  <span class="p">)</span>
+
+  <span class="k">OPTIONAL</span> <span class="p">{</span> <span class="nv">?commercialSpace</span> <span class="nn">rdfs</span><span class="p">:</span><span class="nt">label</span> <span class="nv">?commercialSpaceLabel</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">ORDER BY</span> <span class="nv">?permitStatusLabel</span> <span class="nv">?startDate</span>
+</pre></div>
+</div></section><section class="file-card" id="COM10_sparql"><div class="file-header">COM10.sparql</div><div class="query-block"><span class="query-title">COM10: ¿Qué establecimientos comerciales disponen de autorización de ocupación de vía pública?<br>Hay que tener en cuenta se puede tratar de establecimientos que sean quioscos (y tengan licencia sin caducar) o de establecimientos que tengan terraza con licencia sin caducar</span><div class="sparql-code"><pre><span></span><span class="k">PREFIX</span> <span class="nn">edintcom</span><span class="p">:</span> <span class="nl">&lt;http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">schema</span><span class="p">:</span>   <span class="nl">&lt;http://schema.org/&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">skos</span><span class="p">:</span>     <span class="nl">&lt;http://www.w3.org/2004/02/skos/core#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">rdfs</span><span class="p">:</span>     <span class="nl">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">xsd</span><span class="p">:</span>      <span class="nl">&lt;http://www.w3.org/2001/XMLSchema#&gt;</span>
+
+<span class="k">SELECT</span> <span class="k">DISTINCT</span>
+       <span class="nv">?commercialSpace</span>
+       <span class="nv">?commercialSpaceLabel</span>
+	   <span class="nv">?infTypeLabel</span>
+       <span class="nv">?permit</span>
+       <span class="nv">?permitTypeLabel</span>
+       <span class="nv">?startDate</span>
+       <span class="nv">?endDate</span>
+<span class="k">WHERE</span> <span class="p">{</span>
+
+  <span class="p">{</span>
+    <span class="c">########################################################</span>
+    <span class="c"># CASO 1: QUIOSCOS con licencia vigente</span>
+    <span class="c">########################################################</span>
+    <span class="nv">?permit</span> <span class="k">a</span> <span class="nn">edintcom</span><span class="p">:</span><span class="nt">Permit</span> <span class="p">;</span>
+            <span class="nn">edintcom</span><span class="p">:</span><span class="nt">appliedTo</span> <span class="nv">?commercialSpace</span> <span class="p">;</span>
+            <span class="nn">edintcom</span><span class="p">:</span><span class="nt">hasCommercialPermitType</span> <span class="nv">?permitType</span> <span class="p">;</span>
+            <span class="nn">schema</span><span class="p">:</span><span class="nt">startDate</span> <span class="nv">?startDate</span> <span class="p">.</span>
+
+    <span class="k">OPTIONAL</span> <span class="p">{</span> <span class="nv">?permit</span> <span class="nn">schema</span><span class="p">:</span><span class="nt">endDate</span> <span class="nv">?endDate</span> <span class="p">}</span>
+
+    <span class="nv">?commercialSpace</span> <span class="k">a</span> <span class="nn">edintcom</span><span class="p">:</span><span class="nt">CommercialSpace</span> <span class="p">;</span>
+	                 <span class="nn">edintinf</span><span class="p">:</span><span class="nt">hasInfrastructureType</span> <span class="nv">?inftype</span> <span class="p">.</span>
+
+    <span class="nv">?infType</span> <span class="nn">skos</span><span class="p">:</span><span class="nt">prefLabel</span> <span class="nv">?infTypeLabel</span> <span class="p">.</span>
+
+    <span class="k">FILTER</span> <span class="p">(</span>
+      <span class="nf">CONTAINS</span><span class="p">(</span><span class="nf">LCASE</span><span class="p">(</span><span class="nf">STR</span><span class="p">(</span><span class="nv">?infTypeLabel</span><span class="p">)),</span> <span class="s">&quot;quiosco&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="k">FILTER</span> <span class="p">(</span>
+      <span class="nv">?startDate</span> <span class="o">&lt;=</span> <span class="nf">NOW</span><span class="p">()</span> <span class="o">&amp;&amp;</span>
+      <span class="p">(</span> <span class="o">!</span><span class="nf">BOUND</span><span class="p">(</span><span class="nv">?endDate</span><span class="p">)</span> <span class="o">||</span> <span class="nv">?endDate</span> <span class="o">&gt;=</span> <span class="nf">NOW</span><span class="p">()</span> <span class="p">)</span>
+    <span class="p">)</span>
+  <span class="p">}</span>
+
+  <span class="k">UNION</span>
+
+  <span class="p">{</span>
+    <span class="c">########################################################</span>
+    <span class="c"># CASO 2: ESTABLECIMIENTOS CON TERRAZA y licencia vigente</span>
+    <span class="c">########################################################</span>
+    <span class="nv">?commercialSpace</span> <span class="k">a</span> <span class="nn">edintcom</span><span class="p">:</span><span class="nt">CommercialSpace</span> <span class="p">;</span>
+                     <span class="nn">edintcom</span><span class="p">:</span><span class="nt">hasTerrace</span> <span class="nv">?terrace</span> <span class="p">.</span>
+
+    <span class="nv">?terrace</span> <span class="k">a</span> <span class="nn">edintcom</span><span class="p">:</span><span class="nt">Terrace</span> <span class="p">.</span>
+
+    <span class="nv">?permit</span> <span class="k">a</span> <span class="nn">edintcom</span><span class="p">:</span><span class="nt">Permit</span> <span class="p">;</span>
+            <span class="nn">edintcom</span><span class="p">:</span><span class="nt">appliedTo</span> <span class="nv">?terrace</span> <span class="p">;</span>
+            <span class="nn">edintcom</span><span class="p">:</span><span class="nt">hasCommercialPermitType</span> <span class="nv">?permitType</span> <span class="p">;</span>
+            <span class="nn">schema</span><span class="p">:</span><span class="nt">startDate</span> <span class="nv">?startDate</span> <span class="p">.</span>
+
+    <span class="k">OPTIONAL</span> <span class="p">{</span> <span class="nv">?permit</span> <span class="nn">schema</span><span class="p">:</span><span class="nt">endDate</span> <span class="nv">?endDate</span> <span class="p">}</span>
+
+    <span class="nv">?permitType</span> <span class="nn">skos</span><span class="p">:</span><span class="nt">prefLabel</span> <span class="nv">?permitTypeLabel</span> <span class="p">.</span>
+
+    <span class="k">FILTER</span> <span class="p">(</span>
+      <span class="nv">?startDate</span> <span class="o">&lt;=</span> <span class="nf">NOW</span><span class="p">()</span> <span class="o">&amp;&amp;</span>
+      <span class="p">(</span> <span class="o">!</span><span class="nf">BOUND</span><span class="p">(</span><span class="nv">?endDate</span><span class="p">)</span> <span class="o">||</span> <span class="nv">?endDate</span> <span class="o">&gt;=</span> <span class="nf">NOW</span><span class="p">()</span> <span class="p">)</span>
+    <span class="p">)</span>
+  <span class="p">}</span>
+
+  <span class="k">OPTIONAL</span> <span class="p">{</span>
+    <span class="nv">?commercialSpace</span> <span class="nn">rdfs</span><span class="p">:</span><span class="nt">label</span> <span class="nv">?commercialSpaceLabel</span> <span class="p">.</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">ORDER BY</span> <span class="nv">?commercialSpaceLabel</span>
+</pre></div>
+</div></section><section class="file-card" id="COM11_sparql"><div class="file-header">COM11.sparql</div><div class="query-block"><span class="query-title">COM11: ¿Qué mercados existen en un municipio?</span><div class="sparql-code"><pre><span></span><span class="k">PREFIX</span> <span class="nn">edintcom</span><span class="p">:</span> <span class="nl">&lt;http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">edintinf</span><span class="p">:</span> <span class="nl">&lt;http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">esadm</span><span class="p">:</span>    <span class="nl">&lt;http://vocab.linkeddata.es/datosabiertos/def/sector-publico/territorio#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">rdfs</span><span class="p">:</span>     <span class="nl">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span>
+
+<span class="k">SELECT</span> <span class="k">DISTINCT</span>
+       <span class="nv">?market</span>
+       <span class="nv">?marketLabel</span>
+<span class="k">WHERE</span> <span class="p">{</span>
+  <span class="nv">?market</span> <span class="k">a</span> <span class="nn">edintcom</span><span class="p">:</span><span class="nt">CommercialAggregation</span> <span class="p">;</span>
+          <span class="nn">edintinf</span><span class="p">:</span><span class="nt">belongsTo</span> <span class="nl">&lt;URI-MUNICIPIO&gt;</span> <span class="p">.</span> <span class="c">#Por ejemplo, &lt;http://datos.ejemplo.es/recurso/municipio/Madrid&gt; .</span>
+
+  <span class="k">OPTIONAL</span> <span class="p">{</span>
+    <span class="nv">?market</span> <span class="nn">rdfs</span><span class="p">:</span><span class="nt">label</span> <span class="nv">?marketLabel</span> <span class="p">.</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">ORDER BY</span> <span class="nv">?marketLabel</span>
+
+
+
+<span class="c"># Variante con el número de puestos/comercio de cada mercado</span>
+
+<span class="k">PREFIX</span> <span class="nn">edintcom</span><span class="p">:</span> <span class="nl">&lt;http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">edintinf</span><span class="p">:</span> <span class="nl">&lt;http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">esadm</span><span class="p">:</span>    <span class="nl">&lt;http://vocab.linkeddata.es/datosabiertos/def/sector-publico/territorio#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">rdfs</span><span class="p">:</span>     <span class="nl">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span>
+
+<span class="k">SELECT</span>
+  <span class="nv">?market</span>
+  <span class="nv">?marketLabel</span>
+  <span class="p">(</span><span class="nf">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span> <span class="nv">?commercialSpace</span><span class="p">)</span> <span class="k">AS</span> <span class="nv">?numComercios</span><span class="p">)</span>
+<span class="k">WHERE</span> <span class="p">{</span>
+  <span class="nv">?market</span> <span class="k">a</span> <span class="nn">edintcom</span><span class="p">:</span><span class="nt">CommercialAggregation</span> <span class="p">;</span>
+          <span class="nn">edintinf</span><span class="p">:</span><span class="nt">belongsTo</span> <span class="nl">&lt;URI-MUNICIPIO&gt;</span> <span class="p">.</span> <span class="c">#Por ejemplo, &lt;http://datos.ejemplo.es/recurso/municipio/Madrid&gt; .</span>
+
+  <span class="k">OPTIONAL</span> <span class="p">{</span>
+    <span class="nv">?commercialSpace</span> <span class="k">a</span> <span class="nn">edintcom</span><span class="p">:</span><span class="nt">CommercialSpace</span> <span class="p">;</span>
+                     <span class="nn">edintcom</span><span class="p">:</span><span class="nt">belongsToCommercialAggregation</span> <span class="nv">?market</span> <span class="p">.</span>
+  <span class="p">}</span>
+
+  <span class="k">OPTIONAL</span> <span class="p">{</span> <span class="nv">?market</span> <span class="nn">rdfs</span><span class="p">:</span><span class="nt">label</span> <span class="nv">?marketLabel</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">GROUP BY</span> <span class="nv">?market</span> <span class="nv">?marketLabel</span>
+<span class="k">ORDER BY</span> <span class="k">DESC</span><span class="p">(</span><span class="nv">?numComercios</span><span class="p">)</span>
+</pre></div>
+</div></section><section class="file-card" id="COM12_sparql"><div class="file-header">COM12.sparql</div><div class="query-block"><span class="query-title">COM12: ¿Cuál es el número de puestos por mercado y su grado de ocupación?</span><div class="sparql-code"><pre><span></span><span class="k">PREFIX</span> <span class="nn">edintcom</span><span class="p">:</span> <span class="nl">&lt;http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">skos</span><span class="p">:</span>     <span class="nl">&lt;http://www.w3.org/2004/02/skos/core#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">rdfs</span><span class="p">:</span>     <span class="nl">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">xsd</span><span class="p">:</span>      <span class="nl">&lt;http://www.w3.org/2001/XMLSchema#&gt;</span>
+
+<span class="k">SELECT</span>
+  <span class="nv">?market</span>
+  <span class="nv">?marketLabel</span>
+  <span class="p">(</span><span class="nf">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span> <span class="nv">?commercialSpace</span><span class="p">)</span> <span class="k">AS</span> <span class="nv">?totalPuestos</span><span class="p">)</span>
+  <span class="p">(</span><span class="nf">SUM</span><span class="p">(</span><span class="nv">?occupied</span><span class="p">)</span> <span class="k">AS</span> <span class="nv">?puestosOcupados</span><span class="p">)</span>
+<span class="c"># Si se quiere el porcentaje:</span>
+<span class="c"># (ROUND( (SUM(?occupied) * 100.0) / COUNT(DISTINCT ?commercialSpace) ) AS ?gradoOcupacion)</span>
+<span class="k">WHERE</span> <span class="p">{</span>
+  <span class="c"># Mercado</span>
+  <span class="nv">?market</span> <span class="k">a</span> <span class="nn">edintcom</span><span class="p">:</span><span class="nt">CommercialAggregation</span> <span class="p">.</span>
+
+  <span class="k">OPTIONAL</span> <span class="p">{</span> <span class="nv">?market</span> <span class="nn">rdfs</span><span class="p">:</span><span class="nt">label</span> <span class="nv">?marketLabel</span> <span class="p">}</span>
+
+  <span class="c"># Puestos del mercado</span>
+  <span class="nv">?commercialSpace</span> <span class="k">a</span> <span class="nn">edintcom</span><span class="p">:</span><span class="nt">CommercialSpace</span> <span class="p">;</span>
+                   <span class="nn">edintcom</span><span class="p">:</span><span class="nt">belongsToCommercialAggregation</span> <span class="nv">?market</span> <span class="p">;</span>
+                   <span class="nn">edintcom</span><span class="p">:</span><span class="nt">hasCommercialSpaceStatus</span> <span class="nv">?status</span> <span class="p">.</span>
+  
+  <span class="c"># Puestos que están ocupados</span>
+  <span class="k">FILTER</span> <span class="p">(</span>
+    <span class="nv">?status</span> <span class="o">=</span> <span class="nl">&lt;http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialSpaceStatus/Taken&gt;</span>
+  <span class="p">)</span>
+<span class="p">}</span>
+<span class="k">GROUP BY</span> <span class="nv">?market</span> <span class="nv">?marketLabel</span>
+<span class="c"># ORDER BY DESC(?gradoOcupacion)</span>
+</pre></div>
+</div></section><section class="file-card" id="COM13_sparql"><div class="file-header">COM13.sparql</div><div class="query-block"><span class="query-title">COM13: ¿Qué actividades comerciales existen en una zona determinada?<br>Sin tener en cuenta posibles correspondencias entre códigos CNAE e IAE</span><div class="sparql-code"><pre><span></span><span class="k">PREFIX</span> <span class="nn">edintcom</span><span class="p">:</span> <span class="nl">&lt;http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">edintinf</span><span class="p">:</span> <span class="nl">&lt;http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">schema</span><span class="p">:</span>   <span class="nl">&lt;http://schema.org/&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">skos</span><span class="p">:</span>     <span class="nl">&lt;http://www.w3.org/2004/02/skos/core#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">rdfs</span><span class="p">:</span>     <span class="nl">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span>
+<span class="k">PREFIX</span> <span class="nn">xsd</span><span class="p">:</span>      <span class="nl">&lt;http://www.w3.org/2001/XMLSchema#&gt;</span>
+
+<span class="k">SELECT</span>
+  <span class="nv">?activityType</span>          <span class="c"># &quot;CNAE&quot; o &quot;IAE&quot;</span>
+  <span class="nv">?activityCode</span>
+  <span class="nv">?activityLabel</span>
+  <span class="p">(</span><span class="nf">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span> <span class="nv">?permit</span><span class="p">)</span> <span class="k">AS</span> <span class="nv">?numLicenciasVigentes</span><span class="p">)</span>
+<span class="k">WHERE</span> <span class="p">{</span>
+  <span class="c"># Licencias aplicadas a espacios comerciales de la zona</span>
+  <span class="nv">?permit</span> <span class="k">a</span> <span class="nn">edintcom</span><span class="p">:</span><span class="nt">Permit</span> <span class="p">;</span>
+          <span class="nn">edintcom</span><span class="p">:</span><span class="nt">appliedTo</span> <span class="nv">?commercialSpace</span> <span class="p">;</span>
+          <span class="nn">schema</span><span class="p">:</span><span class="nt">startDate</span> <span class="nv">?startDate</span> <span class="p">.</span>
+
+  <span class="k">OPTIONAL</span> <span class="p">{</span> <span class="nv">?permit</span> <span class="nn">schema</span><span class="p">:</span><span class="nt">endDate</span> <span class="nv">?endDate</span> <span class="p">}</span>
+
+  <span class="nv">?commercialSpace</span> <span class="k">a</span> <span class="nn">edintcom</span><span class="p">:</span><span class="nt">CommercialSpace</span> <span class="p">;</span>
+                   <span class="nn">edintinf</span><span class="p">:</span><span class="nt">belongsTo</span> <span class="nl">&lt;URI-DIVISIÓN&gt;</span> <span class="p">.</span> <span class="c">#Por ejemplo, &lt;http://datos.ejemplo.es/recurso/distrito/Centro&gt;</span>
+
+  <span class="c"># Licencias vigentes</span>
+  <span class="k">FILTER</span> <span class="p">(</span>
+    <span class="nv">?startDate</span> <span class="o">&lt;=</span> <span class="nf">NOW</span><span class="p">()</span> <span class="o">&amp;&amp;</span>
+    <span class="p">(</span> <span class="o">!</span><span class="nf">BOUND</span><span class="p">(</span><span class="nv">?endDate</span><span class="p">)</span> <span class="o">||</span> <span class="nv">?endDate</span> <span class="o">&gt;=</span> <span class="nf">NOW</span><span class="p">()</span> <span class="p">)</span>
+  <span class="p">)</span>
+
+  <span class="c"># CNAE</span>
+  <span class="p">{</span>
+    <span class="nv">?permit</span> <span class="nn">edintcom</span><span class="p">:</span><span class="nt">hasCNAECode</span> <span class="nv">?activityCode</span> <span class="p">.</span>
+    <span class="k">BIND</span><span class="p">(</span><span class="s">&quot;CNAE&quot;</span> <span class="k">AS</span> <span class="nv">?activityType</span><span class="p">)</span>
+    <span class="k">OPTIONAL</span> <span class="p">{</span> <span class="nv">?activityCode</span> <span class="nn">skos</span><span class="p">:</span><span class="nt">prefLabel</span> <span class="nv">?activityLabel</span> <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">UNION</span>
+  <span class="c"># IAE</span>
+  <span class="p">{</span>
+    <span class="nv">?permit</span> <span class="nn">edintcom</span><span class="p">:</span><span class="nt">hasIAECode</span> <span class="nv">?activityCode</span> <span class="p">.</span>
+    <span class="k">BIND</span><span class="p">(</span><span class="s">&quot;IAE&quot;</span> <span class="k">AS</span> <span class="nv">?activityType</span><span class="p">)</span>
+    <span class="k">OPTIONAL</span> <span class="p">{</span> <span class="nv">?activityCode</span> <span class="nn">skos</span><span class="p">:</span><span class="nt">prefLabel</span> <span class="nv">?activityLabel</span> <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">GROUP BY</span> <span class="nv">?activityType</span> <span class="nv">?activityCode</span> <span class="nv">?activityLabel</span>
+<span class="k">ORDER BY</span> <span class="nv">?activityType</span> <span class="k">DESC</span><span class="p">(</span><span class="nv">?numLicenciasVigentes</span><span class="p">)</span> <span class="nv">?activityLabel</span>
+</pre></div>
+</div></section>
+        </div>
+    </body>
+    </html>
+    
