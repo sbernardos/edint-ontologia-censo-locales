@@ -53,8 +53,14 @@ edintkoscomespsit:ShutDown a skos:Concept ;
 
 edintkoscomespsit:Free a skos:Concept ;
   skos:inScheme edintkos:CommercialSpaceStatus ;
-  skos:prefLabel "Libre"@es ;
-  skos:prefLabel "Free"@en .
+  skos:prefLabel "Puesto libre"@es ;
+  skos:prefLabel "Free stall"@en .
+  
+edintkoscomespsit:Taken a skos:Concept ;
+  skos:inScheme edintkos:CommercialSpaceStatus ;
+  skos:prefLabel "Puesto ocupado"@es ;
+  skos:prefLabel "Taken stall"@en .
+
 
 edintkoscomespsit:UnderConstruction a skos:Concept ;
   skos:inScheme edintkos:CommercialSpaceStatus ;
