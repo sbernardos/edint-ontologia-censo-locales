@@ -11,6 +11,9 @@ prefixes:
   edintinf: "http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#"
   edintkosinf: "http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureType/"
   esdir: "http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/direccion-postal#"
+  tejcom: "http://vocab.ciudadesabiertas.es/def/comercio/tejido-comercial#"
+
+
 sources:
   entidades: ['entidades_comerciales.csv~csv']
 
@@ -24,9 +27,6 @@ mappings:
       - [a, edintcom:CommercialEntity]
       - [dcterms:identifier, $(entidad_id)]
       - [rdfs:label, $(nombre)]
-      - [schema:identifier, $(nif)]
-      - [schema:telephone, $(telefono)]
-      - [schema:email, $(email)]
       - [schema:legalName, $(razon_social)]
       - [schema:url, $(web)]
       - [edintcom:usesSpace, "http://vocab.linkeddata.es/datosabiertos/recurso/espacio-comercial/$(espacio-comercial_id)~iri"]
@@ -60,12 +60,12 @@ mappings:
       - [geosparql:hasGeometry, http://vocab.linkeddata.es/datosabiertos/recurso/terraza/geometry/$(terraza_id)~iri]
       - [edintinf:belongsTo, http://vocab.linkeddata.es/datosabiertos/recurso/sector-publico/territorio/barrio/$(barrio_id)~iri]
       - [edintinf:hasInfrastructureType, edintkosinf:Terrace~iri]
-      - [edintinf:hasRegisteredOwner, http://vocab.linkeddata.es/datosabiertos/recurso/entidad-comercial/$(entidad_id)~iri]
       - [schema:maximumAttendeeCapacity, $(terraza_aforo), xsd:integer]
-      - [edintcom:hasTerraceType, edintkosterrtype:$(tipo_terraza)~iri] # TODO falta el skos
       - [edintcom:hasTerracePeriod, "edintterper:$(periodo_funcionamiento)~iri"] # anual, estacional
       - [schema:floorSize, $(terraza_superficie_m2)]
       - [schema:maximumAttendeeCapacity, $(terraza_aforo), xsd:integer]
+      - [edintcom:numeroMesasAutorizadas, $(numero_mesas), xsd:integer]
+      - [edintcom:numeroSillasAutorizadas, $(numero_sillas), xsd:integer]
 
   terraza-geometry:
     sources:
