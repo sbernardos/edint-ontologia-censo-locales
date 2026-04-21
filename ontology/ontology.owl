@@ -245,7 +245,7 @@
         <ObjectProperty abbreviatedIRI="escjr:contieneVia"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty abbreviatedIRI="edintinf:hasInfrastructureElementType"/>
+        <ObjectProperty abbreviatedIRI="edintinf:hasInfrastructureType"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="http://www.geonames.org/ontology#featureClass"/>
@@ -333,9 +333,6 @@
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="http://vocab.linkeddata.es/datosabiertos/kos/edint/IAE"/>
-    </Declaration>
-    <Declaration>
-        <NamedIndividual IRI="http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureElementType"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureType"/>
@@ -541,10 +538,6 @@
     </ClassAssertion>
     <ClassAssertion>
         <Class IRI="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
-        <NamedIndividual IRI="http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureElementType"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <Class IRI="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
         <NamedIndividual IRI="http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureType"/>
     </ClassAssertion>
     <ClassAssertion>
@@ -674,12 +667,12 @@
         <Class abbreviatedIRI="escjr:Via"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
-        <ObjectProperty abbreviatedIRI="edintinf:hasInfrastructureElementType"/>
+        <ObjectProperty abbreviatedIRI="edintinf:hasInfrastructureType"/>
         <ObjectIntersectionOf>
             <Class IRI="http://www.w3.org/2004/02/skos/core#Concept"/>
             <ObjectHasValue>
                 <ObjectProperty IRI="http://www.w3.org/2004/02/skos/core#inScheme"/>
-                <NamedIndividual IRI="http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureElementType"/>
+                <NamedIndividual IRI="http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureType"/>
             </ObjectHasValue>
         </ObjectIntersectionOf>
     </ObjectPropertyRange>
@@ -1375,7 +1368,7 @@
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
         <IRI>#locatedInZone</IRI>
-        <Literal xml:lang="es">Relaciona una entidad, princiaplmente un espacio, campaña o evento comercial, con la zona en la que está.</Literal>
+        <Literal xml:lang="es">Relaciona una entidad, principalmente un espacio, campaña o evento comercial, con la zona en la que está.</Literal>
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:label"/>
@@ -1732,7 +1725,7 @@ Además de las propiedades asociadas a estas clases, y definidas en su correspon
     </AnnotationAssertion>
     <AnnotationAssertion>
         <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
-        <AbbreviatedIRI>edintinf:hasInfrastructureElementType</AbbreviatedIRI>
+        <AbbreviatedIRI>edintinf:hasInfrastructureType</AbbreviatedIRI>
         <IRI>http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/infraestructura#</IRI>
     </AnnotationAssertion>
     <AnnotationAssertion>
