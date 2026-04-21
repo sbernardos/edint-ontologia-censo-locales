@@ -10,6 +10,7 @@
 @prefix edintinf: <http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#>.
 @prefix edintkosinf: <http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureType/>.
 @prefix esdir: <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/direccion-postal#>.
+@prefix tejcom: <http://vocab.ciudadesabiertas.es/def/comercio/tejido-comercial#>.
 @prefix rr: <http://www.w3.org/ns/r2rml#>.
 @prefix rml: <http://semweb.mmlab.be/ns/rml#>.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
@@ -76,36 +77,6 @@ map:rules_000 schema:contributor map:person_000 ;
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "nombre";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [
-			a rr:PredicateMap;
-			rr:constant schema:identifier;
-		];
-		rr:objectMap [
-			a rr:ObjectMap;
-			rml:reference "nif";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [
-			a rr:PredicateMap;
-			rr:constant schema:telephone;
-		];
-		rr:objectMap [
-			a rr:ObjectMap;
-			rml:reference "telefono";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [
-			a rr:PredicateMap;
-			rr:constant schema:email;
-		];
-		rr:objectMap [
-			a rr:ObjectMap;
-			rml:reference "email";
 		];
 	];
 	rr:predicateObjectMap [
@@ -358,34 +329,12 @@ map:rules_000 schema:contributor map:person_000 ;
 	rr:predicateObjectMap [
 		rr:predicateMap [
 			a rr:PredicateMap;
-			rr:constant edintinf:hasRegisteredOwner;
-		];
-		rr:objectMap [
-			a rr:ObjectMap;
-			rr:template "http://vocab.linkeddata.es/datosabiertos/recurso/entidad-comercial/{entidad_id}";
-			rr:termType rr:IRI
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [
-			a rr:PredicateMap;
 			rr:constant schema:maximumAttendeeCapacity;
 		];
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "terraza_aforo";
 			rr:datatype xsd:integer
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [
-			a rr:PredicateMap;
-			rr:constant edintcom:hasTerraceType;
-		];
-		rr:objectMap [
-			a rr:ObjectMap;
-			rr:template "edintkosterrtype:{tipo_terraza}";
-			rr:termType rr:IRI
 		];
 	];
 	rr:predicateObjectMap [
@@ -417,6 +366,28 @@ map:rules_000 schema:contributor map:person_000 ;
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "terraza_aforo";
+			rr:datatype xsd:integer
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant edintcom:numeroMesasAutorizadas;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rml:reference "numero_mesas";
+			rr:datatype xsd:integer
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant edintcom:numeroSillasAutorizadas;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rml:reference "numero_sillas";
 			rr:datatype xsd:integer
 		];
 	].
