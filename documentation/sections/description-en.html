@@ -4,7 +4,7 @@
 
 </span>
 <img src="images/diagrama.png" style="width:95%; display:block; margin:0 auto;">
-<pre><textarea style="resize:none" readonly id="code_d581" name="code" rows="25" cols="100">
+<pre><textarea style="resize:none" readonly id="code_e104" name="code" rows="25" cols="100">
 @prefix comp: &lt;http://semweb.mmlab.be/ns/rml-compression#&gt; .
 @prefix d2rq: &lt;http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#&gt; .
 @prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
@@ -76,9 +76,29 @@
 &lt;http://vocab.linkeddata.es/datosabiertos/recurso/terraza/geometry/TER-0001&gt; geosparql:asWKT
     "POINT (-3.700200 40.434300)"^^geosparql:wktLiteral .
 
+&lt;http://vocab.linkeddata.es/datosabiertos/recurso/licencia/LIC-CAF-0001&gt; a edintcom:Permit ;
+  dcterms:identifier "LIC-CAF-0001" ;
+  rdfs:label "Licencia de actividad Cafetería Chamberí" ;
+  edintcom:fileCode "2021/EXP/45872" ;
+  edintcom:appliedTo &lt;http://vocab.linkeddata.es/datosabiertos/recurso/espacio-comercial/COM-0001&gt; ;
+  edintcom:hasCommercialPermitType http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialPermitType/APAL ;
+  edintcom:hasCommercialPermitStatus http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialPermitStatus/Granted ;
+  edintcom:hasCNAECode &lt;http://lod.ine.es/kos/cnae/CNAE-2025/6/563000&gt; ;
+  edintcom:hasIAECode &lt;http://vocab.linkeddata.es/datosabiertos/kos/edint/iae/3/673.1&gt; ;
+  schema:startDate "2021-05-14T00:00:00"^^xsd:dateTime .
+
+&lt;http://vocab.linkeddata.es/datosabiertos/recurso/licencia/LIC-TER-0001&gt; a edintcom:Permit ;
+  dcterms:identifier "LIC-TER-0001" ;
+  rdfs:label "Autorización de terraza Cafetería Chamberí" ;
+  edintcom:fileCode "2024/VEL/10328" ;
+  edintcom:appliedTo &lt;http://vocab.linkeddata.es/datosabiertos/recurso/terraza/TER-0001&gt; ;
+  edintcom:hasCommercialPermitType http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialPermitType/APAL ;
+  edintcom:hasCommercialPermitStatus http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialPermitStatus/Granted ;
+  schema:startDate "2024-03-01T00:00:00"^^xsd:dateTime ;
+  schema:endDate "2026-12-31T23:59:59"^^xsd:dateTime .
 </textarea></pre>
 <script>
-    var editor_d581 = CodeMirror.fromTextArea(document.getElementById("code_d581"), {
+    var editor_e104 = CodeMirror.fromTextArea(document.getElementById("code_e104"), {
         mode: "text/turtle",
         matchBrackets: true
     });
