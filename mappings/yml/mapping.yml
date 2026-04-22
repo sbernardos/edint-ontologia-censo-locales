@@ -92,3 +92,34 @@ mappings:
       - [a, esdir:DireccionPostal] # Reutilizado de Callejero
       - [rdfs:label, $(codigo_postal)]
       - [schema:postalCode, $(codigo_postal)]
+
+  licencia_actividad:
+    sources:
+      - entidades
+    s: http://vocab.linkeddata.es/datosabiertos/recurso/licencia/$(licencia_cafeteria_id)
+    po:
+      - [a, edintcom:Permit]
+      - [dcterms:identifier, $(licencia_cafeteria_id)]
+      - [rdfs:label, $(licencia_cafeteria_label)]
+      - [edintcom:fileCode, $(licencia_cafeteria_expediente)]
+      - [edintcom:appliedTo, "http://vocab.linkeddata.es/datosabiertos/recurso/espacio-comercial/$(espacio-comercial_id)~iri"]
+      - [edintcom:hasCommercialPermitType, "http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialPermitType/$(licencia_cafeteria_tipo)~iri"]
+      - [edintcom:hasCommercialPermitStatus, "http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialPermitStatus/(licencia_cafeteria_estado)~iri"]
+      - [edintcom:hasCNAECode, "http://lod.ine.es/kos/cnae/CNAE-2025/$(cnae_nivel)/$(cnae_codigo)~iri"]
+      - [edintcom:hasIAECode, "http://vocab.linkeddata.es/datosabiertos/kos/edint/iae/$(iae_nivel)/$(iae_codigo)~iri"]
+      - [schema:startDate, $(licencia_cafeteria_fecha_inicio), xsd:dateTime]
+
+  licencia_terraza:
+    sources:
+      - entidades
+    s: http://vocab.linkeddata.es/datosabiertos/recurso/licencia/$(licencia_terraza_id)
+    po:
+      - [a, edintcom:Permit]
+      - [dcterms:identifier, $(licencia_terraza_id)]
+      - [rdfs:label, $(licencia_terraza_label)]
+      - [edintcom:fileCode, $(licencia_terraza_expediente)]
+      - [edintcom:appliedTo, "http://vocab.linkeddata.es/datosabiertos/recurso/terraza/$(terraza_id)~iri"]
+      - [edintcom:hasCommercialPermitType, "http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialPermitType/$(licencia_terraza_tipo)~iri"]
+      - [edintcom:hasCommercialPermitStatus, "http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialPermitStatus/$(licencia_terraza_estado)~iri"]
+      - [schema:startDate, $(licencia_terraza_fecha_inicio), xsd:dateTime]
+      - [schema:endDate, $(licencia_terraza_fecha_fin), xsd:dateTime]
