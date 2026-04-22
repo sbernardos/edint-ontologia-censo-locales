@@ -13,11 +13,11 @@
 <script type="module" src="resources/dark-mode-toggle.mjs"></script><div class="darkmode">
 	<dark-mode-toggle class="slider"></dark-mode-toggle>
 </div>
-<link rel="icon" type="image/png" href="resources/rdf.icon"/> <title>Ontología de Establecimiento Comercial</title>
+<link rel="icon" type="image/png" href="resources/rdf.icon"/> <title>Ontología de Promoción Comercial</title>
 
 
 <!-- SCHEMA.ORG METADATA -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","url":"http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#","image":"http://vowl.visualdataweb.org/webvowl/#iri=http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#","name":"Ontología de Establecimiento Comercial", "headline":"Esta ontología tiene como propósito proporcionar un vocabulario común para la representación de las entidades y los datos principales relacionados con los establecimientos comerciales de un municipio y sus licencias.", "dateReleased":"Date created", "dateModified":"Date modified", "version":"v0.1.0", "license":"https://creativecommons.org/licenses/by/4.0/", "author":[{"@type":"Person","name":"Daniel Doña"},{"@type":"Person","name":"Edna Ruckhaus"},{"@type":"Person","name":"Lucía Sánchez"},{"@type":"Person","name":"Oscar Corcho"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","url":"http://vocab.linkeddata.es/datosabiertos/def/comercio/promocion#","image":"http://vowl.visualdataweb.org/webvowl/#iri=http://vocab.linkeddata.es/datosabiertos/def/comercio/promocion#","name":"Ontología de Promoción Comercial", "headline":"El propósito de esta ontología es proporcionar un vocabulario común para la representación de las entidades y los datos principales relacionados con la promoción comercial, como campañas y eventos comerciales. Su alcance incluye la descripción de campañas comerciales, eventos comerciales, zonas de interés económico y comercial, así como las relaciones entre estos elementos y los espacios comerciales, entidades territoriales y direcciones postales. Quedan fuera del alcance de la ontología otros aspectos relacionados con el comercio, como pueden ser los datos del censo de locales comerciales, que son objeto de una ontología específica dentro del mismo proyecto EDINT.", "dateReleased":"Date created", "dateModified":"Date modified", "version":"v0.1.0", "license":"https://creativecommons.org/licenses/by/4.0/", "author":[{"@type":"Person","name":"Daniel Doña"},{"@type":"Person","name":"Edna Ruckhaus"},{"@type":"Person","name":"Lucía Sánchez"},{"@type":"Person","name":"Oscar Corcho"},{"@type":"Person","name":"Socorro Bernardos"}]}</script>
 
 <script src="resources/jquery.js"></script> 
 <script src="resources/marked.min.js"></script> 
@@ -65,49 +65,40 @@ function loadTOC(){
       $("#crossref").load("sections/crossref-es.html", null, loadHash); 
     });
     </script> 
-  
-<link rel="stylesheet" href="resources/codemirror.css">
-<script src="resources/codemirror.js"></script>
-<script src="resources/matchbrackets.js"></script>
-<script src="resources/turtle.js"></script>
-
-</head> 
+  </head> 
 
 <body>
 <div class="container">
 <div class="head">
 <div style="float:right">language <a href="index-en.html"><b>en</b></a> <a href="index-es.html"><b>es</b></a> </div>
-<h1>Ontología de Establecimiento Comercial</h1>
+<h1>Ontología de Promoción Comercial</h1>
 <h2>Fecha de creaci&oacute;n: Date created</h2>
 
 
 <dl>
 <dt>Fecha de modificaci&oacute;n: Date modified</dt>
 <dt>Versi&oacute;n:</dt>
-<dd><a href="http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#">http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#</a></dd>
+<dd><a href="http://vocab.linkeddata.es/datosabiertos/def/comercio/promocion/0.1.0">http://vocab.linkeddata.es/datosabiertos/def/comercio/promocion/0.1.0</a></dd>
 <dt>&Uacute;ltima Versi&oacute;n:</dt>
-<dd><a href="http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#">http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#</a></dd>
+<dd><a href="http://vocab.linkeddata.es/datosabiertos/def/comercio/promocion#">http://vocab.linkeddata.es/datosabiertos/def/comercio/promocion#</a></dd>
 <dt>Revisi&oacute;n n&uacute;mero:</dt>
 <dd>v0.1.0</dd>
 <dt>Fecha de emisi&oacute;n</dt>
 <dd>Date issued</dd>
 <dt>Autores:</dt>
-<dd>Daniel Doña, <a href="https://oeg.fi.upm.es/">Ontology Engineering Group, UPM</a></dd><dd>Edna Ruckhaus</dd><dd>Lucía Sánchez</dd><dd>Oscar Corcho</dd>
+<dd>Daniel Doña, <a href="https://oeg.fi.upm.es/">Ontology Engineering Group, UPM</a></dd><dd>Edna Ruckhaus</dd><dd>Lucía Sánchez</dd><dd>Oscar Corcho</dd><dd>Socorro Bernardos</dd>
 
 <dt>Publicado por:</dt>
-<dd><a href="https://www.femp.es/">FEMP</a>, <a href="https://www.femp.es/">Federación Española de Municipios y Provincias</a></dd>
+<dd><a href="https://www.femp.es/">FEMP</a></dd>
 <dt>Ontolog&iacute;as importadas:</dt>
-<dd><a href="http://vocab.linkeddata.es/datosabiertos/def/sector-publico/territorio">Territorio (esadm)</a></dd><dd><a href="http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero">Callejero (esadm)</a></dd><dd><a href="http://vocab.linkeddata.es/datosabiertos/def/common/zone#">Zonas (edintzone)</a></dd>
+<dd><a href="http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#">censo-locales</a></dd><dd><a href="http://vocab.linkeddata.es/datosabiertos/def/common/zone#">zone</a></dd><dd><a href="http://vocab.linkeddata.es/datosabiertos/def/sector-publico/territorio#">territorio</a></dd><dd><a href="http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#">callejero</a></dd><dd><a href="http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/direccion-postal#">direccion-postal</a></dd><dd><a href="http://schema.org/">schema</a></dd><dd><a href="http://www.w3.org/2006/time#">time</a></dd><dd><a href="http://www.opengis.net/ont/geosparql#">geosparql</a></dd>
 
-<dt>Descargar serializaci&oacute;n:</dt><dd><span><a href="ontology.jsonld" target="_blank"><img src="https://img.shields.io/badge/Format-JSON_LD-blue.svg" alt="JSON-LD" /></a> </span><span><a href="ontology.owl" target="_blank"><img src="https://img.shields.io/badge/Format-RDF/XML-blue.svg" alt="RDF/XML" /></a> </span><span><a href="ontology.nt" target="_blank"><img src="https://img.shields.io/badge/Format-N_Triples-blue.svg" alt="N-Triples" /></a> </span><span><a href="ontology.ttl" target="_blank"><img src="https://img.shields.io/badge/Format-TTL-blue.svg" alt="TTL" /></a> </span></dd><dt>Licencia:</dt><dd><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank"><img src="https://img.shields.io/badge/License-Creative%20Commons%20Attribution%204.0%20International-blue.svg" alt="https://creativecommons.org/licenses/by/4.0/" /></a>
-<a href="https://creativecommons.org/licenses/by/4.0/" rel="license" target="_blank">
-<img src="https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg" style="border-width:0" alt="License" />
-</a>
-<br/></dd><!-- <dt>Evaluation:</dt><dd><a href="OOPSevaluation/oopsEval.html#" target="_blank"><img src="https://img.shields.io/badge/Evaluate_with-OOPS! (OntOlogy Pitfall Scanner!)-blue.svg" alt="Evaluate with OOPS!" /></a></dd> --><dt>Citar como:</dt>
-<dd>Ontología de Establecimiento Comercial. EDINT. Revision: v0.1.0.</dd>
+<dt>Descargar serializaci&oacute;n:</dt><dd><span><a href="ontology.json" target="_blank"><img src="https://img.shields.io/badge/Format-JSON_LD-blue.svg" alt="JSON-LD" /></a> </span><span><a href="ontology.owl" target="_blank"><img src="https://img.shields.io/badge/Format-RDF/XML-blue.svg" alt="RDF/XML" /></a> </span><span><a href="ontology.nt" target="_blank"><img src="https://img.shields.io/badge/Format-N_Triples-blue.svg" alt="N-Triples" /></a> </span><span><a href="ontology.ttl" target="_blank"><img src="https://img.shields.io/badge/Format-TTL-blue.svg" alt="TTL" /></a> </span></dd><dt>Licencia:</dt><dd><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank"><img src="https://img.shields.io/badge/License-https://creativecommons.org/licenses/by/4.0/-blue.svg" alt="https://creativecommons.org/licenses/by/4.0/" /></a>
+</dd><!-- <dt>Evaluation:</dt><dd><a href="OOPSevaluation/oopsEval.html#" target="_blank"><img src="https://img.shields.io/badge/Evaluate_with-OOPS! (OntOlogy Pitfall Scanner!)-blue.svg" alt="Evaluate with OOPS!" /></a></dd> --><dt>Citar como:</dt>
+<dd>Ontología de Promoción Comercial. EDINT. Revision: v0.1.0.</dd>
 </dl>
 
-<a href="provenance/provenance-es.html" target="_blank">Provenance de esta p&aacute;gina</a><hr/>
+<hr/>
 </div>
 <div class="status">
 <div>
@@ -127,31 +118,5 @@ function loadTOC(){
 
 
 </div>
-
-<script>
-(function() {
-  function initCodeMirrorEditors() {
-    document.querySelectorAll('textarea[id^="code"]').forEach(function(ta) {
-      if (!ta.nextSibling || !ta.nextSibling.classList ||
-          !ta.nextSibling.classList.contains('CodeMirror')) {
-        CodeMirror.fromTextArea(ta, {
-          mode: "text/turtle",
-          matchBrackets: true,
-          readOnly: ta.readOnly
-        });
-      }
-    });
-  }
-  document.addEventListener('DOMContentLoaded', function() {
-    initCodeMirrorEditors();
-    new MutationObserver(function(mutations) {
-      mutations.forEach(function(m) {
-        if (m.addedNodes.length > 0) { initCodeMirrorEditors(); }
-      });
-    }).observe(document.body, { childList: true, subtree: true });
-  });
-})();
-</script>
-
 </body>
 </html>

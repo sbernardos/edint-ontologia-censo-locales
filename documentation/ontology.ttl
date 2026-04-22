@@ -273,7 +273,7 @@ xsd:gYearMonth rdf:type rdfs:Datatype .
 ###  http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#locatedInZone
 :locatedInZone rdf:type owl:ObjectProperty ;
                rdfs:comment "It relates en entity, especially a commercial space, event or campaign, to the zone where it is."@en ,
-                            "Relaciona una entidad, princiaplmente un espacio, campaña o evento comercial, con la zona en la que está."@es ;
+                            "Relaciona una entidad, principalmente un espacio, campaña o evento comercial, con la zona en la que está."@es ;
                rdfs:label "located in zone"@en ,
                           "situado en zona"@es .
 
@@ -312,17 +312,17 @@ xsd:gYearMonth rdf:type rdfs:Datatype .
                                                                                                 rdfs:label "contiene vía"@es .
 
 
-###  http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#hasInfrastructureElementType
-<http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#hasInfrastructureElementType> rdf:type owl:ObjectProperty ;
-                                                                                                                        rdfs:range [ owl:intersectionOf ( <http://www.w3.org/2004/02/skos/core#Concept>
-                                                                                                                                                          [ rdf:type owl:Restriction ;
-                                                                                                                                                            owl:onProperty <http://www.w3.org/2004/02/skos/core#inScheme> ;
-                                                                                                                                                            owl:hasValue <http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureElementType>
-                                                                                                                                                          ]
-                                                                                                                                                        ) ;
-                                                                                                                                     rdf:type owl:Class
-                                                                                                                                   ] ;
-                                                                                                                        rdfs:isDefinedBy <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/infraestructura#> .
+###  http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#hasInfrastructureType
+<http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#hasInfrastructureType> rdf:type owl:ObjectProperty ;
+                                                                                                                 rdfs:range [ owl:intersectionOf ( <http://www.w3.org/2004/02/skos/core#Concept>
+                                                                                                                                                   [ rdf:type owl:Restriction ;
+                                                                                                                                                     owl:onProperty <http://www.w3.org/2004/02/skos/core#inScheme> ;
+                                                                                                                                                     owl:hasValue <http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureType>
+                                                                                                                                                   ]
+                                                                                                                                                 ) ;
+                                                                                                                              rdf:type owl:Class
+                                                                                                                            ] ;
+                                                                                                                 rdfs:isDefinedBy <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/infraestructura#> .
 
 
 ###  http://www.geonames.org/ontology#featureClass
@@ -402,9 +402,14 @@ xsd:gYearMonth rdf:type rdfs:Datatype .
                             rdfs:label "fecha de finalización"@es .
 
 
-###  http://schema.org/name
-<http://schema.org/name> rdf:type owl:DatatypeProperty ;
-                         rdfs:isDefinedBy <http://schema.org/> .
+###  http://schema.org/floorSize
+<http://schema.org/floorSize> rdf:type owl:DatatypeProperty ;
+                              rdfs:isDefinedBy <http://schema.org/> .
+
+
+###  http://schema.org/maximumAttendeeCapacity
+<http://schema.org/maximumAttendeeCapacity> rdf:type owl:DatatypeProperty ;
+                                            rdfs:isDefinedBy <http://schema.org/> .
 
 
 ###  http://schema.org/openingHours
@@ -454,6 +459,22 @@ xsd:gYearMonth rdf:type rdfs:Datatype .
                               "Fecha en la que se hizo mantenimiento de una entidad por última vez, especialmente un elemento urbano."@es ;
                  rdfs:label "fecha de mantenimiento"@es ,
                             "maintenance date"@en .
+
+
+###  http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#numberOfPermitedChairs
+:numberOfPermitedChairs rdf:type owl:DatatypeProperty ;
+                        rdfs:comment "Indica el número máximo de sillas que puede tener una entidad, principalmente una terraza."@es ,
+                                     "It captures the maximum number of chairs an entity, especially a terrace, can have."@en ;
+                        rdfs:label "number of permited chairs"@en ,
+                                   "número de sillas autorizadas"@es .
+
+
+###  http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#numberOfPermitedTables
+:numberOfPermitedTables rdf:type owl:DatatypeProperty ;
+                        rdfs:comment "Indica el número máximo de mesas que puede tener una entidad, principalmente una terraza."@es ,
+                                     "It captures the maximun number of tables an entity, especially a terrace, can have."@en ;
+                        rdfs:label "number of permited tables"@en ,
+                                   "número de mesas autorizadas"@es .
 
 
 ###  http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#public
@@ -818,11 +839,6 @@ Además de las propiedades asociadas a estas clases, y definidas en su correspon
 <http://vocab.linkeddata.es/datosabiertos/kos/edint/IAE> rdf:type owl:NamedIndividual ,
                                                                   <http://www.w3.org/2004/02/skos/core#ConceptScheme> ;
                                                          rdfs:label "IAE"@es .
-
-
-###  http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureElementType
-<http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureElementType> rdf:type owl:NamedIndividual ,
-                                                                                        <http://www.w3.org/2004/02/skos/core#ConceptScheme> .
 
 
 ###  http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureType

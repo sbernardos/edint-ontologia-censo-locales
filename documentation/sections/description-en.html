@@ -1,10 +1,25 @@
-<h2 id="desc" class="list">edint-ontologia-censo-locales: Description <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<h2 id="desc" class="list">promocion: Description <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
 
-<span class="markdown">This is a placeholder text for the description of your ontology. The description should include an explanation and a diagram explaining how the classes are related, examples of usage, etc.
+<span class="markdown">
 
-</span>
-<img src="images/diagrama.png" style="width:95%; display:block; margin:0 auto;">
-<pre><textarea style="resize:none" readonly id="code_e104" name="code" rows="25" cols="100">
+<p>Figure 1 represents the main entities of the ontology and the relationships among them. The ontology represents, among other things, <a href="#CommercialSpace">commercial spaces</a>, their <a href="#CommercialAggregation">aggregations</a>, and their <a href="#Terrace">terraces</a>, thereby extending the set of <a href="http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#InfrastructureElement">infrastructure elements</a> considered in the <a href="http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#">EDINT Infrastructure Ontology</a>. <a href="#CommercialSpace">Commercial spaces</a> are places prepared for the sale of products, the provision of services, or customer service, such as shops or offices. They may <a href="#belongToCommercialAggregation">belong</a> to a <a href="#CommercialAggregation">commercial aggregation</a>, which brings several of them together in a physical location, and <a href="#hasTerrace">have</a> one or more <a href="#Terrace">terraces</a>, and they also <a href="#hasAccessType">have an access type</a>. As <a href="http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#Facility">facilities</a> and, therefore, <a href="http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#InfrastructureElement">infrastructure elements</a>, a commercial space, a commercial aggregation, and a terrace <a href="http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#hasInfrastructureType">have an infrastructure element type</a> and a <a href="#CommercialSpace">geolocation</a>, and <a href="http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#belongTo">belong to an administrative division</a> (<a href="http://vocab.linkeddata.es/datosabiertos/def/sector-publico/territorio#Municipio">municipality</a>, <a href="http://vocab.linkeddata.es/datosabiertos/def/sector-publico/territorio#Distrito">district</a>, or <a href="http://vocab.linkeddata.es/datosabiertos/def/sector-publico/territorio#Barrio">neighborhood</a>) (and a <a href="http://vocab.linkeddata.es/datosabiertos/def/common/zone#RegulatedZone">zone</a>).
+</p>
+<p><a href="#CommercialEntity">Commercial entities</a> are <a href="http://schema.org/Person">persons</a> or <a href="http://schema.org/Organization">organizations</a> that carry out or intend to carry out a commercial activity. For this purpose, they may <a href="#usesSpace">use</a> one or more <a href="#CommercialSpace">commercial spaces</a> described above.</p>
+
+<p><a href="#CommercialPermit">Commercial permits</a> <a href="#hasCommercialPermitType">have an associated type</a> and an associated <a href="#hasCommercialPermitStatus">status</a>, and <a href="#issuedTo">are issued to</a>  a <a href="#CommercialEntity">commercial entity</a> and <a href="#appliedTo">are applied to</a>  a <a href="#CommercialSpace">commercial space</a> in order to authorize a specific activity, indicated by a <a href="#hasCNAECode">CNAE code</a> and/or an <a href="hasIAECode">IAE code</a> . <a href="#CommercialPermit">Commercial permits</a> may also <a href="#appliedTo">be applied to</a>  <a href="#Terrace">terraces</a> in order to authorize a use with a specific <a href="http://schema.org/floorSize">surface area</a>, <a href="http://schema.org/maximumAttendeeCapacity">capacity</a>, <a href="#numberOfPermitedTables">number of tables</a>, and <a href="#numberOrPermitedChairs">number of chairs</a>.
+<p>NOTE: If any of the terrace data changes, it will be considered a new and different terrace.</p>
+</p>
+
+<p><center><img src="images/diagrama.png" style="width:100%;"/><figcaption>
+Figure 1. Conceptual model of the ontology (excluding data properties).
+</figcaption></center></p> 
+
+<p>Below there is an example in RDF using RDF Turtle notation. This example describes the <a href="#CommercialEntity">commercial entity</a> ENT-0001, <a href="#rdfs:label">named</a> "Cafeter&iacute;a Chamber&iacute; S.L.", which has as activities the <a href="#hasCNAECode">CNAE code</a> 563000 and the <a href="#hasIAECode">IAE code</a> 673.1, and <a href="#usesSpace">uses</a> the <a href="#CommercialSpace">commercial space</a> COM-0001. This commercial space, <a href="#rdfs:label">named</a> "Cafeter&iacute;a Chamber&iacute;", <a href="#hasCommercialSpaceStatus">is in</a> active status and <a href="#belongsToCommercialAggregation">belongs to</a> the commercial aggregation <a href="#CommercialAggregation">commercial aggregation</a> AGR-0001, <a href="#rdfs:label">named</a> "Mercado de Chamber&iacute;". Its <a href="#hasAccessType">access type</a> is interior and it <a href="#hasTerrace">has the terrace</a> TER-0001, for which <a href="#edintinf:hasInfraestructureType">its type</a>, <a href="#schema:openningHours">its opening hours</a>, <a href="#schema:floorSize">its surface area</a>, <a href="#schema:maximumAttendeeCapacity">its capacity</a>, <a href="#numberOfPermitedTables">its number of authorized tables</a>, and <a href="#numberOfPermitedTables">its number of authorized chairs</a> are detailed. Data about its location are also included: the <a href="#belongsTo">administrative division to which it belongs</a> (Trafalgar neighborhood), <a href="#schema:address">its postal code</a> (28010), and its <a href="#geosparql:asWKT">geolocation</a> (-3.700200 40.434300) through <a href="#gsp:hasGeometry">its geometry</a>.</p>
+
+<p>The <a href="#CommercialPermit">permit</a> LIC-CAF-0001, with <a href="#fileCode">file code</a> 2021/EXP/45872 and <a href="#hasCommercialPermitType">type</a> APAL, <a href="#hasCommercialPermitStatus">is</a> granted, <a href="#issuedTo">is issued</a> to the <a href="#CommercialEntity">commercial entity</a>, and <a href="#appliedTo">is applied</a> to the <a href="#CommercialSpace">commercial space</a> COM-0001, for the <a href="#hasCNAECode">CNAE code</a> 563000, and has a <a href="#schema:startDate">start date</a> of 2021-05-14T00:00:00. The <a href="#CommercialPermit">permit</a> <a href="#appliedTo">is applied</a> to the <a href="#Terrace">terrace</a> TER-0001.
+</p>
+
+<pre><textarea style="resize:none" readonly id="code_d581" name="code" rows="25" cols="100">
 @prefix comp: &lt;http://semweb.mmlab.be/ns/rml-compression#&gt; .
 @prefix d2rq: &lt;http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#&gt; .
 @prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
@@ -53,7 +68,7 @@
 &lt;http://vocab.linkeddata.es/datosabiertos/recurso/espacio-comercial/COM-0001&gt; a edintcom:CommercialSpace;
   dcterms:identifier "COM-0001";
   edintcom:belongsToCommercialAggregation &lt;http://vocab.linkeddata.es/datosabiertos/recurso/agrupacionComercial/AGR-0001&gt;;
-  edintcom:hasAccessType edintkoacctype:Indoor;
+  edintcom:hasAccessType edintkosacctype:Indoor;
   edintcom:hasCommercialSpaceStatus edintkoscomespsit:Active;
   edintcom:hasTerrace &lt;http://vocab.linkeddata.es/datosabiertos/recurso/terraza/TER-0001&gt;;
   rdfs:label "Cafetería Chamberí" .
@@ -65,8 +80,8 @@
   schema:maximumAttendeeCapacity 18;
   schema:openingHours "Tu-Sa 12:30-16:30; Tu-Sa 19:00-00:00; Su 12:30-16:30";
   edintcom:hasTerracePeriod edintterper:anual;
-  edintcom:numeroMesasAutorizadas 6;
-  edintcom:numeroSillasAutorizadas 18;
+  edintcom:numberOfPermitedTables 6;
+  edintcom:numberOfPermitedChairs 18;
   edintinf:belongsTo &lt;http://vocab.linkeddata.es/datosabiertos/recurso/sector-publico/territorio/barrio/TRAFALGAR&gt;;
   edintinf:hasInfrastructureType edintkosinf:Terrace;
   geosparql:hasGeometry &lt;http://vocab.linkeddata.es/datosabiertos/recurso/terraza/geometry/TER-0001&gt;;
@@ -80,6 +95,7 @@
   dcterms:identifier "LIC-CAF-0001" ;
   rdfs:label "Licencia de actividad Cafetería Chamberí" ;
   edintcom:fileCode "2021/EXP/45872" ;
+  edintcom:issuedTo &lt;http://vocab.linkeddata.es/datosabiertos/recurso/entidad-comercial/ENT-0001&gt; ;
   edintcom:appliedTo &lt;http://vocab.linkeddata.es/datosabiertos/recurso/espacio-comercial/COM-0001&gt; ;
   edintcom:hasCommercialPermitType http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialPermitType/APAL ;
   edintcom:hasCommercialPermitStatus http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialPermitStatus/Granted ;
@@ -96,10 +112,12 @@
   edintcom:hasCommercialPermitStatus http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialPermitStatus/Granted ;
   schema:startDate "2024-03-01T00:00:00"^^xsd:dateTime ;
   schema:endDate "2026-12-31T23:59:59"^^xsd:dateTime .
+
 </textarea></pre>
 <script>
-    var editor_e104 = CodeMirror.fromTextArea(document.getElementById("code_e104"), {
+    var editor_d581 = CodeMirror.fromTextArea(document.getElementById("code_d581"), {
         mode: "text/turtle",
         matchBrackets: true
     });
 </script>
+</span>

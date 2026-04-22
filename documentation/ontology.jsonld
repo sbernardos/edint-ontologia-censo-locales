@@ -88,7 +88,7 @@
   "@id" : "_:genid27",
   "@type" : [ "http://www.w3.org/2002/07/owl#Restriction" ],
   "http://www.w3.org/2002/07/owl#hasValue" : [ {
-    "@id" : "http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureElementType"
+    "@id" : "http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureType"
   } ],
   "http://www.w3.org/2002/07/owl#onProperty" : [ {
     "@id" : "http://www.w3.org/2004/02/skos/core#inScheme"
@@ -268,7 +268,13 @@
     "@id" : "http://www.w3.org/2001/XMLSchema#dateTime"
   } ]
 }, {
-  "@id" : "http://schema.org/name",
+  "@id" : "http://schema.org/floorSize",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@id" : "http://schema.org/"
+  } ]
+}, {
+  "@id" : "http://schema.org/maximumAttendeeCapacity",
   "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
     "@id" : "http://schema.org/"
@@ -860,7 +866,7 @@
     "@value" : "It relates en entity, especially a commercial space, event or campaign, to the zone where it is."
   }, {
     "@language" : "es",
-    "@value" : "Relaciona una entidad, princiaplmente un espacio, campaña o evento comercial, con la zona en la que está."
+    "@value" : "Relaciona una entidad, principalmente un espacio, campaña o evento comercial, con la zona en la que está."
   } ],
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "en",
@@ -891,6 +897,40 @@
   } ],
   "http://www.w3.org/2000/01/rdf-schema#range" : [ {
     "@id" : "http://www.w3.org/2001/XMLSchema#dateTime"
+  } ]
+}, {
+  "@id" : "http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#numberOfPermitedChairs",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "es",
+    "@value" : "Indica el número máximo de sillas que puede tener una entidad, principalmente una terraza."
+  }, {
+    "@language" : "en",
+    "@value" : "It captures the maximum number of chairs an entity, especially a terrace, can have."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "number of permited chairs"
+  }, {
+    "@language" : "es",
+    "@value" : "número de sillas autorizadas"
+  } ]
+}, {
+  "@id" : "http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#numberOfPermitedTables",
+  "@type" : [ "http://www.w3.org/2002/07/owl#DatatypeProperty" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "es",
+    "@value" : "Indica el número máximo de mesas que puede tener una entidad, principalmente una terraza."
+  }, {
+    "@language" : "en",
+    "@value" : "It captures the maximun number of tables an entity, especially a terrace, can have."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "number of permited tables"
+  }, {
+    "@language" : "es",
+    "@value" : "número de mesas autorizadas"
   } ]
 }, {
   "@id" : "http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#public",
@@ -1210,7 +1250,7 @@
     "@value" : "Dirección postal"
   } ]
 }, {
-  "@id" : "http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#hasInfrastructureElementType",
+  "@id" : "http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#hasInfrastructureType",
   "@type" : [ "http://www.w3.org/2002/07/owl#ObjectProperty" ],
   "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
     "@id" : "http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/infraestructura#"
@@ -1279,12 +1319,6 @@
   "http://www.w3.org/2000/01/rdf-schema#label" : [ {
     "@language" : "es",
     "@value" : "IAE"
-  } ]
-}, {
-  "@id" : "http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureElementType",
-  "@type" : [ "http://www.w3.org/2002/07/owl#NamedIndividual" ],
-  "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ {
-    "@id" : "http://www.w3.org/2004/02/skos/core#ConceptScheme"
   } ]
 }, {
   "@id" : "http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureType",

@@ -271,7 +271,7 @@ _:genid24 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1
 # http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#locatedInZone
 <http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#locatedInZone> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
 <http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#locatedInZone> <http://www.w3.org/2000/01/rdf-schema#comment> "It relates en entity, especially a commercial space, event or campaign, to the zone where it is."@en .
-<http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#locatedInZone> <http://www.w3.org/2000/01/rdf-schema#comment> "Relaciona una entidad, princiaplmente un espacio, campaña o evento comercial, con la zona en la que está."@es .
+<http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#locatedInZone> <http://www.w3.org/2000/01/rdf-schema#comment> "Relaciona una entidad, principalmente un espacio, campaña o evento comercial, con la zona en la que está."@es .
 <http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#locatedInZone> <http://www.w3.org/2000/01/rdf-schema#label> "located in zone"@en .
 <http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#locatedInZone> <http://www.w3.org/2000/01/rdf-schema#label> "situado en zona"@es .
 # 
@@ -305,21 +305,21 @@ _:genid24 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1
 <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#contieneVia> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero> .
 <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/callejero#contieneVia> <http://www.w3.org/2000/01/rdf-schema#label> "contiene vía"@es .
 # 
-# http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#hasInfrastructureElementType
-<http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#hasInfrastructureElementType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#hasInfrastructureElementType> <http://www.w3.org/2000/01/rdf-schema#range> _:genid25 .
+# http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#hasInfrastructureType
+<http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#hasInfrastructureType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#hasInfrastructureType> <http://www.w3.org/2000/01/rdf-schema#range> _:genid25 .
 _:genid25 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 _:genid25 <http://www.w3.org/2002/07/owl#intersectionOf> _:genid28 .
 _:genid28 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid26 .
 _:genid26 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
 _:genid26 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid27 .
-_:genid27 <http://www.w3.org/2002/07/owl#hasValue> <http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureElementType> .
+_:genid27 <http://www.w3.org/2002/07/owl#hasValue> <http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureType> .
 _:genid27 <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2004/02/skos/core#inScheme> .
 _:genid27 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .
 _:genid26 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
 _:genid28 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <http://www.w3.org/2004/02/skos/core#Concept> .
 _:genid28 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
-<http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#hasInfrastructureElementType> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/infraestructura#> .
+<http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#hasInfrastructureType> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://vocab.linkeddata.es/datosabiertos/def/urbanismo-infraestructuras/infraestructura#> .
 # 
 # http://www.geonames.org/ontology#featureClass
 <http://www.geonames.org/ontology#featureClass> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
@@ -393,9 +393,13 @@ _:genid28 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1
 <http://schema.org/endDate> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://schema.org> .
 <http://schema.org/endDate> <http://www.w3.org/2000/01/rdf-schema#label> "fecha de finalización"@es .
 # 
-# http://schema.org/name
-<http://schema.org/name> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
-<http://schema.org/name> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://schema.org/> .
+# http://schema.org/floorSize
+<http://schema.org/floorSize> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://schema.org/floorSize> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://schema.org/> .
+# 
+# http://schema.org/maximumAttendeeCapacity
+<http://schema.org/maximumAttendeeCapacity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://schema.org/maximumAttendeeCapacity> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://schema.org/> .
 # 
 # http://schema.org/openingHours
 <http://schema.org/openingHours> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
@@ -440,6 +444,20 @@ _:genid28 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1
 <http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#maintenanceDate> <http://www.w3.org/2000/01/rdf-schema#comment> "Fecha en la que se hizo mantenimiento de una entidad por última vez, especialmente un elemento urbano."@es .
 <http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#maintenanceDate> <http://www.w3.org/2000/01/rdf-schema#label> "fecha de mantenimiento"@es .
 <http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#maintenanceDate> <http://www.w3.org/2000/01/rdf-schema#label> "maintenance date"@en .
+# 
+# http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#numberOfPermitedChairs
+<http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#numberOfPermitedChairs> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#numberOfPermitedChairs> <http://www.w3.org/2000/01/rdf-schema#comment> "Indica el número máximo de sillas que puede tener una entidad, principalmente una terraza."@es .
+<http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#numberOfPermitedChairs> <http://www.w3.org/2000/01/rdf-schema#comment> "It captures the maximum number of chairs an entity, especially a terrace, can have."@en .
+<http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#numberOfPermitedChairs> <http://www.w3.org/2000/01/rdf-schema#label> "number of permited chairs"@en .
+<http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#numberOfPermitedChairs> <http://www.w3.org/2000/01/rdf-schema#label> "número de sillas autorizadas"@es .
+# 
+# http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#numberOfPermitedTables
+<http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#numberOfPermitedTables> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#numberOfPermitedTables> <http://www.w3.org/2000/01/rdf-schema#comment> "Indica el número máximo de mesas que puede tener una entidad, principalmente una terraza."@es .
+<http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#numberOfPermitedTables> <http://www.w3.org/2000/01/rdf-schema#comment> "It captures the maximun number of tables an entity, especially a terrace, can have."@en .
+<http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#numberOfPermitedTables> <http://www.w3.org/2000/01/rdf-schema#label> "number of permited tables"@en .
+<http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#numberOfPermitedTables> <http://www.w3.org/2000/01/rdf-schema#label> "número de mesas autorizadas"@es .
 # 
 # http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#public
 <http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#public> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
@@ -766,10 +784,6 @@ _:genid33 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2
 <http://vocab.linkeddata.es/datosabiertos/kos/edint/IAE> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
 <http://vocab.linkeddata.es/datosabiertos/kos/edint/IAE> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#ConceptScheme> .
 <http://vocab.linkeddata.es/datosabiertos/kos/edint/IAE> <http://www.w3.org/2000/01/rdf-schema#label> "IAE"@es .
-# 
-# http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureElementType
-<http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureElementType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
-<http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureElementType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#ConceptScheme> .
 # 
 # http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureType
 <http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .

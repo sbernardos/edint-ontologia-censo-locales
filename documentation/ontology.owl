@@ -435,7 +435,7 @@
 
     <owl:ObjectProperty rdf:about="http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#locatedInZone">
         <rdfs:comment xml:lang="en">It relates en entity, especially a commercial space, event or campaign, to the zone where it is.</rdfs:comment>
-        <rdfs:comment xml:lang="es">Relaciona una entidad, princiaplmente un espacio, campaña o evento comercial, con la zona en la que está.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Relaciona una entidad, principalmente un espacio, campaña o evento comercial, con la zona en la que está.</rdfs:comment>
         <rdfs:label xml:lang="en">located in zone</rdfs:label>
         <rdfs:label xml:lang="es">situado en zona</rdfs:label>
     </owl:ObjectProperty>
@@ -492,17 +492,17 @@
     
 
 
-    <!-- http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#hasInfrastructureElementType -->
+    <!-- http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#hasInfrastructureType -->
 
 
-    <owl:ObjectProperty rdf:about="http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#hasInfrastructureElementType">
+    <owl:ObjectProperty rdf:about="http://vocab.linkeddata.es/datosabiertos/def/urbanismos-infraestructuras/infraestructura#hasInfrastructureType">
         <rdfs:range>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="http://www.w3.org/2004/02/skos/core#Concept"/>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://www.w3.org/2004/02/skos/core#inScheme"/>
-                        <owl:hasValue rdf:resource="http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureElementType"/>
+                        <owl:hasValue rdf:resource="http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureType"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
@@ -633,10 +633,19 @@
     
 
 
-    <!-- http://schema.org/name -->
+    <!-- http://schema.org/floorSize -->
 
 
-    <owl:DatatypeProperty rdf:about="http://schema.org/name">
+    <owl:DatatypeProperty rdf:about="http://schema.org/floorSize">
+        <rdfs:isDefinedBy rdf:resource="http://schema.org/"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://schema.org/maximumAttendeeCapacity -->
+
+
+    <owl:DatatypeProperty rdf:about="http://schema.org/maximumAttendeeCapacity">
         <rdfs:isDefinedBy rdf:resource="http://schema.org/"/>
     </owl:DatatypeProperty>
     
@@ -707,6 +716,30 @@
         <rdfs:comment xml:lang="es">Fecha en la que se hizo mantenimiento de una entidad por última vez, especialmente un elemento urbano.</rdfs:comment>
         <rdfs:label xml:lang="es">fecha de mantenimiento</rdfs:label>
         <rdfs:label xml:lang="en">maintenance date</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#numberOfPermitedChairs -->
+
+
+    <owl:DatatypeProperty rdf:about="http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#numberOfPermitedChairs">
+        <rdfs:comment xml:lang="es">Indica el número máximo de sillas que puede tener una entidad, principalmente una terraza.</rdfs:comment>
+        <rdfs:comment xml:lang="en">It captures the maximum number of chairs an entity, especially a terrace, can have.</rdfs:comment>
+        <rdfs:label xml:lang="en">number of permited chairs</rdfs:label>
+        <rdfs:label xml:lang="es">número de sillas autorizadas</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#numberOfPermitedTables -->
+
+
+    <owl:DatatypeProperty rdf:about="http://vocab.linkeddata.es/datosabiertos/def/comercio/censo-locales#numberOfPermitedTables">
+        <rdfs:comment xml:lang="es">Indica el número máximo de mesas que puede tener una entidad, principalmente una terraza.</rdfs:comment>
+        <rdfs:comment xml:lang="en">It captures the maximun number of tables an entity, especially a terrace, can have.</rdfs:comment>
+        <rdfs:label xml:lang="en">number of permited tables</rdfs:label>
+        <rdfs:label xml:lang="es">número de mesas autorizadas</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -1269,15 +1302,6 @@ Además de las propiedades asociadas a estas clases, y definidas en su correspon
     <owl:NamedIndividual rdf:about="http://vocab.linkeddata.es/datosabiertos/kos/edint/IAE">
         <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
         <rdfs:label xml:lang="es">IAE</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureElementType -->
-
-
-    <owl:NamedIndividual rdf:about="http://vocab.linkeddata.es/datosabiertos/kos/edint/InfrastructureElementType">
-        <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
     </owl:NamedIndividual>
     
 
