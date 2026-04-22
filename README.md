@@ -4,7 +4,7 @@ La ontología de Establecimiento Comercial representa los datos de los espacios 
 
 # Propósito y alcance de la ontología (Purpose and scope of the ontology)
 
-El propósito de esta ontología es proporcionar un vocabulario común para la representación de las entidades y los datos principales relacionados con los establecimientos comerciales de un municipio y sus licencias. También incluye las agrupaciones comerciales, como mercados y centros comerciales, y las terrazas asociadas a los establecimientos.
+El propósito de esta ontología es proporcionar un vocabulario común para la representación de las entidades y los datos principales relacionados con los establecimientos comerciales de un municipio, sus agrupaciones y sus licencias. También incluye las agrupaciones comerciales, como mercados y centros comerciales, y las terrazas asociadas a los establecimientos.
 
 # Prefijo y espacio de nombres (Prefix and namespace)
 
