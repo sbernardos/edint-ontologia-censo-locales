@@ -68,3 +68,24 @@
 
 <http://vocab.linkeddata.es/datosabiertos/recurso/terraza/geometry/TER-0001> geosparql:asWKT
     "POINT (-3.700200 40.434300)"^^geosparql:wktLiteral .
+
+<http://vocab.linkeddata.es/datosabiertos/recurso/licencia/LIC-CAF-0001> a edintcom:Permit ;
+  dcterms:identifier "LIC-CAF-0001" ;
+  rdfs:label "Licencia de actividad Cafetería Chamberí" ;
+  edintcom:fileCode "2021/EXP/45872" ;
+  edintcom:appliedTo <http://vocab.linkeddata.es/datosabiertos/recurso/espacio-comercial/COM-0001> ;
+  edintcom:hasCommercialPermitType http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialPermitType/APAL ;
+  edintcom:hasCommercialPermitStatus http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialPermitStatus/Granted ;
+  edintcom:hasCNAECode <http://lod.ine.es/kos/cnae/CNAE-2025/6/563000> ;
+  edintcom:hasIAECode <http://vocab.linkeddata.es/datosabiertos/kos/edint/iae/3/673.1> ;
+  schema:startDate "2021-05-14T00:00:00"^^xsd:dateTime .
+
+<http://vocab.linkeddata.es/datosabiertos/recurso/licencia/LIC-TER-0001> a edintcom:Permit ;
+  dcterms:identifier "LIC-TER-0001" ;
+  rdfs:label "Autorización de terraza Cafetería Chamberí" ;
+  edintcom:fileCode "2024/VEL/10328" ;
+  edintcom:appliedTo <http://vocab.linkeddata.es/datosabiertos/recurso/terraza/TER-0001> ;
+  edintcom:hasCommercialPermitType http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialPermitType/APAL ;
+  edintcom:hasCommercialPermitStatus http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialPermitStatus/Granted ;
+  schema:startDate "2024-03-01T00:00:00"^^xsd:dateTime ;
+  schema:endDate "2026-12-31T23:59:59"^^xsd:dateTime .
