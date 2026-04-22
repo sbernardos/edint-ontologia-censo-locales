@@ -73,6 +73,7 @@
   dcterms:identifier "LIC-CAF-0001" ;
   rdfs:label "Licencia de actividad Cafetería Chamberí" ;
   edintcom:fileCode "2021/EXP/45872" ;
+  edintcom:issuedTo <http://vocab.linkeddata.es/datosabiertos/recurso/entidad-comercial/ENT-0001> ;
   edintcom:appliedTo <http://vocab.linkeddata.es/datosabiertos/recurso/espacio-comercial/COM-0001> ;
   edintcom:hasCommercialPermitType http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialPermitType/APAL ;
   edintcom:hasCommercialPermitStatus http://vocab.linkeddata.es/datosabiertos/kos/edint/CommercialPermitStatus/Granted ;
