@@ -1,6 +1,5 @@
 # Ontología EDINT de Establecimiento Comercial (EDINT Commercial Establishment Ontology)
 
-La ontología XXX representa el dominio ABC.
 La ontología de Establecimiento Comercial representa los datos de los espacios comerciales, sus agrupaciones y sus licencias.
 
 # Propósito y alcance de la ontología (Purpose and scope of the ontology)
